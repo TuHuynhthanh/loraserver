@@ -36,6 +36,19 @@
   version = "v1.4.0"
 
 [[projects]]
+  name = "github.com/gogo/protobuf"
+  packages = [
+    "gogoproto",
+    "jsonpb",
+    "proto",
+    "protoc-gen-gogo/descriptor",
+    "sortkeys",
+    "types"
+  ]
+  revision = "1adfc126b41513cc696b209667c8656ea7aac67c"
+  version = "v1.0.0"
+
+[[projects]]
   name = "github.com/golang/protobuf"
   packages = [
     "jsonpb",
@@ -329,6 +342,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "7b34219faa766497cbbb26372adf0fb844454d00c6068f0b5bd91f96b682911a"
+  inputs-digest = "fcd77018b9e8c9bb15be68d9f4fa85ef438ff143a94cb8205bfd97966f089dc0"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -17,7 +17,6 @@ import (
 	"github.com/brocaar/loraserver/internal/test"
 	"github.com/brocaar/loraserver/internal/uplink"
 	"github.com/brocaar/lorawan"
-	"github.com/brocaar/lorawan/backend"
 	"github.com/brocaar/lorawan/band"
 )
 
@@ -97,29 +96,23 @@ func TestUplinkScenarios(t *testing.T) {
 
 		// service-profile
 		sp := storage.ServiceProfile{
-			ServiceProfile: backend.ServiceProfile{
-				AddGWMetadata: true,
-			},
+			AddGWMetadata: true,
 		}
 		So(storage.CreateServiceProfile(config.C.PostgreSQL.DB, &sp), ShouldBeNil)
 
 		// device-profile
-		dp := storage.DeviceProfile{
-			DeviceProfile: backend.DeviceProfile{},
-		}
+		dp := storage.DeviceProfile{}
 		So(storage.CreateDeviceProfile(config.C.PostgreSQL.DB, &dp), ShouldBeNil)
 
 		// routing-profile
-		rp := storage.RoutingProfile{
-			RoutingProfile: backend.RoutingProfile{},
-		}
+		rp := storage.RoutingProfile{}
 		So(storage.CreateRoutingProfile(config.C.PostgreSQL.DB, &rp), ShouldBeNil)
 
 		// device
 		d := storage.Device{
-			ServiceProfileID: sp.ServiceProfile.ServiceProfileID,
-			DeviceProfileID:  dp.DeviceProfile.DeviceProfileID,
-			RoutingProfileID: rp.RoutingProfile.RoutingProfileID,
+			ServiceProfileID: sp.ID,
+			DeviceProfileID:  dp.ID,
+			RoutingProfileID: rp.ID,
 			DevEUI:           lorawan.EUI64{1, 2, 3, 4, 5, 6, 7, 8},
 		}
 		So(storage.CreateDevice(config.C.PostgreSQL.DB, &d), ShouldBeNil)
@@ -889,7 +882,7 @@ func TestUplinkScenarios(t *testing.T) {
 						tc.ExpectedASHandleDataUp.Data = []byte{1, 2, 3, 4}
 
 						// set add gw meta-data to false
-						sp.ServiceProfile.AddGWMetadata = false
+						sp.AddGWMetadata = false
 						return storage.UpdateServiceProfile(config.C.PostgreSQL.DB, &sp)
 					},
 
@@ -929,7 +922,7 @@ func TestUplinkScenarios(t *testing.T) {
 			tests := []uplinkTestCase{
 				{
 					BeforeFunc: func(tc *uplinkTestCase) error {
-						sp.ServiceProfile.DevStatusReqFreq = 1
+						sp.DevStatusReqFreq = 1
 						So(storage.UpdateServiceProfile(config.C.PostgreSQL.DB, &sp), ShouldBeNil)
 
 						tc.ExpectedASHandleDataUp.Data = []byte{1, 2, 3, 4}
@@ -988,7 +981,7 @@ func TestUplinkScenarios(t *testing.T) {
 				},
 				{
 					BeforeFunc: func(tc *uplinkTestCase) error {
-						sp.ServiceProfile.DevStatusReqFreq = 1
+						sp.DevStatusReqFreq = 1
 						So(storage.UpdateServiceProfile(config.C.PostgreSQL.DB, &sp), ShouldBeNil)
 
 						tc.ExpectedASHandleDataUp.Data = []byte{1, 2, 3, 4}
@@ -1379,7 +1372,7 @@ func TestUplinkScenarios(t *testing.T) {
 				},
 				{
 					BeforeFunc: func(tc *uplinkTestCase) error {
-						sp.ServiceProfile.DevStatusReqFreq = 1
+						sp.DevStatusReqFreq = 1
 						So(storage.UpdateServiceProfile(config.C.PostgreSQL.DB, &sp), ShouldBeNil)
 						return nil
 					},

@@ -50,11 +50,12 @@ statics:
 requirements:
 	@go get -u github.com/kisielk/errcheck
 	@go get -u github.com/golang/lint/golint
-	@go get -u github.com/kardianos/govendor
 	@go get -u github.com/smartystreets/goconvey
 	@go get -u golang.org/x/tools/cmd/stringer
-	@go get -u github.com/golang/protobuf/proto
-	@go get -u github.com/golang/protobuf/protoc-gen-go
+	@go get -u github.com/gogo/protobuf/proto
+	@go get -u github.com/gogo/protobuf/jsonpb
+	@go get -u github.com/gogo/protobuf/protoc-gen-gogo
+	@go get -u github.com/gogo/protobuf/gogoproto
 	@go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 	@go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 	@go get -u github.com/elazarl/go-bindata-assetfs/...

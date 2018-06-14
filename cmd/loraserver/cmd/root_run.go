@@ -315,7 +315,7 @@ func startAPIServer() error {
 	}
 	gs := grpc.NewServer(opts...)
 	nsAPI := api.NewNetworkServerAPI()
-	ns.RegisterNetworkServerServer(gs, nsAPI)
+	ns.RegisterNetworkServerServiceServer(gs, nsAPI)
 
 	ln, err := net.Listen("tcp", config.C.NetworkServer.API.Bind)
 	if err != nil {

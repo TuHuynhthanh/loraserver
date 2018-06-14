@@ -220,7 +220,7 @@ func createNodeSession(ctx *context) error {
 		EnabledUplinkChannels: config.C.NetworkServer.Band.Band.GetStandardUplinkChannelIndices(),
 		ExtraUplinkChannels:   make(map[int]band.Channel),
 		UplinkGatewayHistory:  map[lorawan.EUI64]storage.UplinkGatewayHistory{},
-		MaxSupportedDR:        ctx.ServiceProfile.ServiceProfile.DRMax,
+		MaxSupportedDR:        ctx.ServiceProfile.DRMax,
 		SkipFCntValidation:    ctx.Device.SkipFCntCheck,
 		PingSlotDR:            ctx.DeviceProfile.PingSlotDR,
 		PingSlotFrequency:     int(ctx.DeviceProfile.PingSlotFreq),

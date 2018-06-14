@@ -13,7 +13,6 @@ import (
 	"github.com/brocaar/loraserver/internal/gps"
 	"github.com/brocaar/loraserver/internal/test"
 	"github.com/brocaar/lorawan"
-	"github.com/brocaar/lorawan/backend"
 	. "github.com/smartystreets/goconvey/convey"
 )
 
@@ -42,9 +41,9 @@ func TestDeviceQueue(t *testing.T) {
 
 			d := Device{
 				DevEUI:           lorawan.EUI64{1, 2, 3, 4, 5, 6, 7, 8},
-				ServiceProfileID: sp.ServiceProfile.ServiceProfileID,
-				DeviceProfileID:  dp.DeviceProfile.DeviceProfileID,
-				RoutingProfileID: rp.RoutingProfile.RoutingProfileID,
+				ServiceProfileID: sp.ID,
+				DeviceProfileID:  dp.ID,
+				RoutingProfileID: rp.ID,
 			}
 			So(CreateDevice(db, &d), ShouldBeNil)
 
@@ -269,7 +268,7 @@ func TestDeviceQueue(t *testing.T) {
 
 				for i, test := range tests {
 					Convey(fmt.Sprintf("Testing: %s [%d]", test.Name, i), func() {
-						qi, err := GetNextDeviceQueueItemForDevEUIMaxPayloadSizeAndFCnt(config.C.PostgreSQL.DB, d.DevEUI, test.MaxFRMPayload, test.FCnt, rp.RoutingProfileID)
+						qi, err := GetNextDeviceQueueItemForDevEUIMaxPayloadSizeAndFCnt(config.C.PostgreSQL.DB, d.DevEUI, test.MaxFRMPayload, test.FCnt, rp.ID)
 						if test.ExpectedHandleError == nil {
 							So(*test.ExpectedDeviceQueueItemID, ShouldEqual, qi.ID)
 							So(err, ShouldBeNil)
@@ -322,23 +321,21 @@ func TestGetDevEUIsWithClassCDeviceQueueItems(t *testing.T) {
 			So(CreateRoutingProfile(config.C.PostgreSQL.DB, &rp), ShouldBeNil)
 
 			dp := DeviceProfile{
-				DeviceProfile: backend.DeviceProfile{
-					SupportsClassB: true,
-				},
+				SupportsClassB: true,
 			}
 			So(CreateDeviceProfile(config.C.PostgreSQL.DB, &dp), ShouldBeNil)
 
 			devices := []Device{
 				{
-					ServiceProfileID: sp.ServiceProfile.ServiceProfileID,
-					DeviceProfileID:  dp.DeviceProfile.DeviceProfileID,
-					RoutingProfileID: rp.RoutingProfile.RoutingProfileID,
+					ServiceProfileID: sp.ID,
+					DeviceProfileID:  dp.ID,
+					RoutingProfileID: rp.ID,
 					DevEUI:           lorawan.EUI64{1, 1, 1, 1, 1, 1, 1, 1},
 				},
 				{
-					ServiceProfileID: sp.ServiceProfile.ServiceProfileID,
-					DeviceProfileID:  dp.DeviceProfile.DeviceProfileID,
-					RoutingProfileID: rp.RoutingProfile.RoutingProfileID,
+					ServiceProfileID: sp.ID,
+					DeviceProfileID:  dp.ID,
+					RoutingProfileID: rp.ID,
 					DevEUI:           lorawan.EUI64{2, 2, 2, 2, 2, 2, 2, 2},
 				},
 			}
@@ -413,23 +410,21 @@ func TestGetDevEUIsWithClassCDeviceQueueItems(t *testing.T) {
 			So(CreateRoutingProfile(config.C.PostgreSQL.DB, &rp), ShouldBeNil)
 
 			dp := DeviceProfile{
-				DeviceProfile: backend.DeviceProfile{
-					SupportsClassC: true,
-				},
+				SupportsClassC: true,
 			}
 			So(CreateDeviceProfile(config.C.PostgreSQL.DB, &dp), ShouldBeNil)
 
 			devices := []Device{
 				{
-					ServiceProfileID: sp.ServiceProfile.ServiceProfileID,
-					DeviceProfileID:  dp.DeviceProfile.DeviceProfileID,
-					RoutingProfileID: rp.RoutingProfile.RoutingProfileID,
+					ServiceProfileID: sp.ID,
+					DeviceProfileID:  dp.ID,
+					RoutingProfileID: rp.ID,
 					DevEUI:           lorawan.EUI64{1, 1, 1, 1, 1, 1, 1, 1},
 				},
 				{
-					ServiceProfileID: sp.ServiceProfile.ServiceProfileID,
-					DeviceProfileID:  dp.DeviceProfile.DeviceProfileID,
-					RoutingProfileID: rp.RoutingProfile.RoutingProfileID,
+					ServiceProfileID: sp.ID,
+					DeviceProfileID:  dp.ID,
+					RoutingProfileID: rp.ID,
 					DevEUI:           lorawan.EUI64{2, 2, 2, 2, 2, 2, 2, 2},
 				},
 			}

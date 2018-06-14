@@ -19,6 +19,10 @@
   name = "github.com/golang/protobuf"
 
 [[constraint]]
+  name = "github.com/gogo/protobuf"
+  version = "v1.0.0"
+
+[[constraint]]
   branch = "master"
   name = "github.com/jmoiron/sqlx"
 

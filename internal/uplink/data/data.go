@@ -321,7 +321,7 @@ func sendFRMPayloadToApplicationServer(ctx *dataContext) error {
 		},
 	}
 
-	if ctx.ServiceProfile.ServiceProfile.AddGWMetadata {
+	if ctx.ServiceProfile.AddGWMetadata {
 		var macs []lorawan.EUI64
 		for i := range ctx.RXPacket.RXInfoSet {
 			macs = append(macs, ctx.RXPacket.RXInfoSet[i].MAC)

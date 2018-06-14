@@ -5,6 +5,7 @@ import (
 	"time"
 
 	"github.com/brocaar/loraserver/internal/gps"
+	uuid "github.com/satori/go.uuid"
 
 	"github.com/brocaar/loraserver/api/as"
 	"github.com/brocaar/loraserver/internal/config"
@@ -256,7 +257,7 @@ func GetDeviceQueueItemsForDevEUI(db sqlx.Queryer, devEUI lorawan.EUI64) ([]Devi
 // frame-counter is behind the actual frame-counter, the payload will be removed
 // from the queue and the next one will be retrieved. In such a case, the
 // application-server will be notified.
-func GetNextDeviceQueueItemForDevEUIMaxPayloadSizeAndFCnt(db sqlx.Ext, devEUI lorawan.EUI64, maxPayloadSize int, fCnt uint32, routingProfileID string) (DeviceQueueItem, error) {
+func GetNextDeviceQueueItemForDevEUIMaxPayloadSizeAndFCnt(db sqlx.Ext, devEUI lorawan.EUI64, maxPayloadSize int, fCnt uint32, routingProfileID uuid.UUID) (DeviceQueueItem, error) {
 	for {
 		qi, err := GetNextDeviceQueueItemForDevEUI(db, devEUI)
 		if err != nil {
