@@ -2,13 +2,7 @@ syntax = "proto3";
 
 package ns;
 
-import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "profiles.proto";
-
-
-option (gogoproto.marshaler_all) = true;
-option (gogoproto.unmarshaler_all) = true;
-option (gogoproto.sizer_all) = true;
 
 // NetworkServerService provides the network-server API methods.
 service NetworkServerService {
@@ -184,12 +178,12 @@ message CreateServiceProfileRequest {
 
 message CreateServiceProfileResponse {
 	// ID of the created service-profile.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetServiceProfileRequest {
 	// ID of the service-profile.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetServiceProfileResponse {
@@ -197,10 +191,10 @@ message GetServiceProfileResponse {
     ServiceProfile service_profile = 1;
 
 	// Created at timestamp.
-    int64 created_at_unix_ns = 2 [(gogoproto.customname) = "CreatedAtUnixNS"];
+    int64 created_at_unix_ns = 2;
 
 	// Last update timestamp.
-    int64 updated_at_unix_ns = 3 [(gogoproto.customname) = "UpdatedAtUnixNS"];
+    int64 updated_at_unix_ns = 3;
 }
 
 message UpdateServiceProfileRequest {
@@ -212,7 +206,7 @@ message UpdateServiceProfileResponse {}
 
 message DeleteServiceProfileRequest {
 	// ID of the service-profile.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message DeleteServiceProfileResponse {}
@@ -226,12 +220,12 @@ message CreateRoutingProfileRequest {
 
 message CreateRoutingProfileResponse {
 	// ID of the created routing-profile.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetRoutingProfileRequest {
 	// ID of the routing-profile.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetRoutingProfileResponse {
@@ -239,10 +233,10 @@ message GetRoutingProfileResponse {
     RoutingProfile routing_profile = 1;
 
 	// Created at timestamp.
-    int64 created_at_unix_ns = 2 [(gogoproto.customname) = "CreatedAtUnixNS"];
+    int64 created_at_unix_ns = 2;
 
 	// Last update timestamp.
-    int64 updated_at_unix_ns = 3 [(gogoproto.customname) = "UpdatedAtUnixNS"];
+    int64 updated_at_unix_ns = 3;
 }
 
 message UpdateRoutingProfileRequest {
@@ -254,7 +248,7 @@ message UpdateRoutingProfileResponse {}
 
 message DeleteRoutingProfileRequest {
 	// Routing-profile ID.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message DeleteRoutingProfileResponse {}
@@ -266,12 +260,12 @@ message CreateDeviceProfileRequest {
 
 message CreateDeviceProfileResponse {
 	// ID of the created device-profile.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetDeviceProfileRequest {
 	// Device-profile ID.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetDeviceProfileResponse {
@@ -279,10 +273,10 @@ message GetDeviceProfileResponse {
     DeviceProfile device_profile = 1;
 
 	// Created at timestamp.
-    int64 created_at_unix_ns = 2 [(gogoproto.customname) = "CreatedAtUnixNS"];
+    int64 created_at_unix_ns = 2;
 
 	// Last update timestamp.
-    int64 updated_at_unix_ns = 3 [(gogoproto.customname) = "UpdatedAtUnixNS"];
+    int64 updated_at_unix_ns = 3;
 }
 
 message UpdateDeviceProfileRequest {
@@ -294,23 +288,23 @@ message UpdateDeviceProfileResponse {}
 
 message DeleteDeviceProfileRequest {
 	// Device-profile ID.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message DeleteDeviceProfileResponse {}
 
 message Device {
 	// DevEUI.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 
 	// Device-profile ID.
-    bytes device_profile_id = 2 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "DeviceProfileID", (gogoproto.nullable) = false];
+    bytes device_profile_id = 2;
 
 	// Service-profile ID.
-    bytes service_profile_id = 3 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ServiceProfileID", (gogoproto.nullable) = false];
+    bytes service_profile_id = 3;
 
 	// Routing-profile ID.
-    bytes routing_profile_id = 4 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "RoutingProfileID", (gogoproto.nullable) = false];
+    bytes routing_profile_id = 4;
 
 	// Skip frame-counter check.
 	// Note that turning this on is insecure and is intended for debugging only.
@@ -326,7 +320,7 @@ message CreateDeviceResponse {}
 
 message GetDeviceRequest {
 	// DevEUI.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message GetDeviceResponse {
@@ -334,10 +328,10 @@ message GetDeviceResponse {
     Device device = 1;
 
 	// Created at timestamp.
-    int64 created_at_unix_ns = 2 [(gogoproto.customname) = "CreatedAtUnixNS"];
+    int64 created_at_unix_ns = 2;
 
 	// Last update timestamp.
-    int64 updated_at_unix_ns = 3 [(gogoproto.customname) = "UpdatedAtUnixNS"];
+    int64 updated_at_unix_ns = 3;
 }
 
 message UpdateDeviceRequest {
@@ -349,26 +343,26 @@ message UpdateDeviceResponse {}
 
 message DeleteDeviceRequest {
 	// DevEUI.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message DeleteDeviceResponse {}
 
 message DeviceActivation {
     // DevEUI.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 
     // Device address (DevAddr).
-    bytes dev_addr = 2 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.DevAddr", (gogoproto.customname) = "DevAddr", (gogoproto.nullable) = false];
+    bytes dev_addr = 2;
 
     // SNwkSIntKey (serving network-server session integrity key).
-    bytes s_nwk_s_int_key = 3 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.AES128Key", (gogoproto.nullable) = false];
+    bytes s_nwk_s_int_key = 3;
 
     // FNwkSIntKey (forwarding network-server session integrity key).
-    bytes f_nwk_s_int_key = 4 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.AES128Key", (gogoproto.nullable) = false];
+    bytes f_nwk_s_int_key = 4;
 
     // NwkSEncKey (network-server session encryption key).
-    bytes nwk_s_enc_key = 5 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.AES128Key", (gogoproto.nullable) = false];
+    bytes nwk_s_enc_key = 5;
 
     // The next expected uplink frame-counter.
     uint32 f_cnt_up = 6;
@@ -392,14 +386,14 @@ message ActivateDeviceResponse {}
 
 message DeactivateDeviceRequest {
     // Device EUI (8 bytes).
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message DeactivateDeviceResponse {}
 
 message GetDeviceActivationRequest {
     // Device EUI (8 bytes).
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message GetDeviceActivationResponse {
@@ -413,12 +407,12 @@ message GetRandomDevAddrRequest {}
 message GetRandomDevAddrResponse {
 	// Random device address (DevAddr).
 	// Note that this includes the NetID prefix of the network-server.
-    bytes dev_addr = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.DevAddr", (gogoproto.nullable) = false];
+    bytes dev_addr = 1;
 }
 
 message CreateMACCommandQueueItemRequest {
     // DevEUI EUI (8 bytes).
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 
     // Command identifier (specified by the LoRaWAN specs).
     uint32 cid = 4;
@@ -455,7 +449,7 @@ message SendProprietaryPayloadResponse {}
 
 message Gateway {
     // Gateway ID.
-    bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+    bytes id = 1;
 
     // Name of the gateway.
     string name = 2;
@@ -473,7 +467,7 @@ message Gateway {
     double altitude = 6;
 
     // ID of the gateway-profile (optional).
-    bytes gateway_profile_id = 7 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "GatewayProfileID"];
+    bytes gateway_profile_id = 7;
 }
 
 message CreateGatewayRequest {
@@ -485,7 +479,7 @@ message CreateGatewayResponse {}
 
 message GetGatewayRequest {
     // Gateway ID.
-    bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+    bytes id = 1;
 }
 
 message GetGatewayResponse {
@@ -493,16 +487,16 @@ message GetGatewayResponse {
 	Gateway gateway = 1;
 
 	// Created at timestamp.
-	int64 created_at_unix_ns = 2 [(gogoproto.customname) = "CreatedAtUnixNS"];
+	int64 created_at_unix_ns = 2;
 
 	// Last update timestamp.
-	int64 updated_at_unix_ns = 3 [(gogoproto.customname) = "UpdatedAtUnixNS"];
+	int64 updated_at_unix_ns = 3;
 
 	// First seen timestamp.
-	int64 first_seen_at_unix_ns = 4 [(gogoproto.customname) = "FirstSeenAtUnixNS"];
+	int64 first_seen_at_unix_ns = 4;
 
 	// Last seen timestamp.
-	int64 last_seen_at_unix_ns = 5 [(gogoproto.customname) = "LastSeenAtUnixNS"];
+	int64 last_seen_at_unix_ns = 5;
 }
 
 message UpdateGatewayRequest {
@@ -514,7 +508,7 @@ message UpdateGatewayResponse {}
 
 message DeleteGatewayRequest {
     // Gateway ID.
-    bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+    bytes id = 1;
 }
 
 message DeleteGatewayResponse {}
@@ -532,33 +526,33 @@ enum AggregationInterval {
 
 message GatewayStats {
     // Timestamp of the (aggregated) measurement.
-    int64 timestamp_unix_ns = 1 [(gogoproto.customname) = "TimestampUnixNS"];
+    int64 timestamp_unix_ns = 1;
 
     // Packets received by the gateway.
-    int32 rx_packets_received = 2 [(gogoproto.customname) = "RXPacketsReceived"];
+    int32 rx_packets_received = 2;
 
     // Packets received by the gateway that passed the CRC check.
-    int32 rx_packets_received_ok = 3 [(gogoproto.customname) = "RXPacketsReceivedOK"];
+    int32 rx_packets_received_ok = 3;
 
     // Packets received by the gateway for transmission.
-    int32 tx_packets_received = 4 [(gogoproto.customname) = "TXPacketsReceived"];
+    int32 tx_packets_received = 4;
 
     // Packets transmitted by the gateway.
-    int32 tx_packets_emitted = 5 [(gogoproto.customname) = "TXPacketsEmitted"];
+    int32 tx_packets_emitted = 5;
 }
 
 message GetGatewayStatsRequest {
     // MAC address of the gateway.
-    bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+    bytes gateway_id = 1;
 
     // Aggregation interval.
     AggregationInterval interval = 2;
 
     // Timestamp to start from.
-    int64 start_timestamp_unix_ns = 3 [(gogoproto.customname) = "StartTimestampUnixNS"];
+    int64 start_timestamp_unix_ns = 3;
 
     // Timestamp until to get from.
-    int64 end_timestamp_unix_ns = 4 [(gogoproto.customname) = "EndTimestampUnixNS"];
+    int64 end_timestamp_unix_ns = 4;
 }
 
 message GetGatewayStatsResponse {
@@ -567,7 +561,7 @@ message GetGatewayStatsResponse {
 
 message DeviceQueueItem {
     // DevEUI of the device.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 
     // The encrypted FRMPayload bytes.
     bytes frm_payload = 2;
@@ -591,14 +585,14 @@ message CreateDeviceQueueItemResponse {}
 
 message FlushDeviceQueueForDevEUIRequest {
     // DevEUI of the device.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message FlushDeviceQueueForDevEUIResponse {}
 
 message GetDeviceQueueItemsForDevEUIRequest {
     // DevEUI of the device.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message GetDeviceQueueItemsForDevEUIResponse {
@@ -607,7 +601,7 @@ message GetDeviceQueueItemsForDevEUIResponse {
 
 message GetNextDownlinkFCntForDevEUIRequest {
     // DevEUI of the device.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message GetNextDownlinkFCntForDevEUIResponse {
@@ -617,7 +611,7 @@ message GetNextDownlinkFCntForDevEUIResponse {
 
 message StreamFrameLogsForGatewayRequest {
     // MAC address of the gateway.
-    bytes GatewayID = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "GatewayID", (gogoproto.nullable) = false];
+    bytes gateway_id = 1;
 }
 
 message StreamFrameLogsForGatewayResponse {
@@ -630,7 +624,7 @@ message StreamFrameLogsForGatewayResponse {
 
 message StreamFrameLogsForDeviceRequest {
     // DevEUI of the device.
-    bytes dev_eui = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "DevEUI", (gogoproto.nullable) = false];
+    bytes dev_eui = 1;
 }
 
 message StreamFrameLogsForDeviceResponse {
@@ -669,22 +663,22 @@ message UplinkTXInfo {
 
 message UplinkRXInfo {
     // Gateway MAC.
-    bytes gateway_id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "GatewayID", (gogoproto.nullable) = false];
+    bytes gateway_id = 1;
 
     // Time when the frame was received (if available).
-    int64 time_unix_ns = 2 [(gogoproto.customname) = "TimeUnixNS"];
+    int64 time_unix_ns = 2;
 
     // Time when the frame was received as time since GPS epoch (if available).
-    int64 ns_since_gps_epoch = 3 [(gogoproto.customname) = "NSSinceGPSEpoch"];
+    int64 ns_since_gps_epoch = 3;
 
     // Gateway internal timestamp.
     uint32 timestamp = 4;
 
     // RSSI.
-    int32 rssi = 5 [(gogoproto.customname) = "RSSI"];
+    int32 rssi = 5;
 
     // LoRa SNR.
-    float lora_snr = 6 [(gogoproto.customname) = "LoRaSNR"];
+    float lora_snr = 6;
 
     // The board identifier that received the uplink frame.
     uint32 board = 7;
@@ -695,24 +689,24 @@ message UplinkRXInfo {
 
 message UplinkFrameLog {
     // TX information of the uplink.
-    UplinkTXInfo tx_info = 1 [(gogoproto.customname) = "TXInfo"];
+    UplinkTXInfo tx_info = 1;
 
     // RX information of the uplink.
-    repeated UplinkRXInfo rx_info = 2 [(gogoproto.customname) = "RXInfo"];
+    repeated UplinkRXInfo rx_info = 2;
 
     // LoRaWAN PHYPayload.
-    bytes phy_payload = 3 [(gogoproto.customname) = "PHYPayload"];
+    bytes phy_payload = 3;
 }
 
 message DownlinkTXInfo {
     // Gateway MAC.
-    bytes gateway_id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.EUI64", (gogoproto.customname) = "GatewayID", (gogoproto.nullable) = false];
+    bytes gateway_id = 1;
 
     // Frame must be sent immediately.
     bool immediately = 2;
 
     // Transmit frame at the given time since GPS epoch.
-    int64 ns_since_gps_epoch = 3 [(gogoproto.customname) = "NSSinceGPSEpoch"];
+    int64 ns_since_gps_epoch = 3;
 
     // Transmit the frame at the given gateway internal timestamp.
     uint32 timestamp = 4;
@@ -741,10 +735,10 @@ message DownlinkTXInfo {
 
 message DownlinkFrameLog {
     // TX information of the downlink.
-    DownlinkTXInfo tx_info = 1 [(gogoproto.customname) = "TXInfo"];
+    DownlinkTXInfo tx_info = 1;
 
     // LoRaWAN PHYPayload.
-    bytes phy_payload = 2 [(gogoproto.customname) = "PHYPayload"];
+    bytes phy_payload = 2;
 }
 
 message GetVersionRequest {}
@@ -758,7 +752,7 @@ message GetVersionResponse {
 }
 message GatewayProfile {
     // ID of the gateway-profile.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 
     // Default channels (channels specified by the LoRaWAN Regional Parameters
     // specification) enabled for this configuration.
@@ -793,12 +787,12 @@ message CreateGatewayProfileRequest {
 
 message CreateGatewayProfileResponse {
     // ID of the create configuration object.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetGatewayProfileRequest {
     // Gateway-profile ID.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message GetGatewayProfileResponse {
@@ -806,10 +800,10 @@ message GetGatewayProfileResponse {
     GatewayProfile gateway_profile = 1;
 
 	// Created at timestamp.
-    int64 created_at_unix_ns = 2 [(gogoproto.customname) = "CreatedAtUnixNS"];
+    int64 created_at_unix_ns = 2;
 
 	// Last update timestamp.
-    int64 updated_at_unix_ns = 3 [(gogoproto.customname) = "UpdatedAtUnixNS"];
+    int64 updated_at_unix_ns = 3;
 }
 
 message UpdateGatewayProfileRequest {
@@ -821,8 +815,7 @@ message UpdateGatewayProfileResponse {}
 
 message DeleteGatewayProfileRequest {
 	// Gateway-profile ID.
-	bytes id = 1 [(gogoproto.customtype) = "github.com/brocaar/loraserver/api/types.UUID", (gogoproto.customname) = "ID", (gogoproto.nullable) = false];
+	bytes id = 1;
 }
 
 message DeleteGatewayProfileResponse {}
-
