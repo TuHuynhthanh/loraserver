@@ -82,8 +82,8 @@ service NetworkServerService {
     // CreateMACCommandQueueItem adds the downlink mac-command to the queue.
     rpc CreateMACCommandQueueItem(CreateMACCommandQueueItemRequest) returns (CreateMACCommandQueueItemResponse) {}
 
-	// SendProprietaryPayload send a payload using the 'Proprietary' LoRaWAN message-type.
-	rpc SendProprietaryPayload(SendProprietaryPayloadRequest) returns (SendProprietaryPayloadResponse) {}
+    // SendProprietaryPayload send a payload using the 'Proprietary' LoRaWAN message-type.
+    rpc SendProprietaryPayload(SendProprietaryPayloadRequest) returns (SendProprietaryPayloadResponse) {}
 
     // CreateGateway creates the given gateway.
     rpc CreateGateway(CreateGatewayRequest) returns (CreateGatewayResponse) {}
@@ -172,177 +172,177 @@ enum Region {
 
 
 message CreateServiceProfileRequest {
-	// Service-profile object to create.
+    // Service-profile object to create.
     ServiceProfile service_profile = 1;
 }
 
 message CreateServiceProfileResponse {
-	// ID of the created service-profile.
-	bytes id = 1;
+    // ID of the created service-profile.
+    bytes id = 1;
 }
 
 message GetServiceProfileRequest {
-	// ID of the service-profile.
-	bytes id = 1;
+    // ID of the service-profile.
+    bytes id = 1;
 }
 
 message GetServiceProfileResponse {
-	// Service-profile object.
+    // Service-profile object.
     ServiceProfile service_profile = 1;
 
-	// Created at timestamp.
+    // Created at timestamp.
     int64 created_at_unix_ns = 2;
 
-	// Last update timestamp.
+    // Last update timestamp.
     int64 updated_at_unix_ns = 3;
 }
 
 message UpdateServiceProfileRequest {
-	// Service-profile object to update.
+    // Service-profile object to update.
     ServiceProfile service_profile = 1;
 }
 
 message UpdateServiceProfileResponse {}
 
 message DeleteServiceProfileRequest {
-	// ID of the service-profile.
-	bytes id = 1;
+    // ID of the service-profile.
+    bytes id = 1;
 }
 
 message DeleteServiceProfileResponse {}
 
 
 message CreateRoutingProfileRequest {
-	// Routing-profile object to create.
+    // Routing-profile object to create.
     RoutingProfile routing_profile = 1;
 
 }
 
 message CreateRoutingProfileResponse {
-	// ID of the created routing-profile.
-	bytes id = 1;
+    // ID of the created routing-profile.
+    bytes id = 1;
 }
 
 message GetRoutingProfileRequest {
-	// ID of the routing-profile.
-	bytes id = 1;
+    // ID of the routing-profile.
+    bytes id = 1;
 }
 
 message GetRoutingProfileResponse {
-	// Routing-profile object.
+    // Routing-profile object.
     RoutingProfile routing_profile = 1;
 
-	// Created at timestamp.
+    // Created at timestamp.
     int64 created_at_unix_ns = 2;
 
-	// Last update timestamp.
+    // Last update timestamp.
     int64 updated_at_unix_ns = 3;
 }
 
 message UpdateRoutingProfileRequest {
-	// Routing-profile object to update.
+    // Routing-profile object to update.
     RoutingProfile routing_profile = 1;
 }
 
 message UpdateRoutingProfileResponse {}
 
 message DeleteRoutingProfileRequest {
-	// Routing-profile ID.
-	bytes id = 1;
+    // Routing-profile ID.
+    bytes id = 1;
 }
 
 message DeleteRoutingProfileResponse {}
 
 message CreateDeviceProfileRequest {
-	// Device-profile object to create.
+    // Device-profile object to create.
     DeviceProfile device_profile = 1;
 }
 
 message CreateDeviceProfileResponse {
-	// ID of the created device-profile.
-	bytes id = 1;
+    // ID of the created device-profile.
+    bytes id = 1;
 }
 
 message GetDeviceProfileRequest {
-	// Device-profile ID.
-	bytes id = 1;
+    // Device-profile ID.
+    bytes id = 1;
 }
 
 message GetDeviceProfileResponse {
-	// Device-profile object.
+    // Device-profile object.
     DeviceProfile device_profile = 1;
 
-	// Created at timestamp.
+    // Created at timestamp.
     int64 created_at_unix_ns = 2;
 
-	// Last update timestamp.
+    // Last update timestamp.
     int64 updated_at_unix_ns = 3;
 }
 
 message UpdateDeviceProfileRequest {
-	// Device-profile object to update.
+    // Device-profile object to update.
     DeviceProfile device_profile = 1;
 }
 
 message UpdateDeviceProfileResponse {}
 
 message DeleteDeviceProfileRequest {
-	// Device-profile ID.
-	bytes id = 1;
+    // Device-profile ID.
+    bytes id = 1;
 }
 
 message DeleteDeviceProfileResponse {}
 
 message Device {
-	// DevEUI.
+    // DevEUI.
     bytes dev_eui = 1;
 
-	// Device-profile ID.
+    // Device-profile ID.
     bytes device_profile_id = 2;
 
-	// Service-profile ID.
+    // Service-profile ID.
     bytes service_profile_id = 3;
 
-	// Routing-profile ID.
+    // Routing-profile ID.
     bytes routing_profile_id = 4;
 
-	// Skip frame-counter check.
-	// Note that turning this on is insecure and is intended for debugging only.
+    // Skip frame-counter check.
+    // Note that turning this on is insecure and is intended for debugging only.
     bool skip_f_cnt_check = 5;
 }
 
 message CreateDeviceRequest {
-	// Device object to create.
+    // Device object to create.
     Device device = 1;
 }
 
 message CreateDeviceResponse {}
 
 message GetDeviceRequest {
-	// DevEUI.
+    // DevEUI.
     bytes dev_eui = 1;
 }
 
 message GetDeviceResponse {
-	// Device object.
+    // Device object.
     Device device = 1;
 
-	// Created at timestamp.
+    // Created at timestamp.
     int64 created_at_unix_ns = 2;
 
-	// Last update timestamp.
+    // Last update timestamp.
     int64 updated_at_unix_ns = 3;
 }
 
 message UpdateDeviceRequest {
-	// Device object to update.
+    // Device object to update.
     Device device = 1;
 }
 
 message UpdateDeviceResponse {}
 
 message DeleteDeviceRequest {
-	// DevEUI.
+    // DevEUI.
     bytes dev_eui = 1;
 }
 
@@ -378,8 +378,8 @@ message DeviceActivation {
 }
 
 message ActivateDeviceRequest {
-	// Device-activation to activate a device (ABP).
-	DeviceActivation device_activation = 1;
+    // Device-activation to activate a device (ABP).
+    DeviceActivation device_activation = 1;
 }
 
 message ActivateDeviceResponse {}
@@ -398,15 +398,15 @@ message GetDeviceActivationRequest {
 
 message GetDeviceActivationResponse {
     // Device-activation object.
-	DeviceActivation device_activation = 1;
+    DeviceActivation device_activation = 1;
 }
 
 
 message GetRandomDevAddrRequest {}
 
 message GetRandomDevAddrResponse {
-	// Random device address (DevAddr).
-	// Note that this includes the NetID prefix of the network-server.
+    // Random device address (DevAddr).
+    // Note that this includes the NetID prefix of the network-server.
     bytes dev_addr = 1;
 }
 
@@ -425,24 +425,24 @@ message CreateMACCommandQueueItemRequest {
 message CreateMACCommandQueueItemResponse {}
 
 message SendProprietaryPayloadRequest {
-	// MACPayload of the proprietary LoRaWAN frame.
-	bytes mac_payload = 1;
+    // MACPayload of the proprietary LoRaWAN frame.
+    bytes mac_payload = 1;
 
-	// MIC of the proprietary LoRaWAN frame (must be 4 bytes).
-	bytes mic = 2;
+    // MIC of the proprietary LoRaWAN frame (must be 4 bytes).
+    bytes mic = 2;
 
-	// Gateway MAC address(es) to use for transmitting the LoRaWAN frame.
-	repeated bytes gateway_macs = 3;
+    // Gateway MAC address(es) to use for transmitting the LoRaWAN frame.
+    repeated bytes gateway_macs = 3;
 
-	// Set to true for sending as a gateway, or false for sending as a node.
-	// In the latter case the frame will be received by other gateways.
-	bool polarization_inversion = 4;
+    // Set to true for sending as a gateway, or false for sending as a node.
+    // In the latter case the frame will be received by other gateways.
+    bool polarization_inversion = 4;
 
-	// Frequency (Hz) to use for the transmission.
-	uint32 frequency = 5;
+    // Frequency (Hz) to use for the transmission.
+    uint32 frequency = 5;
 
-	// Data-rate to use for the transmission.
-	uint32 dr = 6;
+    // Data-rate to use for the transmission.
+    uint32 dr = 6;
 }
 
 message SendProprietaryPayloadResponse {}
@@ -471,8 +471,8 @@ message Gateway {
 }
 
 message CreateGatewayRequest {
-	// Gateway object to create.
-	Gateway gateway = 1;
+    // Gateway object to create.
+    Gateway gateway = 1;
 }
 
 message CreateGatewayResponse {}
@@ -483,25 +483,25 @@ message GetGatewayRequest {
 }
 
 message GetGatewayResponse {
-	// Gateway object.
-	Gateway gateway = 1;
+    // Gateway object.
+    Gateway gateway = 1;
 
-	// Created at timestamp.
-	int64 created_at_unix_ns = 2;
+    // Created at timestamp.
+    int64 created_at_unix_ns = 2;
 
-	// Last update timestamp.
-	int64 updated_at_unix_ns = 3;
+    // Last update timestamp.
+    int64 updated_at_unix_ns = 3;
 
-	// First seen timestamp.
-	int64 first_seen_at_unix_ns = 4;
+    // First seen timestamp.
+    int64 first_seen_at_unix_ns = 4;
 
-	// Last seen timestamp.
-	int64 last_seen_at_unix_ns = 5;
+    // Last seen timestamp.
+    int64 last_seen_at_unix_ns = 5;
 }
 
 message UpdateGatewayRequest {
-	// Gateway object to update.
-	Gateway gateway = 1;
+    // Gateway object to update.
+    Gateway gateway = 1;
 }
 
 message UpdateGatewayResponse {}
@@ -752,7 +752,7 @@ message GetVersionResponse {
 }
 message GatewayProfile {
     // ID of the gateway-profile.
-	bytes id = 1;
+    bytes id = 1;
 
     // Default channels (channels specified by the LoRaWAN Regional Parameters
     // specification) enabled for this configuration.
@@ -781,41 +781,41 @@ message GatewayProfileExtraChannel {
 }
 
 message CreateGatewayProfileRequest {
-	// Gateway-profile object to create.
+    // Gateway-profile object to create.
     GatewayProfile gateway_profile = 1;
 }
 
 message CreateGatewayProfileResponse {
     // ID of the create configuration object.
-	bytes id = 1;
+    bytes id = 1;
 }
 
 message GetGatewayProfileRequest {
     // Gateway-profile ID.
-	bytes id = 1;
+    bytes id = 1;
 }
 
 message GetGatewayProfileResponse {
-	// Gateway-profile object.
+    // Gateway-profile object.
     GatewayProfile gateway_profile = 1;
 
-	// Created at timestamp.
+    // Created at timestamp.
     int64 created_at_unix_ns = 2;
 
-	// Last update timestamp.
+    // Last update timestamp.
     int64 updated_at_unix_ns = 3;
 }
 
 message UpdateGatewayProfileRequest {
-	// Gateway-profile object to update.
+    // Gateway-profile object to update.
     GatewayProfile gateway_profile = 1;
 }
 
 message UpdateGatewayProfileResponse {}
 
 message DeleteGatewayProfileRequest {
-	// Gateway-profile ID.
-	bytes id = 1;
+    // Gateway-profile ID.
+    bytes id = 1;
 }
 
 message DeleteGatewayProfileResponse {}
