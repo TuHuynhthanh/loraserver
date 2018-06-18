@@ -159,6 +159,10 @@ message DeviceSessionPB {
     // by the node (default 0).
     uint32 min_supported_tx_power_index = 38;
 
+    // RejoinRequestEnabled defines if the rejoin-request is enabled on the
+    // device.
+    bool rejoin_request_enabled = 44;
+
 	// RejoinRequestMaxCountN defines the 2^(C+4) uplink message interval for
     // the rejoin-request.
     uint32 rejoin_request_max_count_n = 40;

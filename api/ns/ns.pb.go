@@ -172,7 +172,7 @@ func (AggregationInterval) EnumDescriptor() ([]byte, []int) {
 }
 
 type CreateServiceProfileRequest struct {
-	ServiceProfile       *ServiceProfile `protobuf:"bytes,1,opt,name=serviceProfile" json:"serviceProfile,omitempty"`
+	ServiceProfile       *ServiceProfile `protobuf:"bytes,1,opt,name=serviceProfile,proto3" json:"serviceProfile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -210,7 +210,7 @@ func (m *CreateServiceProfileRequest) GetServiceProfile() *ServiceProfile {
 }
 
 type CreateServiceProfileResponse struct {
-	ServiceProfileID     string   `protobuf:"bytes,1,opt,name=serviceProfileID" json:"serviceProfileID,omitempty"`
+	ServiceProfileID     string   `protobuf:"bytes,1,opt,name=serviceProfileID,proto3" json:"serviceProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -248,7 +248,7 @@ func (m *CreateServiceProfileResponse) GetServiceProfileID() string {
 }
 
 type GetServiceProfileRequest struct {
-	ServiceProfileID     string   `protobuf:"bytes,1,opt,name=serviceProfileID" json:"serviceProfileID,omitempty"`
+	ServiceProfileID     string   `protobuf:"bytes,1,opt,name=serviceProfileID,proto3" json:"serviceProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -286,9 +286,9 @@ func (m *GetServiceProfileRequest) GetServiceProfileID() string {
 }
 
 type GetServiceProfileResponse struct {
-	ServiceProfile       *ServiceProfile `protobuf:"bytes,1,opt,name=serviceProfile" json:"serviceProfile,omitempty"`
-	CreatedAt            string          `protobuf:"bytes,2,opt,name=createdAt" json:"createdAt,omitempty"`
-	UpdatedAt            string          `protobuf:"bytes,3,opt,name=updatedAt" json:"updatedAt,omitempty"`
+	ServiceProfile       *ServiceProfile `protobuf:"bytes,1,opt,name=serviceProfile,proto3" json:"serviceProfile,omitempty"`
+	CreatedAt            string          `protobuf:"bytes,2,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt            string          `protobuf:"bytes,3,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -340,7 +340,7 @@ func (m *GetServiceProfileResponse) GetUpdatedAt() string {
 }
 
 type UpdateServiceProfileRequest struct {
-	ServiceProfile       *ServiceProfile `protobuf:"bytes,1,opt,name=serviceProfile" json:"serviceProfile,omitempty"`
+	ServiceProfile       *ServiceProfile `protobuf:"bytes,1,opt,name=serviceProfile,proto3" json:"serviceProfile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -408,7 +408,7 @@ func (m *UpdateServiceProfileResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_UpdateServiceProfileResponse proto.InternalMessageInfo
 
 type DeleteServiceProfileRequest struct {
-	ServiceProfileID     string   `protobuf:"bytes,1,opt,name=serviceProfileID" json:"serviceProfileID,omitempty"`
+	ServiceProfileID     string   `protobuf:"bytes,1,opt,name=serviceProfileID,proto3" json:"serviceProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -476,8 +476,8 @@ func (m *DeleteServiceProfileResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_DeleteServiceProfileResponse proto.InternalMessageInfo
 
 type RoutingProfile struct {
-	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID" json:"routingProfileID,omitempty"`
-	AsID                 string   `protobuf:"bytes,2,opt,name=asID" json:"asID,omitempty"`
+	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID,proto3" json:"routingProfileID,omitempty"`
+	AsID                 string   `protobuf:"bytes,2,opt,name=asID,proto3" json:"asID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -522,13 +522,13 @@ func (m *RoutingProfile) GetAsID() string {
 }
 
 type CreateRoutingProfileRequest struct {
-	RoutingProfile *RoutingProfile `protobuf:"bytes,1,opt,name=routingProfile" json:"routingProfile,omitempty"`
+	RoutingProfile *RoutingProfile `protobuf:"bytes,1,opt,name=routingProfile,proto3" json:"routingProfile,omitempty"`
 	// ca certificate for connecting to lora-app-server
-	CaCert string `protobuf:"bytes,2,opt,name=caCert" json:"caCert,omitempty"`
+	CaCert string `protobuf:"bytes,2,opt,name=caCert,proto3" json:"caCert,omitempty"`
 	// tls certificate for connecting to lora-app-server
-	TlsCert string `protobuf:"bytes,3,opt,name=tlsCert" json:"tlsCert,omitempty"`
+	TlsCert string `protobuf:"bytes,3,opt,name=tlsCert,proto3" json:"tlsCert,omitempty"`
 	// tls key for connecting to lora-app-server
-	TlsKey               string   `protobuf:"bytes,4,opt,name=tlsKey" json:"tlsKey,omitempty"`
+	TlsKey               string   `protobuf:"bytes,4,opt,name=tlsKey,proto3" json:"tlsKey,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -587,7 +587,7 @@ func (m *CreateRoutingProfileRequest) GetTlsKey() string {
 }
 
 type CreateRoutingProfileResponse struct {
-	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID" json:"routingProfileID,omitempty"`
+	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID,proto3" json:"routingProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -625,7 +625,7 @@ func (m *CreateRoutingProfileResponse) GetRoutingProfileID() string {
 }
 
 type GetRoutingProfileRequest struct {
-	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID" json:"routingProfileID,omitempty"`
+	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID,proto3" json:"routingProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -663,13 +663,13 @@ func (m *GetRoutingProfileRequest) GetRoutingProfileID() string {
 }
 
 type GetRoutingProfileResponse struct {
-	RoutingProfile *RoutingProfile `protobuf:"bytes,1,opt,name=routingProfile" json:"routingProfile,omitempty"`
-	CreatedAt      string          `protobuf:"bytes,2,opt,name=createdAt" json:"createdAt,omitempty"`
-	UpdatedAt      string          `protobuf:"bytes,3,opt,name=updatedAt" json:"updatedAt,omitempty"`
+	RoutingProfile *RoutingProfile `protobuf:"bytes,1,opt,name=routingProfile,proto3" json:"routingProfile,omitempty"`
+	CreatedAt      string          `protobuf:"bytes,2,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt      string          `protobuf:"bytes,3,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	// ca certificate for connecting to lora-app-server
-	CaCert string `protobuf:"bytes,4,opt,name=caCert" json:"caCert,omitempty"`
+	CaCert string `protobuf:"bytes,4,opt,name=caCert,proto3" json:"caCert,omitempty"`
 	// tls certificate for connecting to lora-app-server
-	TlsCert              string   `protobuf:"bytes,5,opt,name=tlsCert" json:"tlsCert,omitempty"`
+	TlsCert              string   `protobuf:"bytes,5,opt,name=tlsCert,proto3" json:"tlsCert,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -735,13 +735,13 @@ func (m *GetRoutingProfileResponse) GetTlsCert() string {
 }
 
 type UpdateRoutingProfileRequest struct {
-	RoutingProfile *RoutingProfile `protobuf:"bytes,1,opt,name=routingProfile" json:"routingProfile,omitempty"`
+	RoutingProfile *RoutingProfile `protobuf:"bytes,1,opt,name=routingProfile,proto3" json:"routingProfile,omitempty"`
 	// ca certificate for connecting to lora-app-server
-	CaCert string `protobuf:"bytes,2,opt,name=caCert" json:"caCert,omitempty"`
+	CaCert string `protobuf:"bytes,2,opt,name=caCert,proto3" json:"caCert,omitempty"`
 	// tls certificate for connecting to lora-app-server
-	TlsCert string `protobuf:"bytes,3,opt,name=tlsCert" json:"tlsCert,omitempty"`
+	TlsCert string `protobuf:"bytes,3,opt,name=tlsCert,proto3" json:"tlsCert,omitempty"`
 	// tls key for connecting to lora-app-server
-	TlsKey               string   `protobuf:"bytes,4,opt,name=tlsKey" json:"tlsKey,omitempty"`
+	TlsKey               string   `protobuf:"bytes,4,opt,name=tlsKey,proto3" json:"tlsKey,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -830,7 +830,7 @@ func (m *UpdateRoutingProfileResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_UpdateRoutingProfileResponse proto.InternalMessageInfo
 
 type DeleteRoutingProfileRequest struct {
-	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID" json:"routingProfileID,omitempty"`
+	RoutingProfileID     string   `protobuf:"bytes,1,opt,name=routingProfileID,proto3" json:"routingProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -898,7 +898,7 @@ func (m *DeleteRoutingProfileResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_DeleteRoutingProfileResponse proto.InternalMessageInfo
 
 type CreateDeviceProfileRequest struct {
-	DeviceProfile        *DeviceProfile `protobuf:"bytes,1,opt,name=deviceProfile" json:"deviceProfile,omitempty"`
+	DeviceProfile        *DeviceProfile `protobuf:"bytes,1,opt,name=deviceProfile,proto3" json:"deviceProfile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -936,7 +936,7 @@ func (m *CreateDeviceProfileRequest) GetDeviceProfile() *DeviceProfile {
 }
 
 type CreateDeviceProfileResponse struct {
-	DeviceProfileID      string   `protobuf:"bytes,1,opt,name=deviceProfileID" json:"deviceProfileID,omitempty"`
+	DeviceProfileID      string   `protobuf:"bytes,1,opt,name=deviceProfileID,proto3" json:"deviceProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -974,7 +974,7 @@ func (m *CreateDeviceProfileResponse) GetDeviceProfileID() string {
 }
 
 type GetDeviceProfileRequest struct {
-	DeviceProfileID      string   `protobuf:"bytes,1,opt,name=deviceProfileID" json:"deviceProfileID,omitempty"`
+	DeviceProfileID      string   `protobuf:"bytes,1,opt,name=deviceProfileID,proto3" json:"deviceProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1012,9 +1012,9 @@ func (m *GetDeviceProfileRequest) GetDeviceProfileID() string {
 }
 
 type GetDeviceProfileResponse struct {
-	DeviceProfile        *DeviceProfile `protobuf:"bytes,1,opt,name=deviceProfile" json:"deviceProfile,omitempty"`
-	CreatedAt            string         `protobuf:"bytes,2,opt,name=createdAt" json:"createdAt,omitempty"`
-	UpdatedAt            string         `protobuf:"bytes,3,opt,name=updatedAt" json:"updatedAt,omitempty"`
+	DeviceProfile        *DeviceProfile `protobuf:"bytes,1,opt,name=deviceProfile,proto3" json:"deviceProfile,omitempty"`
+	CreatedAt            string         `protobuf:"bytes,2,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt            string         `protobuf:"bytes,3,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1066,7 +1066,7 @@ func (m *GetDeviceProfileResponse) GetUpdatedAt() string {
 }
 
 type UpdateDeviceProfileRequest struct {
-	DeviceProfile        *DeviceProfile `protobuf:"bytes,1,opt,name=deviceProfile" json:"deviceProfile,omitempty"`
+	DeviceProfile        *DeviceProfile `protobuf:"bytes,1,opt,name=deviceProfile,proto3" json:"deviceProfile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
 	XXX_unrecognized     []byte         `json:"-"`
 	XXX_sizecache        int32          `json:"-"`
@@ -1134,7 +1134,7 @@ func (m *UpdateDeviceProfileResponse) XXX_DiscardUnknown() {
 var xxx_messageInfo_UpdateDeviceProfileResponse proto.InternalMessageInfo
 
 type DeleteDeviceProfileRequest struct {
-	DeviceProfileID      string   `protobuf:"bytes,1,opt,name=deviceProfileID" json:"deviceProfileID,omitempty"`
+	DeviceProfileID      string   `protobuf:"bytes,1,opt,name=deviceProfileID,proto3" json:"deviceProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1203,10 +1203,10 @@ var xxx_messageInfo_DeleteDeviceProfileResponse proto.InternalMessageInfo
 
 type Device struct {
 	DevEUI               []byte   `protobuf:"bytes,1,opt,name=devEUI,proto3" json:"devEUI,omitempty"`
-	DeviceProfileID      string   `protobuf:"bytes,2,opt,name=deviceProfileID" json:"deviceProfileID,omitempty"`
-	ServiceProfileID     string   `protobuf:"bytes,3,opt,name=serviceProfileID" json:"serviceProfileID,omitempty"`
-	RoutingProfileID     string   `protobuf:"bytes,4,opt,name=routingProfileID" json:"routingProfileID,omitempty"`
-	SkipFCntCheck        bool     `protobuf:"varint,5,opt,name=skipFCntCheck" json:"skipFCntCheck,omitempty"`
+	DeviceProfileID      string   `protobuf:"bytes,2,opt,name=deviceProfileID,proto3" json:"deviceProfileID,omitempty"`
+	ServiceProfileID     string   `protobuf:"bytes,3,opt,name=serviceProfileID,proto3" json:"serviceProfileID,omitempty"`
+	RoutingProfileID     string   `protobuf:"bytes,4,opt,name=routingProfileID,proto3" json:"routingProfileID,omitempty"`
+	SkipFCntCheck        bool     `protobuf:"varint,5,opt,name=skipFCntCheck,proto3" json:"skipFCntCheck,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1272,7 +1272,7 @@ func (m *Device) GetSkipFCntCheck() bool {
 }
 
 type CreateDeviceRequest struct {
-	Device               *Device  `protobuf:"bytes,1,opt,name=device" json:"device,omitempty"`
+	Device               *Device  `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1378,9 +1378,9 @@ func (m *GetDeviceRequest) GetDevEUI() []byte {
 }
 
 type GetDeviceResponse struct {
-	Device               *Device  `protobuf:"bytes,1,opt,name=device" json:"device,omitempty"`
-	CreatedAt            string   `protobuf:"bytes,2,opt,name=createdAt" json:"createdAt,omitempty"`
-	UpdatedAt            string   `protobuf:"bytes,3,opt,name=updatedAt" json:"updatedAt,omitempty"`
+	Device               *Device  `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
+	CreatedAt            string   `protobuf:"bytes,2,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt            string   `protobuf:"bytes,3,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1432,7 +1432,7 @@ func (m *GetDeviceResponse) GetUpdatedAt() string {
 }
 
 type UpdateDeviceRequest struct {
-	Device               *Device  `protobuf:"bytes,1,opt,name=device" json:"device,omitempty"`
+	Device               *Device  `protobuf:"bytes,1,opt,name=device,proto3" json:"device,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1579,13 +1579,13 @@ type ActivateDeviceRequest struct {
 	// NwkSEncKey (network-server session encryption key).
 	NwkSEncKey []byte `protobuf:"bytes,8,opt,name=nwkSEncKey,proto3" json:"nwkSEncKey,omitempty"`
 	// The next expected uplink frame-counter.
-	FCntUp uint32 `protobuf:"varint,4,opt,name=fCntUp" json:"fCntUp,omitempty"`
+	FCntUp uint32 `protobuf:"varint,4,opt,name=fCntUp,proto3" json:"fCntUp,omitempty"`
 	// The network frame-counter used for the next downlink frame.
-	NFCntDown uint32 `protobuf:"varint,5,opt,name=nFCntDown" json:"nFCntDown,omitempty"`
+	NFCntDown uint32 `protobuf:"varint,5,opt,name=nFCntDown,proto3" json:"nFCntDown,omitempty"`
 	// The application frame-counter used for the next downlink frame (LoRaWAN 1.1).
-	AFCntDown uint32 `protobuf:"varint,9,opt,name=aFCntDown" json:"aFCntDown,omitempty"`
+	AFCntDown uint32 `protobuf:"varint,9,opt,name=aFCntDown,proto3" json:"aFCntDown,omitempty"`
 	// Skip frame-counter checks (this is insecure, but could be helpful for debugging).
-	SkipFCntCheck        bool     `protobuf:"varint,6,opt,name=skipFCntCheck" json:"skipFCntCheck,omitempty"`
+	SkipFCntCheck        bool     `protobuf:"varint,6,opt,name=skipFCntCheck,proto3" json:"skipFCntCheck,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1826,13 +1826,13 @@ type GetDeviceActivationResponse struct {
 	// NwkSEncKey (network-server session encryption key).
 	NwkSEncKey []byte `protobuf:"bytes,7,opt,name=nwkSEncKey,proto3" json:"nwkSEncKey,omitempty"`
 	// The next expected uplink frame-counter.
-	FCntUp uint32 `protobuf:"varint,3,opt,name=fCntUp" json:"fCntUp,omitempty"`
+	FCntUp uint32 `protobuf:"varint,3,opt,name=fCntUp,proto3" json:"fCntUp,omitempty"`
 	// The network frame-counter used for the next downlink frame.
-	NFCntDown uint32 `protobuf:"varint,4,opt,name=nFCntDown" json:"nFCntDown,omitempty"`
+	NFCntDown uint32 `protobuf:"varint,4,opt,name=nFCntDown,proto3" json:"nFCntDown,omitempty"`
 	// The application frame-counter used for the next downlink frame (LoRaWAN 1.1).
-	AFCntDown uint32 `protobuf:"varint,8,opt,name=aFCntDown" json:"aFCntDown,omitempty"`
+	AFCntDown uint32 `protobuf:"varint,8,opt,name=aFCntDown,proto3" json:"aFCntDown,omitempty"`
 	// Skip frame-counter checks (this is insecure, but could be helpful for debugging).
-	SkipFCntCheck        bool     `protobuf:"varint,5,opt,name=skipFCntCheck" json:"skipFCntCheck,omitempty"`
+	SkipFCntCheck        bool     `protobuf:"varint,5,opt,name=skipFCntCheck,proto3" json:"skipFCntCheck,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -1990,7 +1990,7 @@ type CreateMACCommandQueueItemRequest struct {
 	// DevEUI of the node.
 	DevEUI []byte `protobuf:"bytes,1,opt,name=devEUI,proto3" json:"devEUI,omitempty"`
 	// Command identifier (specified by the LoRaWAN specs).
-	Cid uint32 `protobuf:"varint,4,opt,name=cid" json:"cid,omitempty"`
+	Cid uint32 `protobuf:"varint,4,opt,name=cid,proto3" json:"cid,omitempty"`
 	// MAC-command(s). In case multiple payloads are defined, then they
 	// are always sent within a single frame.
 	Commands             [][]byte `protobuf:"bytes,5,rep,name=commands,proto3" json:"commands,omitempty"`
@@ -2083,11 +2083,11 @@ type SendProprietaryPayloadRequest struct {
 	GatewayMACs [][]byte `protobuf:"bytes,3,rep,name=gatewayMACs,proto3" json:"gatewayMACs,omitempty"`
 	// Set to true for sending as a gateway, or false for sending as a node.
 	// In the latter case the frame will be received by other gateways.
-	IPol bool `protobuf:"varint,4,opt,name=iPol" json:"iPol,omitempty"`
+	IPol bool `protobuf:"varint,4,opt,name=iPol,proto3" json:"iPol,omitempty"`
 	// Frequency (Hz) to use for the transmission.
-	Frequency uint32 `protobuf:"varint,5,opt,name=frequency" json:"frequency,omitempty"`
+	Frequency uint32 `protobuf:"varint,5,opt,name=frequency,proto3" json:"frequency,omitempty"`
 	// Data-rate to use for the transmission.
-	Dr                   uint32   `protobuf:"varint,6,opt,name=dr" json:"dr,omitempty"`
+	Dr                   uint32   `protobuf:"varint,6,opt,name=dr,proto3" json:"dr,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2193,17 +2193,17 @@ type CreateGatewayRequest struct {
 	// MAC address of the gateway.
 	Mac []byte `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Name of the gateway.
-	Name string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Description for the gateway.
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Latitude of the gateway.
-	Latitude float64 `protobuf:"fixed64,4,opt,name=latitude" json:"latitude,omitempty"`
+	Latitude float64 `protobuf:"fixed64,4,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	// Longitude of the gateway.
-	Longitude float64 `protobuf:"fixed64,5,opt,name=longitude" json:"longitude,omitempty"`
+	Longitude float64 `protobuf:"fixed64,5,opt,name=longitude,proto3" json:"longitude,omitempty"`
 	// Altitude of the gateway.
-	Altitude float64 `protobuf:"fixed64,6,opt,name=altitude" json:"altitude,omitempty"`
+	Altitude float64 `protobuf:"fixed64,6,opt,name=altitude,proto3" json:"altitude,omitempty"`
 	// ID of the gateway-profile (optional).
-	GatewayProfileID     string   `protobuf:"bytes,8,opt,name=gatewayProfileID" json:"gatewayProfileID,omitempty"`
+	GatewayProfileID     string   `protobuf:"bytes,8,opt,name=gatewayProfileID,proto3" json:"gatewayProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2355,25 +2355,25 @@ type GetGatewayResponse struct {
 	// MAC address of the gateway.
 	Mac []byte `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Name of the gateway.
-	Name string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Description for the gateway.
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Latitude of the gateway.
-	Latitude float64 `protobuf:"fixed64,4,opt,name=latitude" json:"latitude,omitempty"`
+	Latitude float64 `protobuf:"fixed64,4,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	// Longitude of the gateway.
-	Longitude float64 `protobuf:"fixed64,5,opt,name=longitude" json:"longitude,omitempty"`
+	Longitude float64 `protobuf:"fixed64,5,opt,name=longitude,proto3" json:"longitude,omitempty"`
 	// Altitude of the gateway.
-	Altitude float64 `protobuf:"fixed64,6,opt,name=altitude" json:"altitude,omitempty"`
+	Altitude float64 `protobuf:"fixed64,6,opt,name=altitude,proto3" json:"altitude,omitempty"`
 	// The timestamp when the gateway was created.
-	CreatedAt string `protobuf:"bytes,7,opt,name=createdAt" json:"createdAt,omitempty"`
+	CreatedAt string `protobuf:"bytes,7,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
 	// The timestamp when the gateway was last updated.
-	UpdatedAt string `protobuf:"bytes,8,opt,name=updatedAt" json:"updatedAt,omitempty"`
+	UpdatedAt string `protobuf:"bytes,8,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	// The timestamp when the gateway was first seen.
-	FirstSeenAt string `protobuf:"bytes,9,opt,name=firstSeenAt" json:"firstSeenAt,omitempty"`
+	FirstSeenAt string `protobuf:"bytes,9,opt,name=firstSeenAt,proto3" json:"firstSeenAt,omitempty"`
 	// The timestamp when the gateway was last seen.
-	LastSeenAt string `protobuf:"bytes,10,opt,name=lastSeenAt" json:"lastSeenAt,omitempty"`
+	LastSeenAt string `protobuf:"bytes,10,opt,name=lastSeenAt,proto3" json:"lastSeenAt,omitempty"`
 	// ID of the gateway-profile (optional).
-	GatewayProfileID     string   `protobuf:"bytes,12,opt,name=gatewayProfileID" json:"gatewayProfileID,omitempty"`
+	GatewayProfileID     string   `protobuf:"bytes,12,opt,name=gatewayProfileID,proto3" json:"gatewayProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2484,17 +2484,17 @@ type UpdateGatewayRequest struct {
 	// MAC address of the gateway.
 	Mac []byte `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Name of the gateway.
-	Name string `protobuf:"bytes,2,opt,name=name" json:"name,omitempty"`
+	Name string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
 	// Description for the gateway.
-	Description string `protobuf:"bytes,3,opt,name=description" json:"description,omitempty"`
+	Description string `protobuf:"bytes,3,opt,name=description,proto3" json:"description,omitempty"`
 	// Latitude of the gateway.
-	Latitude float64 `protobuf:"fixed64,4,opt,name=latitude" json:"latitude,omitempty"`
+	Latitude float64 `protobuf:"fixed64,4,opt,name=latitude,proto3" json:"latitude,omitempty"`
 	// Longitude of the gateway.
-	Longitude float64 `protobuf:"fixed64,5,opt,name=longitude" json:"longitude,omitempty"`
+	Longitude float64 `protobuf:"fixed64,5,opt,name=longitude,proto3" json:"longitude,omitempty"`
 	// Altitude of the gateway.
-	Altitude float64 `protobuf:"fixed64,6,opt,name=altitude" json:"altitude,omitempty"`
+	Altitude float64 `protobuf:"fixed64,6,opt,name=altitude,proto3" json:"altitude,omitempty"`
 	// ID of the gateway-profile.
-	GatewayProfileID     string   `protobuf:"bytes,8,opt,name=gatewayProfileID" json:"gatewayProfileID,omitempty"`
+	GatewayProfileID     string   `protobuf:"bytes,8,opt,name=gatewayProfileID,proto3" json:"gatewayProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2674,15 +2674,15 @@ var xxx_messageInfo_DeleteGatewayResponse proto.InternalMessageInfo
 
 type GatewayStats struct {
 	// Timestamp of the (aggregated) measurement.
-	Timestamp string `protobuf:"bytes,1,opt,name=timestamp" json:"timestamp,omitempty"`
+	Timestamp string `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// Packets received by the gateway.
-	RxPacketsReceived int32 `protobuf:"varint,2,opt,name=rxPacketsReceived" json:"rxPacketsReceived,omitempty"`
+	RxPacketsReceived int32 `protobuf:"varint,2,opt,name=rxPacketsReceived,proto3" json:"rxPacketsReceived,omitempty"`
 	// Packets received by the gateway that passed the CRC check.
-	RxPacketsReceivedOK int32 `protobuf:"varint,3,opt,name=rxPacketsReceivedOK" json:"rxPacketsReceivedOK,omitempty"`
+	RxPacketsReceivedOK int32 `protobuf:"varint,3,opt,name=rxPacketsReceivedOK,proto3" json:"rxPacketsReceivedOK,omitempty"`
 	// Packets received by the gateway for transmission.
-	TxPacketsReceived int32 `protobuf:"varint,4,opt,name=txPacketsReceived" json:"txPacketsReceived,omitempty"`
+	TxPacketsReceived int32 `protobuf:"varint,4,opt,name=txPacketsReceived,proto3" json:"txPacketsReceived,omitempty"`
 	// Packets transmitted by the gateway.
-	TxPacketsEmitted     int32    `protobuf:"varint,5,opt,name=txPacketsEmitted" json:"txPacketsEmitted,omitempty"`
+	TxPacketsEmitted     int32    `protobuf:"varint,5,opt,name=txPacketsEmitted,proto3" json:"txPacketsEmitted,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2751,11 +2751,11 @@ type GetGatewayStatsRequest struct {
 	// MAC address of the gateway.
 	Mac []byte `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Aggregation interval.
-	Interval AggregationInterval `protobuf:"varint,2,opt,name=interval,enum=ns.AggregationInterval" json:"interval,omitempty"`
+	Interval AggregationInterval `protobuf:"varint,2,opt,name=interval,proto3,enum=ns.AggregationInterval" json:"interval,omitempty"`
 	// Timestamp to start from.
-	StartTimestamp string `protobuf:"bytes,3,opt,name=startTimestamp" json:"startTimestamp,omitempty"`
+	StartTimestamp string `protobuf:"bytes,3,opt,name=startTimestamp,proto3" json:"startTimestamp,omitempty"`
 	// Timestamp until to get from.
-	EndTimestamp         string   `protobuf:"bytes,4,opt,name=endTimestamp" json:"endTimestamp,omitempty"`
+	EndTimestamp         string   `protobuf:"bytes,4,opt,name=endTimestamp,proto3" json:"endTimestamp,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2814,7 +2814,7 @@ func (m *GetGatewayStatsRequest) GetEndTimestamp() string {
 }
 
 type GetGatewayStatsResponse struct {
-	Result               []*GatewayStats `protobuf:"bytes,1,rep,name=result" json:"result,omitempty"`
+	Result               []*GatewayStats `protobuf:"bytes,1,rep,name=result,proto3" json:"result,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -2857,12 +2857,12 @@ type DeviceQueueItem struct {
 	// The encrypted FRMPayload bytes.
 	FrmPayload []byte `protobuf:"bytes,2,opt,name=frmPayload,proto3" json:"frmPayload,omitempty"`
 	// The FCnt of the payload.
-	FCnt uint32 `protobuf:"varint,3,opt,name=fCnt" json:"fCnt,omitempty"`
+	FCnt uint32 `protobuf:"varint,3,opt,name=fCnt,proto3" json:"fCnt,omitempty"`
 	// The FPort of the payload.
-	FPort uint32 `protobuf:"varint,4,opt,name=fPort" json:"fPort,omitempty"`
+	FPort uint32 `protobuf:"varint,4,opt,name=fPort,proto3" json:"fPort,omitempty"`
 	// When set to true, LoRa Server will wait for the device to ack the
 	// received frame.
-	Confirmed            bool     `protobuf:"varint,5,opt,name=confirmed" json:"confirmed,omitempty"`
+	Confirmed            bool     `protobuf:"varint,5,opt,name=confirmed,proto3" json:"confirmed,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -2928,7 +2928,7 @@ func (m *DeviceQueueItem) GetConfirmed() bool {
 }
 
 type CreateDeviceQueueItemRequest struct {
-	Item                 *DeviceQueueItem `protobuf:"bytes,1,opt,name=item" json:"item,omitempty"`
+	Item                 *DeviceQueueItem `protobuf:"bytes,1,opt,name=item,proto3" json:"item,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}         `json:"-"`
 	XXX_unrecognized     []byte           `json:"-"`
 	XXX_sizecache        int32            `json:"-"`
@@ -3104,7 +3104,7 @@ func (m *GetDeviceQueueItemsForDevEUIRequest) GetDevEUI() []byte {
 }
 
 type GetDeviceQueueItemsForDevEUIResponse struct {
-	Items                []*DeviceQueueItem `protobuf:"bytes,1,rep,name=items" json:"items,omitempty"`
+	Items                []*DeviceQueueItem `protobuf:"bytes,1,rep,name=items,proto3" json:"items,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
 	XXX_unrecognized     []byte             `json:"-"`
 	XXX_sizecache        int32              `json:"-"`
@@ -3182,7 +3182,7 @@ func (m *GetNextDownlinkFCntForDevEUIRequest) GetDevEUI() []byte {
 
 type GetNextDownlinkFCntForDevEUIResponse struct {
 	// The frame-counter to use.
-	FCnt                 uint32   `protobuf:"varint,1,opt,name=fCnt" json:"fCnt,omitempty"`
+	FCnt                 uint32   `protobuf:"varint,1,opt,name=fCnt,proto3" json:"fCnt,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3260,9 +3260,9 @@ func (m *StreamFrameLogsForGatewayRequest) GetMac() []byte {
 
 type StreamFrameLogsForGatewayResponse struct {
 	// Contains zero or one uplink frame.
-	UplinkFrames []*UplinkFrameLog `protobuf:"bytes,1,rep,name=uplinkFrames" json:"uplinkFrames,omitempty"`
+	UplinkFrames []*UplinkFrameLog `protobuf:"bytes,1,rep,name=uplinkFrames,proto3" json:"uplinkFrames,omitempty"`
 	// Contains zero or one downlink frame.
-	DownlinkFrames       []*DownlinkFrameLog `protobuf:"bytes,2,rep,name=downlinkFrames" json:"downlinkFrames,omitempty"`
+	DownlinkFrames       []*DownlinkFrameLog `protobuf:"bytes,2,rep,name=downlinkFrames,proto3" json:"downlinkFrames,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -3347,9 +3347,9 @@ func (m *StreamFrameLogsForDeviceRequest) GetDevEUI() []byte {
 
 type StreamFrameLogsForDeviceResponse struct {
 	// Contains zero or one uplink frame.
-	UplinkFrames []*UplinkFrameLog `protobuf:"bytes,1,rep,name=uplinkFrames" json:"uplinkFrames,omitempty"`
+	UplinkFrames []*UplinkFrameLog `protobuf:"bytes,1,rep,name=uplinkFrames,proto3" json:"uplinkFrames,omitempty"`
 	// Contains zero or one downlink frame.
-	DownlinkFrames       []*DownlinkFrameLog `protobuf:"bytes,2,rep,name=downlinkFrames" json:"downlinkFrames,omitempty"`
+	DownlinkFrames       []*DownlinkFrameLog `protobuf:"bytes,2,rep,name=downlinkFrames,proto3" json:"downlinkFrames,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
 	XXX_unrecognized     []byte              `json:"-"`
 	XXX_sizecache        int32               `json:"-"`
@@ -3395,13 +3395,13 @@ func (m *StreamFrameLogsForDeviceResponse) GetDownlinkFrames() []*DownlinkFrameL
 
 type DataRate struct {
 	// The used modulation (LORA or FSK).
-	Modulation string `protobuf:"bytes,1,opt,name=modulation" json:"modulation,omitempty"`
+	Modulation string `protobuf:"bytes,1,opt,name=modulation,proto3" json:"modulation,omitempty"`
 	// Bandwidth (in kHz).
-	Bandwidth uint32 `protobuf:"varint,2,opt,name=bandwidth" json:"bandwidth,omitempty"`
+	Bandwidth uint32 `protobuf:"varint,2,opt,name=bandwidth,proto3" json:"bandwidth,omitempty"`
 	// Used spread-factor.
-	SpreadFactor uint32 `protobuf:"varint,3,opt,name=spreadFactor" json:"spreadFactor,omitempty"`
+	SpreadFactor uint32 `protobuf:"varint,3,opt,name=spreadFactor,proto3" json:"spreadFactor,omitempty"`
 	// Bitrate (used for FSK modulation).
-	Bitrate              uint32   `protobuf:"varint,4,opt,name=bitrate" json:"bitrate,omitempty"`
+	Bitrate              uint32   `protobuf:"varint,4,opt,name=bitrate,proto3" json:"bitrate,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3461,11 +3461,11 @@ func (m *DataRate) GetBitrate() uint32 {
 
 type UplinkTXInfo struct {
 	// TX frequency (in Hz).
-	Frequency uint32 `protobuf:"varint,1,opt,name=frequency" json:"frequency,omitempty"`
+	Frequency uint32 `protobuf:"varint,1,opt,name=frequency,proto3" json:"frequency,omitempty"`
 	// Data-rate.
-	DataRate *DataRate `protobuf:"bytes,2,opt,name=dataRate" json:"dataRate,omitempty"`
+	DataRate *DataRate `protobuf:"bytes,2,opt,name=dataRate,proto3" json:"dataRate,omitempty"`
 	// Code rate.
-	CodeRate             string   `protobuf:"bytes,3,opt,name=codeRate" json:"codeRate,omitempty"`
+	CodeRate             string   `protobuf:"bytes,3,opt,name=codeRate,proto3" json:"codeRate,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3520,19 +3520,19 @@ type UplinkRXInfo struct {
 	// Gateway MAC.
 	Mac []byte `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Time when the frame was received (if available).
-	Time string `protobuf:"bytes,2,opt,name=time" json:"time,omitempty"`
+	Time string `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
 	// Time when the frame was received as time since GPS epoch (if available).
-	TimeSinceGPSEpoch string `protobuf:"bytes,3,opt,name=timeSinceGPSEpoch" json:"timeSinceGPSEpoch,omitempty"`
+	TimeSinceGPSEpoch string `protobuf:"bytes,3,opt,name=timeSinceGPSEpoch,proto3" json:"timeSinceGPSEpoch,omitempty"`
 	// Gateway internal timestamp.
-	Timestamp uint32 `protobuf:"varint,4,opt,name=timestamp" json:"timestamp,omitempty"`
+	Timestamp uint32 `protobuf:"varint,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// RSSI.
-	Rssi int32 `protobuf:"varint,5,opt,name=rssi" json:"rssi,omitempty"`
+	Rssi int32 `protobuf:"varint,5,opt,name=rssi,proto3" json:"rssi,omitempty"`
 	// LoRa SNR.
-	LoRaSNR float32 `protobuf:"fixed32,6,opt,name=loRaSNR" json:"loRaSNR,omitempty"`
+	LoRaSNR float32 `protobuf:"fixed32,6,opt,name=loRaSNR,proto3" json:"loRaSNR,omitempty"`
 	// The board identifier that received the uplink frame.
-	Board uint32 `protobuf:"varint,7,opt,name=board" json:"board,omitempty"`
+	Board uint32 `protobuf:"varint,7,opt,name=board,proto3" json:"board,omitempty"`
 	// THe antenna identifier that received the uplink frame.
-	Antenna              uint32   `protobuf:"varint,8,opt,name=antenna" json:"antenna,omitempty"`
+	Antenna              uint32   `protobuf:"varint,8,opt,name=antenna,proto3" json:"antenna,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3620,9 +3620,9 @@ func (m *UplinkRXInfo) GetAntenna() uint32 {
 
 type UplinkFrameLog struct {
 	// TX information of the uplink.
-	TxInfo *UplinkTXInfo `protobuf:"bytes,1,opt,name=txInfo" json:"txInfo,omitempty"`
+	TxInfo *UplinkTXInfo `protobuf:"bytes,1,opt,name=txInfo,proto3" json:"txInfo,omitempty"`
 	// RX information of the uplink.
-	RxInfo []*UplinkRXInfo `protobuf:"bytes,2,rep,name=rxInfo" json:"rxInfo,omitempty"`
+	RxInfo []*UplinkRXInfo `protobuf:"bytes,2,rep,name=rxInfo,proto3" json:"rxInfo,omitempty"`
 	// LoRaWAN PHYPayload.
 	PhyPayload           []byte   `protobuf:"bytes,3,opt,name=phyPayload,proto3" json:"phyPayload,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -3679,25 +3679,25 @@ type DownlinkTXInfo struct {
 	// Gateway MAC.
 	Mac []byte `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
 	// Frame must be sent immediately.
-	Immediately bool `protobuf:"varint,2,opt,name=immediately" json:"immediately,omitempty"`
+	Immediately bool `protobuf:"varint,2,opt,name=immediately,proto3" json:"immediately,omitempty"`
 	// Transmit frame at the given time since GPS epoch.
-	TimeSinceGPSEpoch string `protobuf:"bytes,3,opt,name=timeSinceGPSEpoch" json:"timeSinceGPSEpoch,omitempty"`
+	TimeSinceGPSEpoch string `protobuf:"bytes,3,opt,name=timeSinceGPSEpoch,proto3" json:"timeSinceGPSEpoch,omitempty"`
 	// Transmit the frame at the given gateway internal timestamp.
-	Timestamp uint32 `protobuf:"varint,4,opt,name=timestamp" json:"timestamp,omitempty"`
+	Timestamp uint32 `protobuf:"varint,4,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
 	// TX frequency (in Hz).
-	Frequency uint32 `protobuf:"varint,5,opt,name=frequency" json:"frequency,omitempty"`
+	Frequency uint32 `protobuf:"varint,5,opt,name=frequency,proto3" json:"frequency,omitempty"`
 	// TX power (in dBm).
-	Power int32 `protobuf:"varint,6,opt,name=power" json:"power,omitempty"`
+	Power int32 `protobuf:"varint,6,opt,name=power,proto3" json:"power,omitempty"`
 	// Data-rate.
-	DataRate *DataRate `protobuf:"bytes,7,opt,name=dataRate" json:"dataRate,omitempty"`
+	DataRate *DataRate `protobuf:"bytes,7,opt,name=dataRate,proto3" json:"dataRate,omitempty"`
 	// Code rate.
-	CodeRate string `protobuf:"bytes,8,opt,name=codeRate" json:"codeRate,omitempty"`
+	CodeRate string `protobuf:"bytes,8,opt,name=codeRate,proto3" json:"codeRate,omitempty"`
 	// Lora modulation polarization inversion.
-	IPol bool `protobuf:"varint,9,opt,name=iPol" json:"iPol,omitempty"`
+	IPol bool `protobuf:"varint,9,opt,name=iPol,proto3" json:"iPol,omitempty"`
 	// The board identifier that received the uplink frame.
-	Board uint32 `protobuf:"varint,10,opt,name=board" json:"board,omitempty"`
+	Board uint32 `protobuf:"varint,10,opt,name=board,proto3" json:"board,omitempty"`
 	// THe antenna identifier that received the uplink frame.
-	Antenna              uint32   `protobuf:"varint,11,opt,name=antenna" json:"antenna,omitempty"`
+	Antenna              uint32   `protobuf:"varint,11,opt,name=antenna,proto3" json:"antenna,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3806,7 +3806,7 @@ func (m *DownlinkTXInfo) GetAntenna() uint32 {
 
 type DownlinkFrameLog struct {
 	// TX information of the downlink.
-	TxInfo *DownlinkTXInfo `protobuf:"bytes,1,opt,name=txInfo" json:"txInfo,omitempty"`
+	TxInfo *DownlinkTXInfo `protobuf:"bytes,1,opt,name=txInfo,proto3" json:"txInfo,omitempty"`
 	// LoRaWAN PHYPayload.
 	PhyPayload           []byte   `protobuf:"bytes,2,opt,name=phyPayload,proto3" json:"phyPayload,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -3884,9 +3884,9 @@ var xxx_messageInfo_GetVersionRequest proto.InternalMessageInfo
 
 type GetVersionResponse struct {
 	// LoRa Server version.
-	Version string `protobuf:"bytes,1,opt,name=version" json:"version,omitempty"`
+	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 	// Region configured for this network-server.
-	Region               Region   `protobuf:"varint,2,opt,name=region,enum=ns.Region" json:"region,omitempty"`
+	Region               Region   `protobuf:"varint,2,opt,name=region,proto3,enum=ns.Region" json:"region,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -3932,13 +3932,13 @@ func (m *GetVersionResponse) GetRegion() Region {
 
 type GatewayProfile struct {
 	// ID of the gateway-profile.
-	GatewayProfileID string `protobuf:"bytes,1,opt,name=gatewayProfileID" json:"gatewayProfileID,omitempty"`
+	GatewayProfileID string `protobuf:"bytes,1,opt,name=gatewayProfileID,proto3" json:"gatewayProfileID,omitempty"`
 	// Default channels (channels specified by the LoRaWAN Regional Parameters
 	// specification) enabled for this configuration.
-	Channels []uint32 `protobuf:"varint,2,rep,packed,name=channels" json:"channels,omitempty"`
+	Channels []uint32 `protobuf:"varint,2,rep,packed,name=channels,proto3" json:"channels,omitempty"`
 	// Extra channels added to the channel-configuration (in case the LoRaWAN
 	// region supports adding custom channels).
-	ExtraChannels        []*GatewayProfileExtraChannel `protobuf:"bytes,3,rep,name=extraChannels" json:"extraChannels,omitempty"`
+	ExtraChannels        []*GatewayProfileExtraChannel `protobuf:"bytes,3,rep,name=extraChannels,proto3" json:"extraChannels,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}                      `json:"-"`
 	XXX_unrecognized     []byte                        `json:"-"`
 	XXX_sizecache        int32                         `json:"-"`
@@ -3991,15 +3991,15 @@ func (m *GatewayProfile) GetExtraChannels() []*GatewayProfileExtraChannel {
 
 type GatewayProfileExtraChannel struct {
 	// Modulation.
-	Modulation Modulation `protobuf:"varint,1,opt,name=modulation,enum=ns.Modulation" json:"modulation,omitempty"`
+	Modulation Modulation `protobuf:"varint,1,opt,name=modulation,proto3,enum=ns.Modulation" json:"modulation,omitempty"`
 	// Frequency.
-	Frequency uint32 `protobuf:"varint,2,opt,name=frequency" json:"frequency,omitempty"`
+	Frequency uint32 `protobuf:"varint,2,opt,name=frequency,proto3" json:"frequency,omitempty"`
 	// Bandwidth.
-	Bandwidth uint32 `protobuf:"varint,3,opt,name=bandwidth" json:"bandwidth,omitempty"`
+	Bandwidth uint32 `protobuf:"varint,3,opt,name=bandwidth,proto3" json:"bandwidth,omitempty"`
 	// Bitrate (in case of FSK modulation).
-	Bitrate uint32 `protobuf:"varint,4,opt,name=bitrate" json:"bitrate,omitempty"`
+	Bitrate uint32 `protobuf:"varint,4,opt,name=bitrate,proto3" json:"bitrate,omitempty"`
 	// Spreading factors (in case of LoRa modulation).
-	SpreadingFactors     []uint32 `protobuf:"varint,5,rep,packed,name=spreadingFactors" json:"spreadingFactors,omitempty"`
+	SpreadingFactors     []uint32 `protobuf:"varint,5,rep,packed,name=spreadingFactors,proto3" json:"spreadingFactors,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4065,7 +4065,7 @@ func (m *GatewayProfileExtraChannel) GetSpreadingFactors() []uint32 {
 }
 
 type CreateGatewayProfileRequest struct {
-	GatewayProfile       *GatewayProfile `protobuf:"bytes,1,opt,name=gatewayProfile" json:"gatewayProfile,omitempty"`
+	GatewayProfile       *GatewayProfile `protobuf:"bytes,1,opt,name=gatewayProfile,proto3" json:"gatewayProfile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -4104,7 +4104,7 @@ func (m *CreateGatewayProfileRequest) GetGatewayProfile() *GatewayProfile {
 
 type CreateGatewayProfileResponse struct {
 	// ID of the create configuration object.
-	GatewayProfileID     string   `protobuf:"bytes,1,opt,name=gatewayProfileID" json:"gatewayProfileID,omitempty"`
+	GatewayProfileID     string   `protobuf:"bytes,1,opt,name=gatewayProfileID,proto3" json:"gatewayProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4143,7 +4143,7 @@ func (m *CreateGatewayProfileResponse) GetGatewayProfileID() string {
 
 type GetGatewayProfileRequest struct {
 	// ID of the gateway-profile.
-	GatewayProfileID     string   `protobuf:"bytes,1,opt,name=gatewayProfileID" json:"gatewayProfileID,omitempty"`
+	GatewayProfileID     string   `protobuf:"bytes,1,opt,name=gatewayProfileID,proto3" json:"gatewayProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4181,9 +4181,9 @@ func (m *GetGatewayProfileRequest) GetGatewayProfileID() string {
 }
 
 type GetGatewayProfileResponse struct {
-	GatewayProfile       *GatewayProfile `protobuf:"bytes,1,opt,name=gatewayProfile" json:"gatewayProfile,omitempty"`
-	CreatedAt            string          `protobuf:"bytes,2,opt,name=createdAt" json:"createdAt,omitempty"`
-	UpdatedAt            string          `protobuf:"bytes,3,opt,name=updatedAt" json:"updatedAt,omitempty"`
+	GatewayProfile       *GatewayProfile `protobuf:"bytes,1,opt,name=gatewayProfile,proto3" json:"gatewayProfile,omitempty"`
+	CreatedAt            string          `protobuf:"bytes,2,opt,name=createdAt,proto3" json:"createdAt,omitempty"`
+	UpdatedAt            string          `protobuf:"bytes,3,opt,name=updatedAt,proto3" json:"updatedAt,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -4235,7 +4235,7 @@ func (m *GetGatewayProfileResponse) GetUpdatedAt() string {
 }
 
 type UpdateGatewayProfileRequest struct {
-	GatewayProfile       *GatewayProfile `protobuf:"bytes,1,opt,name=gatewayProfile" json:"gatewayProfile,omitempty"`
+	GatewayProfile       *GatewayProfile `protobuf:"bytes,1,opt,name=gatewayProfile,proto3" json:"gatewayProfile,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}        `json:"-"`
 	XXX_unrecognized     []byte          `json:"-"`
 	XXX_sizecache        int32           `json:"-"`
@@ -4304,7 +4304,7 @@ var xxx_messageInfo_UpdateGatewayProfileResponse proto.InternalMessageInfo
 
 type DeleteGatewayProfileRequest struct {
 	// ID of the gateway-profile.
-	GatewayProfileID     string   `protobuf:"bytes,1,opt,name=gatewayProfileID" json:"gatewayProfileID,omitempty"`
+	GatewayProfileID     string   `protobuf:"bytes,1,opt,name=gatewayProfileID,proto3" json:"gatewayProfileID,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -4953,8 +4953,7 @@ func (c *networkServerClient) GetVersion(ctx context.Context, in *GetVersionRequ
 	return out, nil
 }
 
-// Server API for NetworkServer service
-
+// NetworkServerServer is the server API for NetworkServer service.
 type NetworkServerServer interface {
 	// CreateServiceProfile creates the given service-profile.
 	CreateServiceProfile(context.Context, *CreateServiceProfileRequest) (*CreateServiceProfileResponse, error)

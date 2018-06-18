@@ -73,6 +73,7 @@ func TestHandleRejoinParamSetupAns(t *testing.T) {
 					},
 				},
 				ExpectedDeviceSession: storage.DeviceSession{
+					RejoinRequestEnabled:   true,
 					RejoinRequestMaxCountN: 10,
 					RejoinRequestMaxTimeN:  5,
 				},
@@ -108,6 +109,7 @@ func TestHandleRejoinParamSetupAns(t *testing.T) {
 					},
 				},
 				ExpectedDeviceSession: storage.DeviceSession{
+					RejoinRequestEnabled:   true,
 					RejoinRequestMaxCountN: 10,
 					RejoinRequestMaxTimeN:  5,
 				},

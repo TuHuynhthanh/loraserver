@@ -40,6 +40,7 @@ func handleRejoinParamSetupAns(ds *storage.DeviceSession, block storage.MACComma
 		return nil, fmt.Errorf("expected *lorawan.RejoinParamSetupAnsPayload, got %T", block.MACCommands[0].Payload)
 	}
 
+	ds.RejoinRequestEnabled = true
 	ds.RejoinRequestMaxCountN = int(req.MaxCountN)
 	ds.RejoinRequestMaxTimeN = int(req.MaxTimeN)
 

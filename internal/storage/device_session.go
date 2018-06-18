@@ -136,6 +136,10 @@ type DeviceSession struct {
 	PingSlotDR        int
 	PingSlotFrequency int
 
+	// RejoinRequestEnabled defines if the rejoin-request is enabled on the
+	// device.
+	RejoinRequestEnabled bool
+
 	// RejoinRequestMaxCountN defines the 2^(C+4) uplink message interval for
 	// the rejoin-request.
 	RejoinRequestMaxCountN int
@@ -529,6 +533,7 @@ func deviceSessionToDeviceSessionPB(d DeviceSession) DeviceSessionPB {
 		PingSlotDr:                    uint32(d.PingSlotDR),
 		PingSlotFrequency:             uint32(d.PingSlotFrequency),
 
+		RejoinRequestEnabled:   d.RejoinRequestEnabled,
 		RejoinRequestMaxCountN: uint32(d.RejoinRequestMaxCountN),
 		RejoinRequestMaxTimeN:  uint32(d.RejoinRequestMaxTimeN),
 
@@ -614,6 +619,7 @@ func deviceSessionPBToDeviceSession(d DeviceSessionPB) DeviceSession {
 		PingSlotDR:           int(d.PingSlotDr),
 		PingSlotFrequency:    int(d.PingSlotFrequency),
 
+		RejoinRequestEnabled:   d.RejoinRequestEnabled,
 		RejoinRequestMaxCountN: int(d.RejoinRequestMaxCountN),
 		RejoinRequestMaxTimeN:  int(d.RejoinRequestMaxTimeN),
 

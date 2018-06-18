@@ -258,7 +258,8 @@ func requestRejoinParamSetup(ctx *dataContext) error {
 		return nil
 	}
 
-	if ctx.DeviceSession.RejoinRequestMaxCountN != config.C.NetworkServer.NetworkSettings.RejoinRequest.MaxCountN ||
+	if !ctx.DeviceSession.RejoinRequestEnabled ||
+		ctx.DeviceSession.RejoinRequestMaxCountN != config.C.NetworkServer.NetworkSettings.RejoinRequest.MaxCountN ||
 		ctx.DeviceSession.RejoinRequestMaxTimeN != config.C.NetworkServer.NetworkSettings.RejoinRequest.MaxTimeN {
 		ctx.MACCommands = append(ctx.MACCommands, maccommand.RequestRejoinParamSetup(
 			config.C.NetworkServer.NetworkSettings.RejoinRequest.MaxTimeN,

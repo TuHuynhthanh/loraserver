@@ -82,10 +82,10 @@ func (ErrorType) EnumDescriptor() ([]byte, []int) {
 }
 
 type DataRate struct {
-	Modulation           string   `protobuf:"bytes,1,opt,name=modulation" json:"modulation,omitempty"`
-	BandWidth            uint32   `protobuf:"varint,2,opt,name=bandWidth" json:"bandWidth,omitempty"`
-	SpreadFactor         uint32   `protobuf:"varint,3,opt,name=spreadFactor" json:"spreadFactor,omitempty"`
-	Bitrate              uint32   `protobuf:"varint,4,opt,name=bitrate" json:"bitrate,omitempty"`
+	Modulation           string   `protobuf:"bytes,1,opt,name=modulation,proto3" json:"modulation,omitempty"`
+	BandWidth            uint32   `protobuf:"varint,2,opt,name=bandWidth,proto3" json:"bandWidth,omitempty"`
+	SpreadFactor         uint32   `protobuf:"varint,3,opt,name=spreadFactor,proto3" json:"spreadFactor,omitempty"`
+	Bitrate              uint32   `protobuf:"varint,4,opt,name=bitrate,proto3" json:"bitrate,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -145,13 +145,13 @@ func (m *DataRate) GetBitrate() uint32 {
 
 type RXInfo struct {
 	Mac                  []byte   `protobuf:"bytes,1,opt,name=mac,proto3" json:"mac,omitempty"`
-	Time                 string   `protobuf:"bytes,2,opt,name=time" json:"time,omitempty"`
-	Rssi                 int32    `protobuf:"varint,3,opt,name=rssi" json:"rssi,omitempty"`
-	LoRaSNR              float64  `protobuf:"fixed64,4,opt,name=loRaSNR" json:"loRaSNR,omitempty"`
-	Name                 string   `protobuf:"bytes,5,opt,name=name" json:"name,omitempty"`
-	Latitude             float64  `protobuf:"fixed64,6,opt,name=latitude" json:"latitude,omitempty"`
-	Longitude            float64  `protobuf:"fixed64,7,opt,name=longitude" json:"longitude,omitempty"`
-	Altitude             float64  `protobuf:"fixed64,8,opt,name=altitude" json:"altitude,omitempty"`
+	Time                 string   `protobuf:"bytes,2,opt,name=time,proto3" json:"time,omitempty"`
+	Rssi                 int32    `protobuf:"varint,3,opt,name=rssi,proto3" json:"rssi,omitempty"`
+	LoRaSNR              float64  `protobuf:"fixed64,4,opt,name=loRaSNR,proto3" json:"loRaSNR,omitempty"`
+	Name                 string   `protobuf:"bytes,5,opt,name=name,proto3" json:"name,omitempty"`
+	Latitude             float64  `protobuf:"fixed64,6,opt,name=latitude,proto3" json:"latitude,omitempty"`
+	Longitude            float64  `protobuf:"fixed64,7,opt,name=longitude,proto3" json:"longitude,omitempty"`
+	Altitude             float64  `protobuf:"fixed64,8,opt,name=altitude,proto3" json:"altitude,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -238,10 +238,10 @@ func (m *RXInfo) GetAltitude() float64 {
 }
 
 type TXInfo struct {
-	Frequency            int64     `protobuf:"varint,1,opt,name=frequency" json:"frequency,omitempty"`
-	DataRate             *DataRate `protobuf:"bytes,2,opt,name=dataRate" json:"dataRate,omitempty"`
-	Adr                  bool      `protobuf:"varint,3,opt,name=adr" json:"adr,omitempty"`
-	CodeRate             string    `protobuf:"bytes,4,opt,name=codeRate" json:"codeRate,omitempty"`
+	Frequency            int64     `protobuf:"varint,1,opt,name=frequency,proto3" json:"frequency,omitempty"`
+	DataRate             *DataRate `protobuf:"bytes,2,opt,name=dataRate,proto3" json:"dataRate,omitempty"`
+	Adr                  bool      `protobuf:"varint,3,opt,name=adr,proto3" json:"adr,omitempty"`
+	CodeRate             string    `protobuf:"bytes,4,opt,name=codeRate,proto3" json:"codeRate,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -302,21 +302,21 @@ func (m *TXInfo) GetCodeRate() string {
 type HandleUplinkDataRequest struct {
 	DevEUI []byte    `protobuf:"bytes,1,opt,name=devEUI,proto3" json:"devEUI,omitempty"`
 	AppEUI []byte    `protobuf:"bytes,2,opt,name=appEUI,proto3" json:"appEUI,omitempty"`
-	FCnt   uint32    `protobuf:"varint,3,opt,name=fCnt" json:"fCnt,omitempty"`
-	FPort  uint32    `protobuf:"varint,4,opt,name=fPort" json:"fPort,omitempty"`
+	FCnt   uint32    `protobuf:"varint,3,opt,name=fCnt,proto3" json:"fCnt,omitempty"`
+	FPort  uint32    `protobuf:"varint,4,opt,name=fPort,proto3" json:"fPort,omitempty"`
 	Data   []byte    `protobuf:"bytes,5,opt,name=data,proto3" json:"data,omitempty"`
-	TxInfo *TXInfo   `protobuf:"bytes,6,opt,name=txInfo" json:"txInfo,omitempty"`
-	RxInfo []*RXInfo `protobuf:"bytes,7,rep,name=rxInfo" json:"rxInfo,omitempty"`
+	TxInfo *TXInfo   `protobuf:"bytes,6,opt,name=txInfo,proto3" json:"txInfo,omitempty"`
+	RxInfo []*RXInfo `protobuf:"bytes,7,rep,name=rxInfo,proto3" json:"rxInfo,omitempty"`
 	// The device battery status
 	// 0:      The end-device is connected to an external power source
 	// 1..254: The battery level, 1 being at minimum and 254 being at maximum
 	// 255:    The end-device was not able to measure the battery level
 	// 256:    The device-status is not available.
-	DeviceStatusBattery uint32 `protobuf:"varint,9,opt,name=deviceStatusBattery" json:"deviceStatusBattery,omitempty"`
+	DeviceStatusBattery uint32 `protobuf:"varint,9,opt,name=deviceStatusBattery,proto3" json:"deviceStatusBattery,omitempty"`
 	// The device margin status
 	// -32..32: The demodulation SNR ration in dB
 	// 256:     The device-status is not available.
-	DeviceStatusMargin   int32    `protobuf:"varint,10,opt,name=deviceStatusMargin" json:"deviceStatusMargin,omitempty"`
+	DeviceStatusMargin   int32    `protobuf:"varint,10,opt,name=deviceStatusMargin,proto3" json:"deviceStatusMargin,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -415,9 +415,9 @@ type HandleProprietaryUplinkRequest struct {
 	// MIC of the proprietary LoRaWAN frame.
 	Mic []byte `protobuf:"bytes,2,opt,name=mic,proto3" json:"mic,omitempty"`
 	// TXInfo contains the TX related meta-data.
-	TxInfo *TXInfo `protobuf:"bytes,3,opt,name=txInfo" json:"txInfo,omitempty"`
+	TxInfo *TXInfo `protobuf:"bytes,3,opt,name=txInfo,proto3" json:"txInfo,omitempty"`
 	// RXInfo contains the RX related meta-data.
-	RxInfo               []*RXInfo `protobuf:"bytes,4,rep,name=rxInfo" json:"rxInfo,omitempty"`
+	RxInfo               []*RXInfo `protobuf:"bytes,4,rep,name=rxInfo,proto3" json:"rxInfo,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
 	XXX_unrecognized     []byte    `json:"-"`
 	XXX_sizecache        int32     `json:"-"`
@@ -539,11 +539,11 @@ type HandleErrorRequest struct {
 	// DevEUI of the device.
 	DevEUI []byte `protobuf:"bytes,1,opt,name=devEUI,proto3" json:"devEUI,omitempty"`
 	// Type of the error.
-	Type ErrorType `protobuf:"varint,3,opt,name=type,enum=as.ErrorType" json:"type,omitempty"`
+	Type ErrorType `protobuf:"varint,3,opt,name=type,proto3,enum=as.ErrorType" json:"type,omitempty"`
 	// Error string describing the error.
-	Error string `protobuf:"bytes,4,opt,name=error" json:"error,omitempty"`
+	Error string `protobuf:"bytes,4,opt,name=error,proto3" json:"error,omitempty"`
 	// Frame-counter (if applicable) related to the error.
-	FCnt                 uint32   `protobuf:"varint,5,opt,name=fCnt" json:"fCnt,omitempty"`
+	FCnt                 uint32   `protobuf:"varint,5,opt,name=fCnt,proto3" json:"fCnt,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -635,9 +635,9 @@ type HandleDownlinkACKRequest struct {
 	// DevEUI of the device.
 	DevEUI []byte `protobuf:"bytes,1,opt,name=devEUI,proto3" json:"devEUI,omitempty"`
 	// Downlink frame-counter.
-	FCnt uint32 `protobuf:"varint,2,opt,name=fCnt" json:"fCnt,omitempty"`
+	FCnt uint32 `protobuf:"varint,2,opt,name=fCnt,proto3" json:"fCnt,omitempty"`
 	// Frame was acknowledged?
-	Acknowledged         bool     `protobuf:"varint,3,opt,name=acknowledged" json:"acknowledged,omitempty"`
+	Acknowledged         bool     `protobuf:"varint,3,opt,name=acknowledged,proto3" json:"acknowledged,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -800,8 +800,7 @@ func (c *applicationServerClient) HandleDownlinkACK(ctx context.Context, in *Han
 	return out, nil
 }
 
-// Server API for ApplicationServer service
-
+// ApplicationServerServer is the server API for ApplicationServer service.
 type ApplicationServerServer interface {
 	// HandleUplinkData publishes data received from an end-device.
 	HandleUplinkData(context.Context, *HandleUplinkDataRequest) (*HandleUplinkDataResponse, error)

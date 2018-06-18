@@ -588,6 +588,7 @@ func TestSetMACCommandsSet(t *testing.T) {
 						DR:                     5,
 						NbTrans:                2,
 						RX2Frequency:           869525000,
+						RejoinRequestEnabled:   true,
 						RejoinRequestMaxCountN: 1,
 						RejoinRequestMaxTimeN:  2,
 					},
