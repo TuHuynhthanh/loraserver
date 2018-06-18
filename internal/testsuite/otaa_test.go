@@ -124,7 +124,18 @@ func TestOTAAScenarios(t *testing.T) {
 			},
 			DevAddr: [4]byte{1, 2, 3, 4},
 			RXDelay: 3,
-			CFList:  &lorawan.CFList{100, 200, 300, 400, 500},
+			CFList: &lorawan.CFList{
+				CFListType: lorawan.CFListChannel,
+				Payload: &lorawan.CFListChannelPayload{
+					Channels: [5]uint32{
+						100,
+						200,
+						300,
+						400,
+						500,
+					},
+				},
+			},
 		}
 		jaPHY := lorawan.PHYPayload{
 			MHDR: lorawan.MHDR{
@@ -378,6 +389,25 @@ func TestOTAAScenarios(t *testing.T) {
 					},
 				},
 				{
+					BeforeFunc: func(tc *otaaTestCase) error {
+						cFList := lorawan.CFList{
+							CFListType: lorawan.CFListChannel,
+							Payload: &lorawan.CFListChannelPayload{
+								Channels: [5]uint32{
+									868600000,
+									868700000,
+									868800000,
+								},
+							},
+						}
+						cFListB, err := cFList.MarshalBinary()
+						if err != nil {
+							return err
+						}
+						tc.ExpectedJoinReqPayload.CFList = backend.HEXBytes(cFListB)
+
+						return nil
+					},
 					Name:          "join-request using rx1 and CFList",
 					RXInfo:        rxInfo,
 					PHYPayload:    jrPayload,
@@ -416,7 +446,7 @@ func TestOTAAScenarios(t *testing.T) {
 							RX1DROffset: uint8(config.C.NetworkServer.NetworkSettings.RX1DROffset),
 						},
 						RxDelay: config.C.NetworkServer.NetworkSettings.RX1Delay,
-						CFList:  &lorawan.CFList{868600000, 868700000, 868800000},
+						// CFList is set in the BeforeFunc
 					},
 					ExpectedTXInfo: gw.TXInfo{
 						MAC:       rxInfo.MAC,

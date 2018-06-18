@@ -147,6 +147,15 @@ func getJoinAcceptFromAS(ctx *context) error {
 	}
 	transactionID := binary.LittleEndian.Uint32(randomBytes)
 
+	var cFListB []byte
+	cFList := config.C.NetworkServer.Band.Band.GetCFList(ctx.DeviceProfile.MACVersion)
+	if cFList != nil {
+		cFListB, err = cFList.MarshalBinary()
+		if err != nil {
+			return errors.Wrap(err, "marshal cflist error")
+		}
+	}
+
 	// note about the OptNeg field:
 	// it must only be set to true for devices != 1.0.x as it will indicate to
 	// the join-server and device how to derrive the session-keys and how to
@@ -170,7 +179,7 @@ func getJoinAcceptFromAS(ctx *context) error {
 			RX1DROffset: uint8(config.C.NetworkServer.NetworkSettings.RX1DROffset),
 		},
 		RxDelay: config.C.NetworkServer.NetworkSettings.RX1Delay,
-		CFList:  config.C.NetworkServer.Band.Band.GetCFList(),
+		CFList:  backend.HEXBytes(cFListB),
 	}
 
 	jsClient, err := config.C.JoinServer.Pool.Get(ctx.JoinRequestPayload.JoinEUI)
@@ -239,8 +248,13 @@ func createNodeSession(ctx *context) error {
 		ctx.DeviceSession.NwkSEncKey = ctx.JoinAnsPayload.NwkSEncKey.AESKey
 	}
 
-	if cfList := config.C.NetworkServer.Band.Band.GetCFList(); cfList != nil {
-		for _, f := range cfList {
+	if cfList := config.C.NetworkServer.Band.Band.GetCFList(ctx.DeviceProfile.MACVersion); cfList != nil && cfList.CFListType == lorawan.CFListChannel {
+		channelPL, ok := cfList.Payload.(*lorawan.CFListChannelPayload)
+		if !ok {
+			return fmt.Errorf("expected *lorawan.CFListChannelPayload, got %T", cfList.Payload)
+		}
+
+		for _, f := range channelPL.Channels {
 			if f == 0 {
 				continue
 			}

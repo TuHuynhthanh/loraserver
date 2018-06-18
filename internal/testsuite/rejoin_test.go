@@ -182,6 +182,23 @@ func TestRejoinScenarios(t *testing.T) {
 
 						tc.ExpectedDeviceSession.RejoinCount0 = 124
 						tc.ExpectedDeviceSession.PendingRejoinDeviceSession = &rejoinDS
+
+						cFList := lorawan.CFList{
+							CFListType: lorawan.CFListChannel,
+							Payload: &lorawan.CFListChannelPayload{
+								Channels: [5]uint32{
+									867100000,
+									867300000,
+									867500000,
+								},
+							},
+						}
+						cFListB, err := cFList.MarshalBinary()
+						if err != nil {
+							return err
+						}
+						tc.ExpectedRejoinReqPayload.CFList = backend.HEXBytes(cFListB)
+
 						return nil
 					},
 					Name:          "valid rejoin-request type 0",
@@ -219,7 +236,7 @@ func TestRejoinScenarios(t *testing.T) {
 							RX1DROffset: 2,
 						},
 						RxDelay: 1,
-						CFList:  &lorawan.CFList{867100000, 867300000, 867500000},
+						// CFList is set in the BeforeFunc
 					},
 					ExpectedTXInfo: gw.TXInfo{
 						MAC:       lorawan.EUI64{1, 1, 1, 1, 2, 2, 2, 2},

@@ -242,7 +242,14 @@ func getRejoinAcceptFromJS(ctx *context) error {
 	// 2: Used to rekey a device or change its DevAddr (DevAddr, session keys,
 	//    frame counters). Radio parameters are kept unchanged.
 	if ctx.RejoinType == lorawan.RejoinRequestType0 || ctx.RejoinType == lorawan.RejoinRequestType1 {
-		rejoinReqPL.CFList = config.C.NetworkServer.Band.Band.GetCFList()
+		cFList := config.C.NetworkServer.Band.Band.GetCFList(ctx.DeviceSession.MACVersion)
+		if cFList != nil {
+			cFListB, err := cFList.MarshalBinary()
+			if err != nil {
+				return errors.Wrap(err, "marshal cflist error")
+			}
+			rejoinReqPL.CFList = backend.HEXBytes(cFListB)
+		}
 	}
 
 	jsClient, err := config.C.JoinServer.Pool.Get(ctx.DeviceSession.JoinEUI)
@@ -311,8 +318,13 @@ func setRejoin0PendingDeviceSession(ctx *context) error {
 		pendingDS.NwkSEncKey = ctx.RejoinAnsPayload.NwkSEncKey.AESKey
 	}
 
-	if cfList := config.C.NetworkServer.Band.Band.GetCFList(); cfList != nil {
-		for _, f := range cfList {
+	if cfList := config.C.NetworkServer.Band.Band.GetCFList(ctx.DeviceSession.MACVersion); cfList != nil && cfList.CFListType == lorawan.CFListChannel {
+		channelPL, ok := cfList.Payload.(*lorawan.CFListChannelPayload)
+		if !ok {
+			return fmt.Errorf("expected *lorawan.CFListChannelPayload, got %T", cfList.Payload)
+		}
+
+		for _, f := range channelPL.Channels {
 			if f == 0 {
 				continue
 			}
