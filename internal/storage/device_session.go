@@ -379,7 +379,19 @@ func GetDeviceSessionsForDevAddr(p *redis.Pool, devAddr lorawan.DevAddr) ([]Devi
 				"dev_eui":  devEUI,
 			}).Warningf("get device-sessions for dev_addr error: %s", err)
 		}
-		items = append(items, s)
+
+		// It is possible that the "main" device-session maps to a different
+		// devAddr as the PendingRejoinDeviceSession is set (using the devAddr
+		// that is used for the lookup).
+		if s.DevAddr == devAddr {
+			items = append(items, s)
+		}
+
+		// When a pending rejoin device-session context is set and it has
+		// the given devAddr, add it to the items list.
+		if s.PendingRejoinDeviceSession != nil && s.PendingRejoinDeviceSession.DevAddr == devAddr {
+			items = append(items, *s.PendingRejoinDeviceSession)
+		}
 	}
 
 	return items, nil
@@ -399,14 +411,6 @@ func GetDeviceSessionForPHYPayload(p *redis.Pool, phy lorawan.PHYPayload, txDR, 
 	if err != nil {
 		return DeviceSession{}, err
 	}
-
-	var pendingSessions []DeviceSession
-	for i := range sessions {
-		if sessions[i].PendingRejoinDeviceSession != nil {
-			pendingSessions = append(pendingSessions, *sessions[i].PendingRejoinDeviceSession)
-		}
-	}
-	sessions = append(sessions, pendingSessions...)
 
 	for _, s := range sessions {
 		// reset to the original FCnt
