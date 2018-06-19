@@ -29,7 +29,7 @@ func RequestDevStatus(ds *storage.DeviceSession) storage.MACCommandBlock {
 	return block
 }
 
-func handleDevStatusAns(ds *storage.DeviceSession, asClient as.ApplicationServerClient, block storage.MACCommandBlock) ([]storage.MACCommandBlock, error) {
+func handleDevStatusAns(ds *storage.DeviceSession, sp storage.ServiceProfile, asClient as.ApplicationServerClient, block storage.MACCommandBlock) ([]storage.MACCommandBlock, error) {
 	if len(block.MACCommands) != 1 {
 		return nil, fmt.Errorf("exactly one mac-command expected, got %d", len(block.MACCommands))
 	}
@@ -45,12 +45,23 @@ func handleDevStatusAns(ds *storage.DeviceSession, asClient as.ApplicationServer
 		"margin":  pl.Margin,
 	}).Info("dev_status_ans answer received")
 
+	if !sp.ReportDevStatusBattery && !sp.ReportDevStatusMargin {
+		log.WithField("dev_eui", ds.DevEUI).Warning("reporting device-status has been disabled in service-profile")
+		return nil, nil
+	}
+
 	go func() {
-		_, err := asClient.SetDeviceStatus(context.Background(), &as.SetDeviceStatusRequest{
-			DevEui:  ds.DevEUI[:],
-			Battery: uint32(pl.Battery),
-			Margin:  int32(pl.Margin),
-		})
+		req := as.SetDeviceStatusRequest{
+			DevEui: ds.DevEUI[:],
+		}
+		if sp.ReportDevStatusBattery {
+			req.Battery = uint32(pl.Battery)
+		}
+		if sp.ReportDevStatusMargin {
+			req.Margin = int32(pl.Margin)
+		}
+
+		_, err := asClient.SetDeviceStatus(context.Background(), &req)
 		if err != nil {
 			log.WithField("dev_eui", ds.DevEUI).WithError(err).Error("as.SetDeviceStatus error")
 		}

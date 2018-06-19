@@ -6,6 +6,7 @@ import (
 	"time"
 
 	"github.com/brocaar/lorawan"
+	"github.com/brocaar/lorawan/backend"
 
 	"github.com/brocaar/loraserver/api/as"
 	"github.com/brocaar/loraserver/internal/storage"
@@ -40,13 +41,20 @@ func TestDevStatusAns(t *testing.T) {
 		tests := []struct {
 			Name                           string
 			DeviceSession                  storage.DeviceSession
+			ServiceProfile                 storage.ServiceProfile
 			ReceivedMACCommandBlock        storage.MACCommandBlock
 			ExpectedSetDeviceStatusRequest as.SetDeviceStatusRequest
 		}{
 			{
-				Name: "set device-status",
+				Name: "report device-status",
 				DeviceSession: storage.DeviceSession{
 					DevEUI: lorawan.EUI64{1, 2, 3, 4, 5, 6, 7, 8},
+				},
+				ServiceProfile: storage.ServiceProfile{
+					ServiceProfile: backend.ServiceProfile{
+						ReportDevStatusBattery: true,
+						ReportDevStatusMargin:  true,
+					},
 				},
 				ReceivedMACCommandBlock: storage.MACCommandBlock{
 					CID: lorawan.DevStatusAns,
@@ -66,12 +74,66 @@ func TestDevStatusAns(t *testing.T) {
 					Margin:  10,
 				},
 			},
+			{
+				Name: "report device-status battery only",
+				DeviceSession: storage.DeviceSession{
+					DevEUI: lorawan.EUI64{1, 2, 3, 4, 5, 6, 7, 8},
+				},
+				ServiceProfile: storage.ServiceProfile{
+					ServiceProfile: backend.ServiceProfile{
+						ReportDevStatusBattery: true,
+					},
+				},
+				ReceivedMACCommandBlock: storage.MACCommandBlock{
+					CID: lorawan.DevStatusAns,
+					MACCommands: []lorawan.MACCommand{
+						{
+							CID: lorawan.DevStatusAns,
+							Payload: &lorawan.DevStatusAnsPayload{
+								Margin:  10,
+								Battery: 150,
+							},
+						},
+					},
+				},
+				ExpectedSetDeviceStatusRequest: as.SetDeviceStatusRequest{
+					DevEui:  []byte{1, 2, 3, 4, 5, 6, 7, 8},
+					Battery: 150,
+				},
+			},
+			{
+				Name: "report device-status margin only",
+				DeviceSession: storage.DeviceSession{
+					DevEUI: lorawan.EUI64{1, 2, 3, 4, 5, 6, 7, 8},
+				},
+				ServiceProfile: storage.ServiceProfile{
+					ServiceProfile: backend.ServiceProfile{
+						ReportDevStatusMargin: true,
+					},
+				},
+				ReceivedMACCommandBlock: storage.MACCommandBlock{
+					CID: lorawan.DevStatusAns,
+					MACCommands: []lorawan.MACCommand{
+						{
+							CID: lorawan.DevStatusAns,
+							Payload: &lorawan.DevStatusAnsPayload{
+								Margin:  10,
+								Battery: 150,
+							},
+						},
+					},
+				},
+				ExpectedSetDeviceStatusRequest: as.SetDeviceStatusRequest{
+					DevEui: []byte{1, 2, 3, 4, 5, 6, 7, 8},
+					Margin: 10,
+				},
+			},
 		}
 
 		for i, t := range tests {
 			Convey(fmt.Sprintf("Testing: %s [%d]", t.Name, i), func() {
 				asClient := test.NewApplicationClient()
-				resp, err := handleDevStatusAns(&t.DeviceSession, asClient, t.ReceivedMACCommandBlock)
+				resp, err := handleDevStatusAns(&t.DeviceSession, t.ServiceProfile, asClient, t.ReceivedMACCommandBlock)
 				So(resp, ShouldHaveLength, 0)
 				So(err, ShouldBeNil)
 
