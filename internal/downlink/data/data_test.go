@@ -555,6 +555,7 @@ func TestSetMACCommandsSet(t *testing.T) {
 						DR:                    5,
 						NbTrans:               2,
 						RX2Frequency:          869525000,
+						MACVersion:            "1.1.0",
 					},
 				},
 				ExpectedMACCommands: []storage.MACCommandBlock{
@@ -569,6 +570,26 @@ func TestSetMACCommandsSet(t *testing.T) {
 								},
 							},
 						},
+					},
+				},
+			},
+			{
+				BeforeFunc: func() error {
+					config.C.NetworkServer.NetworkSettings.RejoinRequest.Enabled = true
+					config.C.NetworkServer.NetworkSettings.RejoinRequest.MaxCountN = 1
+					config.C.NetworkServer.NetworkSettings.RejoinRequest.MaxTimeN = 2
+					return nil
+				},
+				Name: "trigger rejoin param setup request (ignored because of LoRaWAN 1.0)",
+				Context: dataContext{
+					RemainingPayloadSize: 200,
+					DeviceSession: storage.DeviceSession{
+						EnabledUplinkChannels: []int{0, 1, 2},
+						TXPowerIndex:          2,
+						DR:                    5,
+						NbTrans:               2,
+						RX2Frequency:          869525000,
+						MACVersion:            "1.0.2",
 					},
 				},
 			},

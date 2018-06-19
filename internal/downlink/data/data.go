@@ -254,7 +254,7 @@ func requestDevStatus(ctx *dataContext) error {
 }
 
 func requestRejoinParamSetup(ctx *dataContext) error {
-	if !config.C.NetworkServer.NetworkSettings.RejoinRequest.Enabled {
+	if !config.C.NetworkServer.NetworkSettings.RejoinRequest.Enabled || ctx.DeviceSession.GetMACVersion() == lorawan.LoRaWAN1_0 {
 		return nil
 	}
 
