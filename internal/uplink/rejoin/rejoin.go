@@ -292,12 +292,9 @@ func setRejoin0PendingDeviceSession(ctx *context) error {
 		UplinkGatewayHistory:  map[lorawan.EUI64]storage.UplinkGatewayHistory{},
 		MaxSupportedDR:        ctx.ServiceProfile.ServiceProfile.DRMax,
 		SkipFCntValidation:    ctx.Device.SkipFCntCheck,
-
-		// set to invalid value to indicate we haven't received a status yet
-		LastDevStatusMargin: 127,
-		PingSlotDR:          ctx.DeviceProfile.PingSlotDR,
-		PingSlotFrequency:   int(ctx.DeviceProfile.PingSlotFreq),
-		NbTrans:             1,
+		PingSlotDR:            ctx.DeviceProfile.PingSlotDR,
+		PingSlotFrequency:     int(ctx.DeviceProfile.PingSlotFreq),
+		NbTrans:               1,
 	}
 
 	if ctx.RejoinAnsPayload.NwkSKey != nil {

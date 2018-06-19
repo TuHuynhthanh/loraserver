@@ -123,8 +123,6 @@ func migrateDeviceSessionOld(d DeviceSessionOld) DeviceSession {
 		ChannelFrequencies:       d.ChannelFrequencies,
 		UplinkHistory:            d.UplinkHistory,
 		LastDevStatusRequested:   d.LastDevStatusRequested,
-		LastDevStatusBattery:     d.LastDevStatusBattery,
-		LastDevStatusMargin:      d.LastDevStatusMargin,
 		LastDownlinkTX:           d.LastDownlinkTX,
 		BeaconLocked:             d.BeaconLocked,
 		PingSlotNb:               d.PingSlotNb,

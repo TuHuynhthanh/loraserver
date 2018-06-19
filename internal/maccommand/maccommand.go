@@ -3,20 +3,21 @@ package maccommand
 import (
 	"fmt"
 
+	"github.com/brocaar/loraserver/api/as"
 	"github.com/brocaar/loraserver/internal/models"
 	"github.com/brocaar/loraserver/internal/storage"
 	"github.com/brocaar/lorawan"
 )
 
 // Handle handles a MACCommand sent by a node.
-func Handle(ds *storage.DeviceSession, dp storage.DeviceProfile, block storage.MACCommandBlock, pending *storage.MACCommandBlock, rxPacket models.RXPacket) ([]storage.MACCommandBlock, error) {
+func Handle(ds *storage.DeviceSession, dp storage.DeviceProfile, asClient as.ApplicationServerClient, block storage.MACCommandBlock, pending *storage.MACCommandBlock, rxPacket models.RXPacket) ([]storage.MACCommandBlock, error) {
 	switch block.CID {
 	case lorawan.LinkADRAns:
 		return handleLinkADRAns(ds, block, pending)
 	case lorawan.LinkCheckReq:
 		return handleLinkCheckReq(ds, rxPacket)
 	case lorawan.DevStatusAns:
-		return handleDevStatusAns(ds, block)
+		return handleDevStatusAns(ds, asClient, block)
 	case lorawan.PingSlotInfoReq:
 		return handlePingSlotInfoReq(ds, block)
 	case lorawan.PingSlotChannelAns:

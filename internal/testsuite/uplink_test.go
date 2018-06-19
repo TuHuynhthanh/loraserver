@@ -209,8 +209,6 @@ func TestUplinkScenarios(t *testing.T) {
 					Longitude: gw1.Location.Longitude,
 				},
 			},
-			DeviceStatusBattery: 256,
-			DeviceStatusMargin:  256,
 		}
 
 		Convey("Given a set of test-scenarios for error handling", func() {
@@ -336,8 +334,6 @@ func TestUplinkScenarios(t *testing.T) {
 						Longitude: gw1.Location.Longitude,
 					},
 				},
-				DeviceStatusBattery: 256,
-				DeviceStatusMargin:  256,
 			}
 
 			expectedApplicationPushDataUpNoData7 := &as.HandleUplinkDataRequest{
@@ -367,8 +363,6 @@ func TestUplinkScenarios(t *testing.T) {
 						Longitude: gw1.Location.Longitude,
 					},
 				},
-				DeviceStatusBattery: 256,
-				DeviceStatusMargin:  256,
 			}
 
 			tests := []uplinkTestCase{
@@ -2062,8 +2056,6 @@ func TestUplinkScenarios(t *testing.T) {
 					BeforeFunc: func(tc *uplinkTestCase) error {
 						tc.DeviceSession.LastDevStatusRequested = time.Now()
 						tc.ExpectedASHandleDataUp.Data = []byte{1, 2, 3, 4}
-						tc.ExpectedASHandleDataUp.DeviceStatusBattery = 128
-						tc.ExpectedASHandleDataUp.DeviceStatusMargin = 10
 						return nil
 					},
 

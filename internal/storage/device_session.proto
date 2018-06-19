@@ -131,12 +131,6 @@ message DeviceSessionPB {
     // Last device-status requested timestamp (Unix ns)
     int64 last_device_status_request_time_unix_ns = 29;
 
-    // Last device-status battery status.
-    uint32 last_device_status_battery = 30;
-
-    // Last device-status margin status.
-    int32 last_device_status_margin = 31;
-
     // Last downlink timestamp (Unix ns).
     int64 last_downlink_tx_timestamp_unix_ns = 32;
 

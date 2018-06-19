@@ -661,7 +661,6 @@ func TestNetworkServerAPI(t *testing.T) {
 							RX2Frequency:          868900000,
 							MaxSupportedDR:        6,
 							UplinkGatewayHistory:  make(map[lorawan.EUI64]storage.UplinkGatewayHistory),
-							LastDevStatusMargin:   127,
 							PingSlotNb:            128,
 							PingSlotDR:            5,
 							PingSlotFrequency:     868100000,

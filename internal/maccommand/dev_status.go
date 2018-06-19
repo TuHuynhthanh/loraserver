@@ -1,11 +1,13 @@
 package maccommand
 
 import (
+	"context"
 	"fmt"
 	"time"
 
 	log "github.com/sirupsen/logrus"
 
+	"github.com/brocaar/loraserver/api/as"
 	"github.com/brocaar/loraserver/internal/storage"
 	"github.com/brocaar/lorawan"
 )
@@ -27,7 +29,7 @@ func RequestDevStatus(ds *storage.DeviceSession) storage.MACCommandBlock {
 	return block
 }
 
-func handleDevStatusAns(ds *storage.DeviceSession, block storage.MACCommandBlock) ([]storage.MACCommandBlock, error) {
+func handleDevStatusAns(ds *storage.DeviceSession, asClient as.ApplicationServerClient, block storage.MACCommandBlock) ([]storage.MACCommandBlock, error) {
 	if len(block.MACCommands) != 1 {
 		return nil, fmt.Errorf("exactly one mac-command expected, got %d", len(block.MACCommands))
 	}
@@ -37,14 +39,22 @@ func handleDevStatusAns(ds *storage.DeviceSession, block storage.MACCommandBlock
 		return nil, fmt.Errorf("expected *lorawan.DevStatusAnsPayload, got %T", block.MACCommands[0].Payload)
 	}
 
-	ds.LastDevStatusBattery = pl.Battery
-	ds.LastDevStatusMargin = pl.Margin
-
 	log.WithFields(log.Fields{
 		"dev_eui": ds.DevEUI,
-		"battery": ds.LastDevStatusBattery,
-		"margin":  ds.LastDevStatusMargin,
+		"battery": pl.Battery,
+		"margin":  pl.Margin,
 	}).Info("dev_status_ans answer received")
+
+	go func() {
+		_, err := asClient.SetDeviceStatus(context.Background(), &as.SetDeviceStatusRequest{
+			DevEui:  ds.DevEUI[:],
+			Battery: uint32(pl.Battery),
+			Margin:  int32(pl.Margin),
+		})
+		if err != nil {
+			log.WithField("dev_eui", ds.DevEUI).WithError(err).Error("as.SetDeviceStatus error")
+		}
+	}()
 
 	return nil, nil
 }

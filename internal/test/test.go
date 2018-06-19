@@ -235,16 +235,19 @@ type ApplicationClient struct {
 	HandleDataUpErr        error
 	HandleProprietaryUpErr error
 	HandleDownlinkACKErr   error
+	SetDeviceStatusError   error
 
 	HandleDataUpChan        chan as.HandleUplinkDataRequest
 	HandleProprietaryUpChan chan as.HandleProprietaryUplinkRequest
 	HandleErrorChan         chan as.HandleErrorRequest
 	HandleDownlinkACKChan   chan as.HandleDownlinkACKRequest
+	SetDeviceStatusChan     chan as.SetDeviceStatusRequest
 
 	HandleDataUpResponse        as.HandleUplinkDataResponse
 	HandleProprietaryUpResponse as.HandleProprietaryUplinkResponse
 	HandleErrorResponse         as.HandleErrorResponse
 	HandleDownlinkACKResponse   as.HandleDownlinkACKResponse
+	SetDeviceStatusResponse     as.SetDeviceStatusResponse
 }
 
 // NewApplicationClient returns a new ApplicationClient.
@@ -254,6 +257,7 @@ func NewApplicationClient() *ApplicationClient {
 		HandleProprietaryUpChan: make(chan as.HandleProprietaryUplinkRequest, 100),
 		HandleErrorChan:         make(chan as.HandleErrorRequest, 100),
 		HandleDownlinkACKChan:   make(chan as.HandleDownlinkACKRequest, 100),
+		SetDeviceStatusChan:     make(chan as.SetDeviceStatusRequest, 100),
 	}
 }
 
@@ -285,6 +289,12 @@ func (t *ApplicationClient) HandleError(ctx context.Context, in *as.HandleErrorR
 func (t *ApplicationClient) HandleDownlinkACK(ctx context.Context, in *as.HandleDownlinkACKRequest, opts ...grpc.CallOption) (*as.HandleDownlinkACKResponse, error) {
 	t.HandleDownlinkACKChan <- *in
 	return &t.HandleDownlinkACKResponse, nil
+}
+
+// SetDeviceStatus method.
+func (t *ApplicationClient) SetDeviceStatus(ctx context.Context, in *as.SetDeviceStatusRequest, opts ...grpc.CallOption) (*as.SetDeviceStatusResponse, error) {
+	t.SetDeviceStatusChan <- *in
+	return &t.SetDeviceStatusResponse, t.SetDeviceStatusError
 }
 
 // NetworkControllerClient is a network-controller client for testing.

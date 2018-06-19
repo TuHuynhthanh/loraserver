@@ -121,12 +121,6 @@ type DeviceSession struct {
 	// request was made.
 	LastDevStatusRequested time.Time
 
-	// LastDevStatusBattery contains the last received battery status.
-	LastDevStatusBattery uint8
-
-	// LastDevStatusMargin contains the last received margin status.
-	LastDevStatusMargin int8
-
 	// LastDownlinkTX contains the timestamp of the last downlink.
 	LastDownlinkTX time.Time
 
@@ -524,8 +518,6 @@ func deviceSessionToDeviceSessionPB(d DeviceSession) DeviceSessionPB {
 		UplinkGatewayHistory: make(map[string]*DeviceSessionPBUplinkGatewayHistory),
 
 		LastDeviceStatusRequestTimeUnixNs: d.LastDevStatusRequested.UnixNano(),
-		LastDeviceStatusBattery:           uint32(d.LastDevStatusBattery),
-		LastDeviceStatusMargin:            int32(d.LastDevStatusMargin),
 
 		LastDownlinkTxTimestampUnixNs: d.LastDownlinkTX.UnixNano(),
 		BeaconLocked:                  d.BeaconLocked,
@@ -612,12 +604,10 @@ func deviceSessionPBToDeviceSession(d DeviceSessionPB) DeviceSession {
 		ExtraUplinkChannels:  make(map[int]band.Channel),
 		UplinkGatewayHistory: make(map[lorawan.EUI64]UplinkGatewayHistory),
 
-		LastDevStatusBattery: uint8(d.LastDeviceStatusBattery),
-		LastDevStatusMargin:  int8(d.LastDeviceStatusMargin),
-		BeaconLocked:         d.BeaconLocked,
-		PingSlotNb:           int(d.PingSlotNb),
-		PingSlotDR:           int(d.PingSlotDr),
-		PingSlotFrequency:    int(d.PingSlotFrequency),
+		BeaconLocked:      d.BeaconLocked,
+		PingSlotNb:        int(d.PingSlotNb),
+		PingSlotDR:        int(d.PingSlotDr),
+		PingSlotFrequency: int(d.PingSlotFrequency),
 
 		RejoinRequestEnabled:   d.RejoinRequestEnabled,
 		RejoinRequestMaxCountN: int(d.RejoinRequestMaxCountN),

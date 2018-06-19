@@ -111,7 +111,6 @@ func TestRejoinScenarios(t *testing.T) {
 			NbTrans:               1,
 			EnabledUplinkChannels: []int{0, 1, 2},
 			UplinkGatewayHistory:  make(map[lorawan.EUI64]storage.UplinkGatewayHistory),
-			LastDevStatusMargin:   127,
 		}
 
 		c0, err := config.C.NetworkServer.Band.Band.GetDownlinkChannel(0)

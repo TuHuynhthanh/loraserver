@@ -584,9 +584,6 @@ func (n *NetworkServerAPI) ActivateDevice(ctx context.Context, req *ns.ActivateD
 		RXWindow:       storage.RX1,
 		MaxSupportedDR: sp.ServiceProfile.DRMax,
 
-		// set to invalid value to indicate we haven't received a status yet
-		LastDevStatusMargin: 127,
-
 		MACVersion: dp.MACVersion,
 	}
 
