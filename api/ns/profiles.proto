@@ -153,4 +153,3 @@ message RoutingProfile {
     // does not clear the certificate, unless the tls_cert is also left blank.
     string tls_key = 5;
 }
-

@@ -3,10 +3,10 @@ package api
 import (
 	"time"
 
-	"github.com/satori/go.uuid"
-
+	"github.com/golang/protobuf/ptypes"
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
+	"github.com/satori/go.uuid"
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/net/context"
 	"google.golang.org/grpc"
@@ -115,8 +115,6 @@ func (n *NetworkServerAPI) GetServiceProfile(ctx context.Context, req *ns.GetSer
 	}
 
 	resp := ns.GetServiceProfileResponse{
-		CreatedAtUnixNs: sp.CreatedAt.UnixNano(),
-		UpdatedAtUnixNs: sp.UpdatedAt.UnixNano(),
 		ServiceProfile: &ns.ServiceProfile{
 			Id:                     sp.ID.Bytes(),
 			UlRate:                 uint32(sp.ULRate),
@@ -137,6 +135,16 @@ func (n *NetworkServerAPI) GetServiceProfile(ctx context.Context, req *ns.GetSer
 			TargetPer:      uint32(sp.TargetPER),
 			MinGwDiversity: uint32(sp.MinGWDiversity),
 		},
+	}
+
+	resp.CreatedAt, err = ptypes.TimestampProto(sp.CreatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
+	}
+
+	resp.UpdatedAt, err = ptypes.TimestampProto(sp.UpdatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
 	}
 
 	switch sp.ULRatePolicy {
@@ -264,16 +272,26 @@ func (n *NetworkServerAPI) GetRoutingProfile(ctx context.Context, req *ns.GetRou
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.GetRoutingProfileResponse{
-		CreatedAtUnixNs: rp.CreatedAt.UnixNano(),
-		UpdatedAtUnixNs: rp.UpdatedAt.UnixNano(),
+	resp := ns.GetRoutingProfileResponse{
 		RoutingProfile: &ns.RoutingProfile{
 			Id:      rp.ID.Bytes(),
 			AsId:    rp.ASID,
 			CaCert:  rp.CACert,
 			TlsCert: rp.TLSCert,
 		},
-	}, nil
+	}
+
+	resp.CreatedAt, err = ptypes.TimestampProto(rp.CreatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
+	}
+
+	resp.UpdatedAt, err = ptypes.TimestampProto(rp.UpdatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
+	}
+
+	return &resp, nil
 }
 
 // UpdateRoutingProfile updates the given routing-profile.
@@ -393,8 +411,6 @@ func (n *NetworkServerAPI) GetDeviceProfile(ctx context.Context, req *ns.GetDevi
 	}
 
 	resp := ns.GetDeviceProfileResponse{
-		CreatedAtUnixNs: dp.CreatedAt.UnixNano(),
-		UpdatedAtUnixNs: dp.UpdatedAt.UnixNano(),
 		DeviceProfile: &ns.DeviceProfile{
 			Id:                 dp.ID.Bytes(),
 			SupportsClassB:     dp.SupportsClassB,
@@ -417,6 +433,16 @@ func (n *NetworkServerAPI) GetDeviceProfile(ctx context.Context, req *ns.GetDevi
 			RfRegion:           string(dp.RFRegion),
 			Supports_32BitFCnt: dp.Supports32bitFCnt,
 		},
+	}
+
+	resp.CreatedAt, err = ptypes.TimestampProto(dp.CreatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
+	}
+
+	resp.UpdatedAt, err = ptypes.TimestampProto(dp.UpdatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
 	}
 
 	return &resp, nil
@@ -536,9 +562,7 @@ func (n *NetworkServerAPI) GetDevice(ctx context.Context, req *ns.GetDeviceReque
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.GetDeviceResponse{
-		CreatedAtUnixNs: d.CreatedAt.UnixNano(),
-		UpdatedAtUnixNs: d.UpdatedAt.UnixNano(),
+	resp := ns.GetDeviceResponse{
 		Device: &ns.Device{
 			DevEui:           d.DevEUI[:],
 			SkipFCntCheck:    d.SkipFCntCheck,
@@ -546,7 +570,19 @@ func (n *NetworkServerAPI) GetDevice(ctx context.Context, req *ns.GetDeviceReque
 			ServiceProfileId: d.ServiceProfileID[:],
 			RoutingProfileId: d.RoutingProfileID[:],
 		},
-	}, nil
+	}
+
+	resp.CreatedAt, err = ptypes.TimestampProto(d.CreatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
+	}
+
+	resp.UpdatedAt, err = ptypes.TimestampProto(d.UpdatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
+	}
+
+	return &resp, nil
 }
 
 // UpdateDevice updates the given device.
@@ -878,8 +914,15 @@ func (n *NetworkServerAPI) GetGatewayStats(ctx context.Context, req *ns.GetGatew
 	var mac lorawan.EUI64
 	copy(mac[:], req.GatewayId)
 
-	start := time.Unix(0, req.StartTimestampUnixNs)
-	end := time.Unix(0, req.EndTimestampUnixNs)
+	start, err := ptypes.Timestamp(req.StartTimestamp)
+	if err != nil {
+		return nil, grpc.Errorf(codes.InvalidArgument, err.Error())
+	}
+
+	end, err := ptypes.Timestamp(req.EndTimestamp)
+	if err != nil {
+		return nil, grpc.Errorf(codes.InvalidArgument, err.Error())
+	}
 
 	stats, err := storage.GetGatewayStats(config.C.PostgreSQL.DB, mac, req.Interval.String(), start, end)
 	if err != nil {
@@ -889,13 +932,19 @@ func (n *NetworkServerAPI) GetGatewayStats(ctx context.Context, req *ns.GetGatew
 	var resp ns.GetGatewayStatsResponse
 
 	for _, stat := range stats {
-		resp.Result = append(resp.Result, &ns.GatewayStats{
-			TimestampUnixNs:     stat.Timestamp.UnixNano(),
+		row := ns.GatewayStats{
 			RxPacketsReceived:   int32(stat.RXPacketsReceived),
 			RxPacketsReceivedOk: int32(stat.RXPacketsReceivedOK),
 			TxPacketsReceived:   int32(stat.TXPacketsReceived),
 			TxPacketsEmitted:    int32(stat.TXPacketsEmitted),
-		})
+		}
+
+		row.Timestamp, err = ptypes.TimestampProto(stat.Timestamp)
+		if err != nil {
+			return nil, errToRPCError(err)
+		}
+
+		resp.Result = append(resp.Result, &row)
 	}
 
 	return &resp, nil
@@ -1036,11 +1085,19 @@ func (n *NetworkServerAPI) GetGatewayProfile(ctx context.Context, req *ns.GetGat
 	}
 
 	out := ns.GetGatewayProfileResponse{
-		CreatedAtUnixNs: gc.CreatedAt.UnixNano(),
-		UpdatedAtUnixNs: gc.UpdatedAt.UnixNano(),
 		GatewayProfile: &ns.GatewayProfile{
 			Id: gc.ID.Bytes(),
 		},
+	}
+
+	out.CreatedAt, err = ptypes.TimestampProto(gc.CreatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
+	}
+
+	out.UpdatedAt, err = ptypes.TimestampProto(gc.UpdatedAt)
+	if err != nil {
+		return nil, errToRPCError(err)
 	}
 
 	for _, c := range gc.Channels {
@@ -1301,6 +1358,7 @@ func (n *NetworkServerAPI) GetVersion(ctx context.Context, req *ns.GetVersionReq
 }
 
 func gwToResp(gw storage.Gateway) *ns.GetGatewayResponse {
+
 	resp := ns.GetGatewayResponse{
 		Gateway: &ns.Gateway{
 			Id:          gw.MAC[:],
@@ -1310,16 +1368,17 @@ func gwToResp(gw storage.Gateway) *ns.GetGatewayResponse {
 			Longitude:   gw.Location.Longitude,
 			Altitude:    gw.Altitude,
 		},
-		CreatedAtUnixNs: gw.CreatedAt.UnixNano(),
-		UpdatedAtUnixNs: gw.UpdatedAt.UnixNano(),
 	}
 
+	resp.CreatedAt, _ = ptypes.TimestampProto(gw.CreatedAt)
+	resp.UpdatedAt, _ = ptypes.TimestampProto(gw.UpdatedAt)
+
 	if gw.FirstSeenAt != nil {
-		resp.FirstSeenAtUnixNs = gw.FirstSeenAt.UnixNano()
+		resp.FirstSeenAt, _ = ptypes.TimestampProto(*gw.FirstSeenAt)
 	}
 
 	if gw.LastSeenAt != nil {
-		resp.LastSeenAtUnixNs = gw.LastSeenAt.UnixNano()
+		resp.LastSeenAt, _ = ptypes.TimestampProto(*gw.LastSeenAt)
 	}
 
 	if gw.GatewayProfileID != nil {
@@ -1364,11 +1423,14 @@ func frameLogToUplinkAndDownlinkFrameLog(fl framelog.FrameLog) (*ns.UplinkFrameL
 			}
 
 			if fl.UplinkFrame.RXInfoSet[i].Time != nil {
-				rxInfo.TimeUnixNs = fl.UplinkFrame.RXInfoSet[i].Time.UnixNano()
+				rxInfo.Time, err = ptypes.TimestampProto(*fl.UplinkFrame.RXInfoSet[i].Time)
+				if err != nil {
+					return nil, nil, err
+				}
 			}
 
 			if fl.UplinkFrame.RXInfoSet[i].TimeSinceGPSEpoch != nil {
-				rxInfo.NsSinceGpsEpoch = int64(*fl.UplinkFrame.RXInfoSet[i].TimeSinceGPSEpoch)
+				rxInfo.TimeSinceGpsEpoch = ptypes.DurationProto(time.Duration(*fl.UplinkFrame.RXInfoSet[i].TimeSinceGPSEpoch))
 			}
 
 			up.RxInfo = append(up.RxInfo, &rxInfo)
@@ -1405,7 +1467,7 @@ func frameLogToUplinkAndDownlinkFrameLog(fl framelog.FrameLog) (*ns.UplinkFrameL
 		}
 
 		if fl.DownlinkFrame.TXInfo.TimeSinceGPSEpoch != nil {
-			down.TxInfo.NsSinceGpsEpoch = int64(*fl.DownlinkFrame.TXInfo.TimeSinceGPSEpoch)
+			down.TxInfo.TimeSinceGpsEpoch = ptypes.DurationProto(time.Duration(*fl.DownlinkFrame.TXInfo.TimeSinceGPSEpoch))
 		}
 
 		if fl.DownlinkFrame.TXInfo.IPol != nil {

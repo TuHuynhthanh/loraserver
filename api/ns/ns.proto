@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package ns;
 
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/duration.proto";
 import "profiles.proto";
 
 // NetworkServerService provides the network-server API methods.
@@ -191,10 +193,10 @@ message GetServiceProfileResponse {
     ServiceProfile service_profile = 1;
 
     // Created at timestamp.
-    int64 created_at_unix_ns = 2;
+    google.protobuf.Timestamp created_at = 2;
 
     // Last update timestamp.
-    int64 updated_at_unix_ns = 3;
+    google.protobuf.Timestamp updated_at = 3;
 }
 
 message UpdateServiceProfileRequest {
@@ -233,10 +235,10 @@ message GetRoutingProfileResponse {
     RoutingProfile routing_profile = 1;
 
     // Created at timestamp.
-    int64 created_at_unix_ns = 2;
+    google.protobuf.Timestamp created_at = 2;
 
     // Last update timestamp.
-    int64 updated_at_unix_ns = 3;
+    google.protobuf.Timestamp updated_at = 3;
 }
 
 message UpdateRoutingProfileRequest {
@@ -273,10 +275,10 @@ message GetDeviceProfileResponse {
     DeviceProfile device_profile = 1;
 
     // Created at timestamp.
-    int64 created_at_unix_ns = 2;
+    google.protobuf.Timestamp created_at = 2;
 
     // Last update timestamp.
-    int64 updated_at_unix_ns = 3;
+    google.protobuf.Timestamp updated_at = 3;
 }
 
 message UpdateDeviceProfileRequest {
@@ -328,10 +330,10 @@ message GetDeviceResponse {
     Device device = 1;
 
     // Created at timestamp.
-    int64 created_at_unix_ns = 2;
+    google.protobuf.Timestamp created_at = 2;
 
     // Last update timestamp.
-    int64 updated_at_unix_ns = 3;
+    google.protobuf.Timestamp updated_at = 3;
 }
 
 message UpdateDeviceRequest {
@@ -487,16 +489,16 @@ message GetGatewayResponse {
     Gateway gateway = 1;
 
     // Created at timestamp.
-    int64 created_at_unix_ns = 2;
+    google.protobuf.Timestamp created_at = 2;
 
     // Last update timestamp.
-    int64 updated_at_unix_ns = 3;
+    google.protobuf.Timestamp updated_at = 3;
 
     // First seen timestamp.
-    int64 first_seen_at_unix_ns = 4;
+    google.protobuf.Timestamp first_seen_at = 4;
 
     // Last seen timestamp.
-    int64 last_seen_at_unix_ns = 5;
+    google.protobuf.Timestamp last_seen_at = 5;
 }
 
 message UpdateGatewayRequest {
@@ -526,7 +528,7 @@ enum AggregationInterval {
 
 message GatewayStats {
     // Timestamp of the (aggregated) measurement.
-    int64 timestamp_unix_ns = 1;
+    google.protobuf.Timestamp timestamp = 1;
 
     // Packets received by the gateway.
     int32 rx_packets_received = 2;
@@ -549,10 +551,10 @@ message GetGatewayStatsRequest {
     AggregationInterval interval = 2;
 
     // Timestamp to start from.
-    int64 start_timestamp_unix_ns = 3;
+    google.protobuf.Timestamp start_timestamp = 3;
 
     // Timestamp until to get from.
-    int64 end_timestamp_unix_ns = 4;
+    google.protobuf.Timestamp end_timestamp = 4;
 }
 
 message GetGatewayStatsResponse {
@@ -666,10 +668,10 @@ message UplinkRXInfo {
     bytes gateway_id = 1;
 
     // Time when the frame was received (if available).
-    int64 time_unix_ns = 2;
+    google.protobuf.Timestamp time = 2;
 
     // Time when the frame was received as time since GPS epoch (if available).
-    int64 ns_since_gps_epoch = 3;
+    google.protobuf.Duration time_since_gps_epoch = 3;
 
     // Gateway internal timestamp.
     uint32 timestamp = 4;
@@ -706,7 +708,7 @@ message DownlinkTXInfo {
     bool immediately = 2;
 
     // Transmit frame at the given time since GPS epoch.
-    int64 ns_since_gps_epoch = 3;
+    google.protobuf.Duration time_since_gps_epoch = 3;
 
     // Transmit the frame at the given gateway internal timestamp.
     uint32 timestamp = 4;
@@ -800,10 +802,10 @@ message GetGatewayProfileResponse {
     GatewayProfile gateway_profile = 1;
 
     // Created at timestamp.
-    int64 created_at_unix_ns = 2;
+    google.protobuf.Timestamp created_at = 2;
 
     // Last update timestamp.
-    int64 updated_at_unix_ns = 3;
+    google.protobuf.Timestamp updated_at = 3;
 }
 
 message UpdateGatewayProfileRequest {

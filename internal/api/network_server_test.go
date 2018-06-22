@@ -6,6 +6,7 @@ import (
 	"testing"
 	"time"
 
+	"github.com/golang/protobuf/ptypes"
 	uuid "github.com/satori/go.uuid"
 	. "github.com/smartystreets/goconvey/convey"
 	"google.golang.org/grpc"
@@ -929,10 +930,10 @@ func TestNetworkServerAPI(t *testing.T) {
 				So(err, ShouldBeNil)
 				req.Gateway.XXX_sizecache = 0
 				So(resp.Gateway, ShouldResemble, req.Gateway)
-				So(resp.CreatedAtUnixNs, ShouldNotEqual, 0)
-				So(resp.UpdatedAtUnixNs, ShouldNotEqual, 0)
-				So(resp.FirstSeenAtUnixNs, ShouldEqual, 0)
-				So(resp.LastSeenAtUnixNs, ShouldEqual, 0)
+				So(resp.CreatedAt.String(), ShouldNotEqual, "")
+				So(resp.UpdatedAt.String(), ShouldNotEqual, "")
+				So(resp.FirstSeenAt, ShouldBeNil)
+				So(resp.LastSeenAt, ShouldBeNil)
 			})
 
 			Convey("Then UpdateGateway updates the gateway", func() {
@@ -953,10 +954,10 @@ func TestNetworkServerAPI(t *testing.T) {
 				So(err, ShouldBeNil)
 				req.Gateway.XXX_sizecache = 0
 				So(resp.Gateway, ShouldResemble, req.Gateway)
-				So(resp.CreatedAtUnixNs, ShouldNotEqual, 0)
-				So(resp.UpdatedAtUnixNs, ShouldNotEqual, 0)
-				So(resp.FirstSeenAtUnixNs, ShouldEqual, 0)
-				So(resp.LastSeenAtUnixNs, ShouldEqual, 0)
+				So(resp.CreatedAt.String(), ShouldNotEqual, "")
+				So(resp.UpdatedAt.String(), ShouldNotEqual, "")
+				So(resp.FirstSeenAt, ShouldBeNil)
+				So(resp.LastSeenAt, ShouldBeNil)
 			})
 
 			Convey("Then DeleteGateway deletes the gateway", func() {
@@ -994,15 +995,19 @@ func TestNetworkServerAPI(t *testing.T) {
 				So(err, ShouldBeNil)
 
 				Convey("Then GetGatewayStats returns these stats", func() {
+					start, _ := ptypes.TimestampProto(now.Truncate(time.Minute))
+					end, _ := ptypes.TimestampProto(now)
+					nowTrunc, _ := ptypes.TimestampProto(now.Truncate(time.Minute))
+
 					resp, err := api.GetGatewayStats(ctx, &ns.GetGatewayStatsRequest{
-						GatewayId:            []byte{1, 2, 3, 4, 5, 6, 7, 8},
-						Interval:             ns.AggregationInterval_MINUTE,
-						StartTimestampUnixNs: now.Truncate(time.Minute).UnixNano(),
-						EndTimestampUnixNs:   now.UnixNano(),
+						GatewayId:      []byte{1, 2, 3, 4, 5, 6, 7, 8},
+						Interval:       ns.AggregationInterval_MINUTE,
+						StartTimestamp: start,
+						EndTimestamp:   end,
 					})
 					So(err, ShouldBeNil)
 					So(resp.Result, ShouldHaveLength, 1)
-					So(time.Unix(0, resp.Result[0].TimestampUnixNs).Equal(now.Truncate(time.Minute)), ShouldBeTrue)
+					So(resp.Result[0].Timestamp, ShouldResemble, nowTrunc)
 					So(resp.Result[0].RxPacketsReceived, ShouldEqual, 10)
 					So(resp.Result[0].RxPacketsReceivedOk, ShouldEqual, 5)
 					So(resp.Result[0].TxPacketsReceived, ShouldEqual, 11)
