@@ -4,7 +4,10 @@ package ns;
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/duration.proto";
+import "google/protobuf/empty.proto";
+import "github.com/brocaar/loraserver/api/common/common.proto";
 import "profiles.proto";
+
 
 // NetworkServerService provides the network-server API methods.
 service NetworkServerService {
@@ -15,10 +18,10 @@ service NetworkServerService {
     rpc GetServiceProfile(GetServiceProfileRequest) returns (GetServiceProfileResponse) {}
 
     // UpdateServiceProfile updates the given service-profile.
-    rpc UpdateServiceProfile(UpdateServiceProfileRequest) returns (UpdateServiceProfileResponse) {}
+    rpc UpdateServiceProfile(UpdateServiceProfileRequest) returns (google.protobuf.Empty) {}
 
     // DeleteServiceProfile deletes the service-profile matching the given id.
-    rpc DeleteServiceProfile(DeleteServiceProfileRequest) returns (DeleteServiceProfileResponse) {}
+    rpc DeleteServiceProfile(DeleteServiceProfileRequest) returns (google.protobuf.Empty) {}
 
     // CreateRoutingProfile creates the given routing-profile.
     rpc CreateRoutingProfile(CreateRoutingProfileRequest) returns (CreateRoutingProfileResponse) {}
@@ -27,10 +30,10 @@ service NetworkServerService {
     rpc GetRoutingProfile(GetRoutingProfileRequest) returns (GetRoutingProfileResponse) {}
 
     // UpdateRoutingProfile updates the given routing-profile.
-    rpc UpdateRoutingProfile(UpdateRoutingProfileRequest) returns (UpdateRoutingProfileResponse) {}
+    rpc UpdateRoutingProfile(UpdateRoutingProfileRequest) returns (google.protobuf.Empty) {}
 
     // DeleteRoutingProfile deletes the routing-profile matching the given id.
-    rpc DeleteRoutingProfile(DeleteRoutingProfileRequest) returns (DeleteRoutingProfileResponse) {}
+    rpc DeleteRoutingProfile(DeleteRoutingProfileRequest) returns (google.protobuf.Empty) {}
 
     // CreateDeviceProfile creates the given device-profile.
     rpc CreateDeviceProfile(CreateDeviceProfileRequest) returns (CreateDeviceProfileResponse) {}
@@ -39,37 +42,37 @@ service NetworkServerService {
     rpc GetDeviceProfile(GetDeviceProfileRequest) returns (GetDeviceProfileResponse) {}
 
     // UpdateDeviceProfile updates the given device-profile.
-    rpc UpdateDeviceProfile(UpdateDeviceProfileRequest) returns (UpdateDeviceProfileResponse) {}
+    rpc UpdateDeviceProfile(UpdateDeviceProfileRequest) returns (google.protobuf.Empty) {}
 
     // DeleteDeviceProfile deletes the device-profile matching the given id.
-    rpc DeleteDeviceProfile(DeleteDeviceProfileRequest) returns (DeleteDeviceProfileResponse) {}
+    rpc DeleteDeviceProfile(DeleteDeviceProfileRequest) returns (google.protobuf.Empty) {}
 
     // CreateDevice creates the given device.
-    rpc CreateDevice(CreateDeviceRequest) returns (CreateDeviceResponse) {}
+    rpc CreateDevice(CreateDeviceRequest) returns (google.protobuf.Empty) {}
 
     // GetDevice returns the device matching the given DevEUI.
     rpc GetDevice(GetDeviceRequest) returns (GetDeviceResponse) {}
 
     // UpdateDevice updates the given device.
-    rpc UpdateDevice(UpdateDeviceRequest) returns (UpdateDeviceResponse) {}
+    rpc UpdateDevice(UpdateDeviceRequest) returns (google.protobuf.Empty) {}
 
     // DeleteDevice deletes the device matching the given DevEUI.
-    rpc DeleteDevice(DeleteDeviceRequest) returns (DeleteDeviceResponse) {}
+    rpc DeleteDevice(DeleteDeviceRequest) returns (google.protobuf.Empty) {}
 
     // ActivateDevice activates a device (ABP).
-    rpc ActivateDevice(ActivateDeviceRequest) returns (ActivateDeviceResponse) {}
+    rpc ActivateDevice(ActivateDeviceRequest) returns (google.protobuf.Empty) {}
 
     // DeactivateDevice de-activates a device.
-    rpc DeactivateDevice(DeactivateDeviceRequest) returns (DeactivateDeviceResponse) {}
+    rpc DeactivateDevice(DeactivateDeviceRequest) returns (google.protobuf.Empty) {}
 
     // GetDeviceActivation returns the device activation details.
     rpc GetDeviceActivation(GetDeviceActivationRequest) returns (GetDeviceActivationResponse) {}
 
     // CreateDeviceQueueItem creates the given device-queue item.
-    rpc CreateDeviceQueueItem(CreateDeviceQueueItemRequest) returns (CreateDeviceQueueItemResponse) {}
+    rpc CreateDeviceQueueItem(CreateDeviceQueueItemRequest) returns (google.protobuf.Empty) {}
 
     // FlushDeviceQueueForDevEUI flushes the device-queue for the given DevEUI.
-    rpc FlushDeviceQueueForDevEUI(FlushDeviceQueueForDevEUIRequest) returns (FlushDeviceQueueForDevEUIResponse) {}
+    rpc FlushDeviceQueueForDevEUI(FlushDeviceQueueForDevEUIRequest) returns (google.protobuf.Empty) {}
 
     // GetDeviceQueueItemsForDevEUI returns all device-queue items for the given DevEUI.
     rpc GetDeviceQueueItemsForDevEUI(GetDeviceQueueItemsForDevEUIRequest) returns (GetDeviceQueueItemsForDevEUIResponse) {}
@@ -79,25 +82,25 @@ service NetworkServerService {
     rpc GetNextDownlinkFCntForDevEUI(GetNextDownlinkFCntForDevEUIRequest) returns (GetNextDownlinkFCntForDevEUIResponse) {}
 
     // GetRandomDevAddr returns a random DevAddr taking the NwkID prefix into account.
-    rpc GetRandomDevAddr(GetRandomDevAddrRequest) returns (GetRandomDevAddrResponse) {}
+    rpc GetRandomDevAddr(google.protobuf.Empty) returns (GetRandomDevAddrResponse) {}
 
     // CreateMACCommandQueueItem adds the downlink mac-command to the queue.
-    rpc CreateMACCommandQueueItem(CreateMACCommandQueueItemRequest) returns (CreateMACCommandQueueItemResponse) {}
+    rpc CreateMACCommandQueueItem(CreateMACCommandQueueItemRequest) returns (google.protobuf.Empty) {}
 
     // SendProprietaryPayload send a payload using the 'Proprietary' LoRaWAN message-type.
-    rpc SendProprietaryPayload(SendProprietaryPayloadRequest) returns (SendProprietaryPayloadResponse) {}
+    rpc SendProprietaryPayload(SendProprietaryPayloadRequest) returns (google.protobuf.Empty) {}
 
     // CreateGateway creates the given gateway.
-    rpc CreateGateway(CreateGatewayRequest) returns (CreateGatewayResponse) {}
+    rpc CreateGateway(CreateGatewayRequest) returns (google.protobuf.Empty) {}
 
     // GetGateway returns data for a particular gateway.
     rpc GetGateway(GetGatewayRequest) returns (GetGatewayResponse) {}
 
     // UpdateGateway updates an existing gateway.
-    rpc UpdateGateway(UpdateGatewayRequest) returns (UpdateGatewayResponse) {}
+    rpc UpdateGateway(UpdateGatewayRequest) returns (google.protobuf.Empty) {}
 
     // DeleteGateway deletes a gateway.
-    rpc DeleteGateway(DeleteGatewayRequest) returns (DeleteGatewayResponse) {}
+    rpc DeleteGateway(DeleteGatewayRequest) returns (google.protobuf.Empty) {}
 
     // CreateGatewayProfile creates the given gateway-profile.
     rpc CreateGatewayProfile(CreateGatewayProfileRequest) returns (CreateGatewayProfileResponse) {}
@@ -106,10 +109,10 @@ service NetworkServerService {
     rpc GetGatewayProfile(GetGatewayProfileRequest) returns (GetGatewayProfileResponse) {}
 
     // UpdateGatewayProfile updates the given gateway-profile.
-    rpc UpdateGatewayProfile(UpdateGatewayProfileRequest) returns (UpdateGatewayProfileResponse) {}
+    rpc UpdateGatewayProfile(UpdateGatewayProfileRequest) returns (google.protobuf.Empty) {}
 
     // DeleteGatewayProfile deletes the gateway-profile matching a given id.
-    rpc DeleteGatewayProfile(DeleteGatewayProfileRequest) returns (DeleteGatewayProfileResponse) {}
+    rpc DeleteGatewayProfile(DeleteGatewayProfileRequest) returns (google.protobuf.Empty) {}
 
     // GetGatewayStats returns stats of an existing gateway.
     rpc GetGatewayStats(GetGatewayStatsRequest) returns (GetGatewayStatsResponse) {}
@@ -121,7 +124,7 @@ service NetworkServerService {
     rpc StreamFrameLogsForDevice(StreamFrameLogsForDeviceRequest) returns (stream StreamFrameLogsForDeviceResponse) {}
 
     // GetVersion returns the LoRa Server version.
-    rpc GetVersion(GetVersionRequest) returns (GetVersionResponse) {}
+    rpc GetVersion(google.protobuf.Empty) returns (GetVersionResponse) {}
 }
 
 enum RXWindow {
@@ -131,47 +134,6 @@ enum RXWindow {
     // Receive window 2
     RX2 = 1;
 }
-
-enum Modulation {
-    // LoRa
-    LORA = 0;
-
-    // FSK
-    FSK = 1;
-}
-
-enum Region {
-    // EU868
-    EU868 = 0;
-
-    // US915
-    US915 = 2;
-
-    // CN779
-    CN779 = 3;
-
-    // EU433
-    EU433 = 4;
-
-    // AU915
-    AU915 = 5;
-
-    // CN470
-    CN470 = 6;
-
-    // AS923
-    AS923 = 7;
-
-    // KR920
-    KR920 = 8;
-
-    // IN865
-    IN865 = 9;
-
-    // RU864
-    RU864 = 10;
-}
-
 
 message CreateServiceProfileRequest {
     // Service-profile object to create.
@@ -204,14 +166,10 @@ message UpdateServiceProfileRequest {
     ServiceProfile service_profile = 1;
 }
 
-message UpdateServiceProfileResponse {}
-
 message DeleteServiceProfileRequest {
     // ID of the service-profile.
     bytes id = 1;
 }
-
-message DeleteServiceProfileResponse {}
 
 
 message CreateRoutingProfileRequest {
@@ -246,14 +204,10 @@ message UpdateRoutingProfileRequest {
     RoutingProfile routing_profile = 1;
 }
 
-message UpdateRoutingProfileResponse {}
-
 message DeleteRoutingProfileRequest {
     // Routing-profile ID.
     bytes id = 1;
 }
-
-message DeleteRoutingProfileResponse {}
 
 message CreateDeviceProfileRequest {
     // Device-profile object to create.
@@ -286,14 +240,10 @@ message UpdateDeviceProfileRequest {
     DeviceProfile device_profile = 1;
 }
 
-message UpdateDeviceProfileResponse {}
-
 message DeleteDeviceProfileRequest {
     // Device-profile ID.
     bytes id = 1;
 }
-
-message DeleteDeviceProfileResponse {}
 
 message Device {
     // DevEUI.
@@ -318,8 +268,6 @@ message CreateDeviceRequest {
     Device device = 1;
 }
 
-message CreateDeviceResponse {}
-
 message GetDeviceRequest {
     // DevEUI.
     bytes dev_eui = 1;
@@ -341,14 +289,10 @@ message UpdateDeviceRequest {
     Device device = 1;
 }
 
-message UpdateDeviceResponse {}
-
 message DeleteDeviceRequest {
     // DevEUI.
     bytes dev_eui = 1;
 }
-
-message DeleteDeviceResponse {}
 
 message DeviceActivation {
     // DevEUI.
@@ -384,14 +328,10 @@ message ActivateDeviceRequest {
     DeviceActivation device_activation = 1;
 }
 
-message ActivateDeviceResponse {}
-
 message DeactivateDeviceRequest {
     // Device EUI (8 bytes).
     bytes dev_eui = 1;
 }
-
-message DeactivateDeviceResponse {}
 
 message GetDeviceActivationRequest {
     // Device EUI (8 bytes).
@@ -403,8 +343,6 @@ message GetDeviceActivationResponse {
     DeviceActivation device_activation = 1;
 }
 
-
-message GetRandomDevAddrRequest {}
 
 message GetRandomDevAddrResponse {
     // Random device address (DevAddr).
@@ -423,8 +361,6 @@ message CreateMACCommandQueueItemRequest {
     // are always sent within a single frame.
     repeated bytes commands = 5;
 }
-
-message CreateMACCommandQueueItemResponse {}
 
 message SendProprietaryPayloadRequest {
     // MACPayload of the proprietary LoRaWAN frame.
@@ -446,8 +382,6 @@ message SendProprietaryPayloadRequest {
     // Data-rate to use for the transmission.
     uint32 dr = 6;
 }
-
-message SendProprietaryPayloadResponse {}
 
 message Gateway {
     // Gateway ID.
@@ -477,8 +411,6 @@ message CreateGatewayRequest {
     Gateway gateway = 1;
 }
 
-message CreateGatewayResponse {}
-
 message GetGatewayRequest {
     // Gateway ID.
     bytes id = 1;
@@ -506,14 +438,10 @@ message UpdateGatewayRequest {
     Gateway gateway = 1;
 }
 
-message UpdateGatewayResponse {}
-
 message DeleteGatewayRequest {
     // Gateway ID.
     bytes id = 1;
 }
-
-message DeleteGatewayResponse {}
 
 enum AggregationInterval {
     SECOND = 0;
@@ -583,14 +511,10 @@ message CreateDeviceQueueItemRequest {
     DeviceQueueItem item = 1;
 }
 
-message CreateDeviceQueueItemResponse {}
-
 message FlushDeviceQueueForDevEUIRequest {
     // DevEUI of the device.
     bytes dev_eui = 1;
 }
-
-message FlushDeviceQueueForDevEUIResponse {}
 
 message GetDeviceQueueItemsForDevEUIRequest {
     // DevEUI of the device.
@@ -743,14 +667,12 @@ message DownlinkFrameLog {
     bytes phy_payload = 2;
 }
 
-message GetVersionRequest {}
-
 message GetVersionResponse {
     // LoRa Server version.
     string version = 1;
 
     // Region configured for this network-server.
-    Region region = 2;
+    common.Region region = 2;
 }
 message GatewayProfile {
     // ID of the gateway-profile.
@@ -767,7 +689,7 @@ message GatewayProfile {
 
 message GatewayProfileExtraChannel {
     // Modulation.
-    Modulation modulation = 1;
+    common.Modulation modulation = 1;
 
     // Frequency.
     uint32 frequency = 2;
@@ -813,11 +735,7 @@ message UpdateGatewayProfileRequest {
     GatewayProfile gateway_profile = 1;
 }
 
-message UpdateGatewayProfileResponse {}
-
 message DeleteGatewayProfileRequest {
     // Gateway-profile ID.
     bytes id = 1;
 }
-
-message DeleteGatewayProfileResponse {}

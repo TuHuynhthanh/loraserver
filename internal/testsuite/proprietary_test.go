@@ -5,17 +5,16 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/brocaar/loraserver/internal/config"
-	"github.com/brocaar/loraserver/internal/storage"
-	"github.com/brocaar/loraserver/internal/uplink"
-
 	"github.com/brocaar/loraserver/api/as"
-
+	commonPB "github.com/brocaar/loraserver/api/common"
 	"github.com/brocaar/loraserver/api/gw"
 	"github.com/brocaar/loraserver/api/ns"
 	"github.com/brocaar/loraserver/internal/api"
 	"github.com/brocaar/loraserver/internal/common"
+	"github.com/brocaar/loraserver/internal/config"
+	"github.com/brocaar/loraserver/internal/storage"
 	"github.com/brocaar/loraserver/internal/test"
+	"github.com/brocaar/loraserver/internal/uplink"
 	"github.com/brocaar/lorawan"
 	. "github.com/smartystreets/goconvey/convey"
 )
@@ -163,21 +162,22 @@ func TestUplinkProprietaryPHYPayload(t *testing.T) {
 					ExpectedApplicationHandleProprietaryUp: &as.HandleProprietaryUplinkRequest{
 						MacPayload: []byte{1, 2, 3, 4},
 						Mic:        []byte{5, 6, 7, 8},
-						TxInfo: &as.TXInfo{
-							Frequency: 868100000,
-							DataRate: &as.DataRate{
-								Modulation:   "LORA",
-								BandWidth:    125,
-								SpreadFactor: 12,
+						TxInfo: &gw.UplinkTXInfo{
+							Frequency:  868100000,
+							Modulation: commonPB.Modulation_LORA,
+							ModulationInfo: &gw.UplinkTXInfo_LoraModulationInfo{
+								LoraModulationInfo: &gw.LoRaModulationInfo{
+									Bandwidth:       125,
+									SpreadingFactor: 12,
+									CodeRate:        "4/5",
+								},
 							},
-							CodeRate: "4/5",
 						},
-						RxInfo: []*as.RXInfo{
+						RxInfo: []*gw.UplinkRXInfo{
 							{
-								Mac:       []byte{1, 2, 3, 4, 5, 6, 7, 8},
+								GatewayId: []byte{1, 2, 3, 4, 5, 6, 7, 8},
 								Rssi:      -10,
-								LoRaSNR:   5,
-								Name:      "test-gw",
+								LoraSnr:   5,
 								Latitude:  1.1234,
 								Longitude: 2.345,
 								Altitude:  10,

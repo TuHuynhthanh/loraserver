@@ -6,7 +6,9 @@ package ns
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
+import common "github.com/brocaar/loraserver/api/common"
 import duration "github.com/golang/protobuf/ptypes/duration"
+import empty "github.com/golang/protobuf/ptypes/empty"
 import timestamp "github.com/golang/protobuf/ptypes/timestamp"
 
 import (
@@ -47,89 +49,7 @@ func (x RXWindow) String() string {
 	return proto.EnumName(RXWindow_name, int32(x))
 }
 func (RXWindow) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{0}
-}
-
-type Modulation int32
-
-const (
-	// LoRa
-	Modulation_LORA Modulation = 0
-	// FSK
-	Modulation_FSK Modulation = 1
-)
-
-var Modulation_name = map[int32]string{
-	0: "LORA",
-	1: "FSK",
-}
-var Modulation_value = map[string]int32{
-	"LORA": 0,
-	"FSK":  1,
-}
-
-func (x Modulation) String() string {
-	return proto.EnumName(Modulation_name, int32(x))
-}
-func (Modulation) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{1}
-}
-
-type Region int32
-
-const (
-	// EU868
-	Region_EU868 Region = 0
-	// US915
-	Region_US915 Region = 2
-	// CN779
-	Region_CN779 Region = 3
-	// EU433
-	Region_EU433 Region = 4
-	// AU915
-	Region_AU915 Region = 5
-	// CN470
-	Region_CN470 Region = 6
-	// AS923
-	Region_AS923 Region = 7
-	// KR920
-	Region_KR920 Region = 8
-	// IN865
-	Region_IN865 Region = 9
-	// RU864
-	Region_RU864 Region = 10
-)
-
-var Region_name = map[int32]string{
-	0:  "EU868",
-	2:  "US915",
-	3:  "CN779",
-	4:  "EU433",
-	5:  "AU915",
-	6:  "CN470",
-	7:  "AS923",
-	8:  "KR920",
-	9:  "IN865",
-	10: "RU864",
-}
-var Region_value = map[string]int32{
-	"EU868": 0,
-	"US915": 2,
-	"CN779": 3,
-	"EU433": 4,
-	"AU915": 5,
-	"CN470": 6,
-	"AS923": 7,
-	"KR920": 8,
-	"IN865": 9,
-	"RU864": 10,
-}
-
-func (x Region) String() string {
-	return proto.EnumName(Region_name, int32(x))
-}
-func (Region) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{2}
+	return fileDescriptor_ns_e975c32956bea996, []int{0}
 }
 
 type AggregationInterval int32
@@ -170,7 +90,7 @@ func (x AggregationInterval) String() string {
 	return proto.EnumName(AggregationInterval_name, int32(x))
 }
 func (AggregationInterval) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{3}
+	return fileDescriptor_ns_e975c32956bea996, []int{1}
 }
 
 type CreateServiceProfileRequest struct {
@@ -185,7 +105,7 @@ func (m *CreateServiceProfileRequest) Reset()         { *m = CreateServiceProfil
 func (m *CreateServiceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateServiceProfileRequest) ProtoMessage()    {}
 func (*CreateServiceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{0}
+	return fileDescriptor_ns_e975c32956bea996, []int{0}
 }
 func (m *CreateServiceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateServiceProfileRequest.Unmarshal(m, b)
@@ -224,7 +144,7 @@ func (m *CreateServiceProfileResponse) Reset()         { *m = CreateServiceProfi
 func (m *CreateServiceProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateServiceProfileResponse) ProtoMessage()    {}
 func (*CreateServiceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{1}
+	return fileDescriptor_ns_e975c32956bea996, []int{1}
 }
 func (m *CreateServiceProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateServiceProfileResponse.Unmarshal(m, b)
@@ -263,7 +183,7 @@ func (m *GetServiceProfileRequest) Reset()         { *m = GetServiceProfileReque
 func (m *GetServiceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetServiceProfileRequest) ProtoMessage()    {}
 func (*GetServiceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{2}
+	return fileDescriptor_ns_e975c32956bea996, []int{2}
 }
 func (m *GetServiceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetServiceProfileRequest.Unmarshal(m, b)
@@ -306,7 +226,7 @@ func (m *GetServiceProfileResponse) Reset()         { *m = GetServiceProfileResp
 func (m *GetServiceProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*GetServiceProfileResponse) ProtoMessage()    {}
 func (*GetServiceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{3}
+	return fileDescriptor_ns_e975c32956bea996, []int{3}
 }
 func (m *GetServiceProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetServiceProfileResponse.Unmarshal(m, b)
@@ -359,7 +279,7 @@ func (m *UpdateServiceProfileRequest) Reset()         { *m = UpdateServiceProfil
 func (m *UpdateServiceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateServiceProfileRequest) ProtoMessage()    {}
 func (*UpdateServiceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{4}
+	return fileDescriptor_ns_e975c32956bea996, []int{4}
 }
 func (m *UpdateServiceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateServiceProfileRequest.Unmarshal(m, b)
@@ -386,36 +306,6 @@ func (m *UpdateServiceProfileRequest) GetServiceProfile() *ServiceProfile {
 	return nil
 }
 
-type UpdateServiceProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdateServiceProfileResponse) Reset()         { *m = UpdateServiceProfileResponse{} }
-func (m *UpdateServiceProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateServiceProfileResponse) ProtoMessage()    {}
-func (*UpdateServiceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{5}
-}
-func (m *UpdateServiceProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateServiceProfileResponse.Unmarshal(m, b)
-}
-func (m *UpdateServiceProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateServiceProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *UpdateServiceProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateServiceProfileResponse.Merge(dst, src)
-}
-func (m *UpdateServiceProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateServiceProfileResponse.Size(m)
-}
-func (m *UpdateServiceProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateServiceProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateServiceProfileResponse proto.InternalMessageInfo
-
 type DeleteServiceProfileRequest struct {
 	// ID of the service-profile.
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -428,7 +318,7 @@ func (m *DeleteServiceProfileRequest) Reset()         { *m = DeleteServiceProfil
 func (m *DeleteServiceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteServiceProfileRequest) ProtoMessage()    {}
 func (*DeleteServiceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{6}
+	return fileDescriptor_ns_e975c32956bea996, []int{5}
 }
 func (m *DeleteServiceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteServiceProfileRequest.Unmarshal(m, b)
@@ -455,36 +345,6 @@ func (m *DeleteServiceProfileRequest) GetId() []byte {
 	return nil
 }
 
-type DeleteServiceProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeleteServiceProfileResponse) Reset()         { *m = DeleteServiceProfileResponse{} }
-func (m *DeleteServiceProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*DeleteServiceProfileResponse) ProtoMessage()    {}
-func (*DeleteServiceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{7}
-}
-func (m *DeleteServiceProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteServiceProfileResponse.Unmarshal(m, b)
-}
-func (m *DeleteServiceProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteServiceProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *DeleteServiceProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteServiceProfileResponse.Merge(dst, src)
-}
-func (m *DeleteServiceProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_DeleteServiceProfileResponse.Size(m)
-}
-func (m *DeleteServiceProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteServiceProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeleteServiceProfileResponse proto.InternalMessageInfo
-
 type CreateRoutingProfileRequest struct {
 	// Routing-profile object to create.
 	RoutingProfile       *RoutingProfile `protobuf:"bytes,1,opt,name=routing_profile,json=routingProfile,proto3" json:"routing_profile,omitempty"`
@@ -497,7 +357,7 @@ func (m *CreateRoutingProfileRequest) Reset()         { *m = CreateRoutingProfil
 func (m *CreateRoutingProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateRoutingProfileRequest) ProtoMessage()    {}
 func (*CreateRoutingProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{8}
+	return fileDescriptor_ns_e975c32956bea996, []int{6}
 }
 func (m *CreateRoutingProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateRoutingProfileRequest.Unmarshal(m, b)
@@ -536,7 +396,7 @@ func (m *CreateRoutingProfileResponse) Reset()         { *m = CreateRoutingProfi
 func (m *CreateRoutingProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateRoutingProfileResponse) ProtoMessage()    {}
 func (*CreateRoutingProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{9}
+	return fileDescriptor_ns_e975c32956bea996, []int{7}
 }
 func (m *CreateRoutingProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateRoutingProfileResponse.Unmarshal(m, b)
@@ -575,7 +435,7 @@ func (m *GetRoutingProfileRequest) Reset()         { *m = GetRoutingProfileReque
 func (m *GetRoutingProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetRoutingProfileRequest) ProtoMessage()    {}
 func (*GetRoutingProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{10}
+	return fileDescriptor_ns_e975c32956bea996, []int{8}
 }
 func (m *GetRoutingProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetRoutingProfileRequest.Unmarshal(m, b)
@@ -618,7 +478,7 @@ func (m *GetRoutingProfileResponse) Reset()         { *m = GetRoutingProfileResp
 func (m *GetRoutingProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*GetRoutingProfileResponse) ProtoMessage()    {}
 func (*GetRoutingProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{11}
+	return fileDescriptor_ns_e975c32956bea996, []int{9}
 }
 func (m *GetRoutingProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetRoutingProfileResponse.Unmarshal(m, b)
@@ -671,7 +531,7 @@ func (m *UpdateRoutingProfileRequest) Reset()         { *m = UpdateRoutingProfil
 func (m *UpdateRoutingProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateRoutingProfileRequest) ProtoMessage()    {}
 func (*UpdateRoutingProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{12}
+	return fileDescriptor_ns_e975c32956bea996, []int{10}
 }
 func (m *UpdateRoutingProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateRoutingProfileRequest.Unmarshal(m, b)
@@ -698,36 +558,6 @@ func (m *UpdateRoutingProfileRequest) GetRoutingProfile() *RoutingProfile {
 	return nil
 }
 
-type UpdateRoutingProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdateRoutingProfileResponse) Reset()         { *m = UpdateRoutingProfileResponse{} }
-func (m *UpdateRoutingProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateRoutingProfileResponse) ProtoMessage()    {}
-func (*UpdateRoutingProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{13}
-}
-func (m *UpdateRoutingProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateRoutingProfileResponse.Unmarshal(m, b)
-}
-func (m *UpdateRoutingProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateRoutingProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *UpdateRoutingProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateRoutingProfileResponse.Merge(dst, src)
-}
-func (m *UpdateRoutingProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateRoutingProfileResponse.Size(m)
-}
-func (m *UpdateRoutingProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateRoutingProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateRoutingProfileResponse proto.InternalMessageInfo
-
 type DeleteRoutingProfileRequest struct {
 	// Routing-profile ID.
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -740,7 +570,7 @@ func (m *DeleteRoutingProfileRequest) Reset()         { *m = DeleteRoutingProfil
 func (m *DeleteRoutingProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteRoutingProfileRequest) ProtoMessage()    {}
 func (*DeleteRoutingProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{14}
+	return fileDescriptor_ns_e975c32956bea996, []int{11}
 }
 func (m *DeleteRoutingProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteRoutingProfileRequest.Unmarshal(m, b)
@@ -767,36 +597,6 @@ func (m *DeleteRoutingProfileRequest) GetId() []byte {
 	return nil
 }
 
-type DeleteRoutingProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeleteRoutingProfileResponse) Reset()         { *m = DeleteRoutingProfileResponse{} }
-func (m *DeleteRoutingProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*DeleteRoutingProfileResponse) ProtoMessage()    {}
-func (*DeleteRoutingProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{15}
-}
-func (m *DeleteRoutingProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteRoutingProfileResponse.Unmarshal(m, b)
-}
-func (m *DeleteRoutingProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteRoutingProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *DeleteRoutingProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteRoutingProfileResponse.Merge(dst, src)
-}
-func (m *DeleteRoutingProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_DeleteRoutingProfileResponse.Size(m)
-}
-func (m *DeleteRoutingProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteRoutingProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeleteRoutingProfileResponse proto.InternalMessageInfo
-
 type CreateDeviceProfileRequest struct {
 	// Device-profile object to create.
 	DeviceProfile        *DeviceProfile `protobuf:"bytes,1,opt,name=device_profile,json=deviceProfile,proto3" json:"device_profile,omitempty"`
@@ -809,7 +609,7 @@ func (m *CreateDeviceProfileRequest) Reset()         { *m = CreateDeviceProfileR
 func (m *CreateDeviceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDeviceProfileRequest) ProtoMessage()    {}
 func (*CreateDeviceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{16}
+	return fileDescriptor_ns_e975c32956bea996, []int{12}
 }
 func (m *CreateDeviceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceProfileRequest.Unmarshal(m, b)
@@ -848,7 +648,7 @@ func (m *CreateDeviceProfileResponse) Reset()         { *m = CreateDeviceProfile
 func (m *CreateDeviceProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateDeviceProfileResponse) ProtoMessage()    {}
 func (*CreateDeviceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{17}
+	return fileDescriptor_ns_e975c32956bea996, []int{13}
 }
 func (m *CreateDeviceProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceProfileResponse.Unmarshal(m, b)
@@ -887,7 +687,7 @@ func (m *GetDeviceProfileRequest) Reset()         { *m = GetDeviceProfileRequest
 func (m *GetDeviceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceProfileRequest) ProtoMessage()    {}
 func (*GetDeviceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{18}
+	return fileDescriptor_ns_e975c32956bea996, []int{14}
 }
 func (m *GetDeviceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceProfileRequest.Unmarshal(m, b)
@@ -930,7 +730,7 @@ func (m *GetDeviceProfileResponse) Reset()         { *m = GetDeviceProfileRespon
 func (m *GetDeviceProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceProfileResponse) ProtoMessage()    {}
 func (*GetDeviceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{19}
+	return fileDescriptor_ns_e975c32956bea996, []int{15}
 }
 func (m *GetDeviceProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceProfileResponse.Unmarshal(m, b)
@@ -983,7 +783,7 @@ func (m *UpdateDeviceProfileRequest) Reset()         { *m = UpdateDeviceProfileR
 func (m *UpdateDeviceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateDeviceProfileRequest) ProtoMessage()    {}
 func (*UpdateDeviceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{20}
+	return fileDescriptor_ns_e975c32956bea996, []int{16}
 }
 func (m *UpdateDeviceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDeviceProfileRequest.Unmarshal(m, b)
@@ -1010,36 +810,6 @@ func (m *UpdateDeviceProfileRequest) GetDeviceProfile() *DeviceProfile {
 	return nil
 }
 
-type UpdateDeviceProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdateDeviceProfileResponse) Reset()         { *m = UpdateDeviceProfileResponse{} }
-func (m *UpdateDeviceProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateDeviceProfileResponse) ProtoMessage()    {}
-func (*UpdateDeviceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{21}
-}
-func (m *UpdateDeviceProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateDeviceProfileResponse.Unmarshal(m, b)
-}
-func (m *UpdateDeviceProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateDeviceProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *UpdateDeviceProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateDeviceProfileResponse.Merge(dst, src)
-}
-func (m *UpdateDeviceProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateDeviceProfileResponse.Size(m)
-}
-func (m *UpdateDeviceProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateDeviceProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateDeviceProfileResponse proto.InternalMessageInfo
-
 type DeleteDeviceProfileRequest struct {
 	// Device-profile ID.
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -1052,7 +822,7 @@ func (m *DeleteDeviceProfileRequest) Reset()         { *m = DeleteDeviceProfileR
 func (m *DeleteDeviceProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteDeviceProfileRequest) ProtoMessage()    {}
 func (*DeleteDeviceProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{22}
+	return fileDescriptor_ns_e975c32956bea996, []int{17}
 }
 func (m *DeleteDeviceProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDeviceProfileRequest.Unmarshal(m, b)
@@ -1079,36 +849,6 @@ func (m *DeleteDeviceProfileRequest) GetId() []byte {
 	return nil
 }
 
-type DeleteDeviceProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeleteDeviceProfileResponse) Reset()         { *m = DeleteDeviceProfileResponse{} }
-func (m *DeleteDeviceProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*DeleteDeviceProfileResponse) ProtoMessage()    {}
-func (*DeleteDeviceProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{23}
-}
-func (m *DeleteDeviceProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteDeviceProfileResponse.Unmarshal(m, b)
-}
-func (m *DeleteDeviceProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteDeviceProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *DeleteDeviceProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteDeviceProfileResponse.Merge(dst, src)
-}
-func (m *DeleteDeviceProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_DeleteDeviceProfileResponse.Size(m)
-}
-func (m *DeleteDeviceProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteDeviceProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeleteDeviceProfileResponse proto.InternalMessageInfo
-
 type Device struct {
 	// DevEUI.
 	DevEui []byte `protobuf:"bytes,1,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
@@ -1130,7 +870,7 @@ func (m *Device) Reset()         { *m = Device{} }
 func (m *Device) String() string { return proto.CompactTextString(m) }
 func (*Device) ProtoMessage()    {}
 func (*Device) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{24}
+	return fileDescriptor_ns_e975c32956bea996, []int{18}
 }
 func (m *Device) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Device.Unmarshal(m, b)
@@ -1197,7 +937,7 @@ func (m *CreateDeviceRequest) Reset()         { *m = CreateDeviceRequest{} }
 func (m *CreateDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDeviceRequest) ProtoMessage()    {}
 func (*CreateDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{25}
+	return fileDescriptor_ns_e975c32956bea996, []int{19}
 }
 func (m *CreateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceRequest.Unmarshal(m, b)
@@ -1224,36 +964,6 @@ func (m *CreateDeviceRequest) GetDevice() *Device {
 	return nil
 }
 
-type CreateDeviceResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *CreateDeviceResponse) Reset()         { *m = CreateDeviceResponse{} }
-func (m *CreateDeviceResponse) String() string { return proto.CompactTextString(m) }
-func (*CreateDeviceResponse) ProtoMessage()    {}
-func (*CreateDeviceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{26}
-}
-func (m *CreateDeviceResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateDeviceResponse.Unmarshal(m, b)
-}
-func (m *CreateDeviceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateDeviceResponse.Marshal(b, m, deterministic)
-}
-func (dst *CreateDeviceResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateDeviceResponse.Merge(dst, src)
-}
-func (m *CreateDeviceResponse) XXX_Size() int {
-	return xxx_messageInfo_CreateDeviceResponse.Size(m)
-}
-func (m *CreateDeviceResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateDeviceResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreateDeviceResponse proto.InternalMessageInfo
-
 type GetDeviceRequest struct {
 	// DevEUI.
 	DevEui               []byte   `protobuf:"bytes,1,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
@@ -1266,7 +976,7 @@ func (m *GetDeviceRequest) Reset()         { *m = GetDeviceRequest{} }
 func (m *GetDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceRequest) ProtoMessage()    {}
 func (*GetDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{27}
+	return fileDescriptor_ns_e975c32956bea996, []int{20}
 }
 func (m *GetDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceRequest.Unmarshal(m, b)
@@ -1309,7 +1019,7 @@ func (m *GetDeviceResponse) Reset()         { *m = GetDeviceResponse{} }
 func (m *GetDeviceResponse) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceResponse) ProtoMessage()    {}
 func (*GetDeviceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{28}
+	return fileDescriptor_ns_e975c32956bea996, []int{21}
 }
 func (m *GetDeviceResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceResponse.Unmarshal(m, b)
@@ -1362,7 +1072,7 @@ func (m *UpdateDeviceRequest) Reset()         { *m = UpdateDeviceRequest{} }
 func (m *UpdateDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateDeviceRequest) ProtoMessage()    {}
 func (*UpdateDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{29}
+	return fileDescriptor_ns_e975c32956bea996, []int{22}
 }
 func (m *UpdateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateDeviceRequest.Unmarshal(m, b)
@@ -1389,36 +1099,6 @@ func (m *UpdateDeviceRequest) GetDevice() *Device {
 	return nil
 }
 
-type UpdateDeviceResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdateDeviceResponse) Reset()         { *m = UpdateDeviceResponse{} }
-func (m *UpdateDeviceResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateDeviceResponse) ProtoMessage()    {}
-func (*UpdateDeviceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{30}
-}
-func (m *UpdateDeviceResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateDeviceResponse.Unmarshal(m, b)
-}
-func (m *UpdateDeviceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateDeviceResponse.Marshal(b, m, deterministic)
-}
-func (dst *UpdateDeviceResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateDeviceResponse.Merge(dst, src)
-}
-func (m *UpdateDeviceResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateDeviceResponse.Size(m)
-}
-func (m *UpdateDeviceResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateDeviceResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateDeviceResponse proto.InternalMessageInfo
-
 type DeleteDeviceRequest struct {
 	// DevEUI.
 	DevEui               []byte   `protobuf:"bytes,1,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
@@ -1431,7 +1111,7 @@ func (m *DeleteDeviceRequest) Reset()         { *m = DeleteDeviceRequest{} }
 func (m *DeleteDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteDeviceRequest) ProtoMessage()    {}
 func (*DeleteDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{31}
+	return fileDescriptor_ns_e975c32956bea996, []int{23}
 }
 func (m *DeleteDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteDeviceRequest.Unmarshal(m, b)
@@ -1457,36 +1137,6 @@ func (m *DeleteDeviceRequest) GetDevEui() []byte {
 	}
 	return nil
 }
-
-type DeleteDeviceResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeleteDeviceResponse) Reset()         { *m = DeleteDeviceResponse{} }
-func (m *DeleteDeviceResponse) String() string { return proto.CompactTextString(m) }
-func (*DeleteDeviceResponse) ProtoMessage()    {}
-func (*DeleteDeviceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{32}
-}
-func (m *DeleteDeviceResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteDeviceResponse.Unmarshal(m, b)
-}
-func (m *DeleteDeviceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteDeviceResponse.Marshal(b, m, deterministic)
-}
-func (dst *DeleteDeviceResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteDeviceResponse.Merge(dst, src)
-}
-func (m *DeleteDeviceResponse) XXX_Size() int {
-	return xxx_messageInfo_DeleteDeviceResponse.Size(m)
-}
-func (m *DeleteDeviceResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteDeviceResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeleteDeviceResponse proto.InternalMessageInfo
 
 type DeviceActivation struct {
 	// DevEUI.
@@ -1516,7 +1166,7 @@ func (m *DeviceActivation) Reset()         { *m = DeviceActivation{} }
 func (m *DeviceActivation) String() string { return proto.CompactTextString(m) }
 func (*DeviceActivation) ProtoMessage()    {}
 func (*DeviceActivation) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{33}
+	return fileDescriptor_ns_e975c32956bea996, []int{24}
 }
 func (m *DeviceActivation) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceActivation.Unmarshal(m, b)
@@ -1611,7 +1261,7 @@ func (m *ActivateDeviceRequest) Reset()         { *m = ActivateDeviceRequest{} }
 func (m *ActivateDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*ActivateDeviceRequest) ProtoMessage()    {}
 func (*ActivateDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{34}
+	return fileDescriptor_ns_e975c32956bea996, []int{25}
 }
 func (m *ActivateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_ActivateDeviceRequest.Unmarshal(m, b)
@@ -1638,36 +1288,6 @@ func (m *ActivateDeviceRequest) GetDeviceActivation() *DeviceActivation {
 	return nil
 }
 
-type ActivateDeviceResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ActivateDeviceResponse) Reset()         { *m = ActivateDeviceResponse{} }
-func (m *ActivateDeviceResponse) String() string { return proto.CompactTextString(m) }
-func (*ActivateDeviceResponse) ProtoMessage()    {}
-func (*ActivateDeviceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{35}
-}
-func (m *ActivateDeviceResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ActivateDeviceResponse.Unmarshal(m, b)
-}
-func (m *ActivateDeviceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ActivateDeviceResponse.Marshal(b, m, deterministic)
-}
-func (dst *ActivateDeviceResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ActivateDeviceResponse.Merge(dst, src)
-}
-func (m *ActivateDeviceResponse) XXX_Size() int {
-	return xxx_messageInfo_ActivateDeviceResponse.Size(m)
-}
-func (m *ActivateDeviceResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_ActivateDeviceResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ActivateDeviceResponse proto.InternalMessageInfo
-
 type DeactivateDeviceRequest struct {
 	// Device EUI (8 bytes).
 	DevEui               []byte   `protobuf:"bytes,1,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
@@ -1680,7 +1300,7 @@ func (m *DeactivateDeviceRequest) Reset()         { *m = DeactivateDeviceRequest
 func (m *DeactivateDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*DeactivateDeviceRequest) ProtoMessage()    {}
 func (*DeactivateDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{36}
+	return fileDescriptor_ns_e975c32956bea996, []int{26}
 }
 func (m *DeactivateDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeactivateDeviceRequest.Unmarshal(m, b)
@@ -1707,36 +1327,6 @@ func (m *DeactivateDeviceRequest) GetDevEui() []byte {
 	return nil
 }
 
-type DeactivateDeviceResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeactivateDeviceResponse) Reset()         { *m = DeactivateDeviceResponse{} }
-func (m *DeactivateDeviceResponse) String() string { return proto.CompactTextString(m) }
-func (*DeactivateDeviceResponse) ProtoMessage()    {}
-func (*DeactivateDeviceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{37}
-}
-func (m *DeactivateDeviceResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeactivateDeviceResponse.Unmarshal(m, b)
-}
-func (m *DeactivateDeviceResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeactivateDeviceResponse.Marshal(b, m, deterministic)
-}
-func (dst *DeactivateDeviceResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeactivateDeviceResponse.Merge(dst, src)
-}
-func (m *DeactivateDeviceResponse) XXX_Size() int {
-	return xxx_messageInfo_DeactivateDeviceResponse.Size(m)
-}
-func (m *DeactivateDeviceResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeactivateDeviceResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeactivateDeviceResponse proto.InternalMessageInfo
-
 type GetDeviceActivationRequest struct {
 	// Device EUI (8 bytes).
 	DevEui               []byte   `protobuf:"bytes,1,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
@@ -1749,7 +1339,7 @@ func (m *GetDeviceActivationRequest) Reset()         { *m = GetDeviceActivationR
 func (m *GetDeviceActivationRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceActivationRequest) ProtoMessage()    {}
 func (*GetDeviceActivationRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{38}
+	return fileDescriptor_ns_e975c32956bea996, []int{27}
 }
 func (m *GetDeviceActivationRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceActivationRequest.Unmarshal(m, b)
@@ -1788,7 +1378,7 @@ func (m *GetDeviceActivationResponse) Reset()         { *m = GetDeviceActivation
 func (m *GetDeviceActivationResponse) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceActivationResponse) ProtoMessage()    {}
 func (*GetDeviceActivationResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{39}
+	return fileDescriptor_ns_e975c32956bea996, []int{28}
 }
 func (m *GetDeviceActivationResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceActivationResponse.Unmarshal(m, b)
@@ -1815,36 +1405,6 @@ func (m *GetDeviceActivationResponse) GetDeviceActivation() *DeviceActivation {
 	return nil
 }
 
-type GetRandomDevAddrRequest struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetRandomDevAddrRequest) Reset()         { *m = GetRandomDevAddrRequest{} }
-func (m *GetRandomDevAddrRequest) String() string { return proto.CompactTextString(m) }
-func (*GetRandomDevAddrRequest) ProtoMessage()    {}
-func (*GetRandomDevAddrRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{40}
-}
-func (m *GetRandomDevAddrRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetRandomDevAddrRequest.Unmarshal(m, b)
-}
-func (m *GetRandomDevAddrRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetRandomDevAddrRequest.Marshal(b, m, deterministic)
-}
-func (dst *GetRandomDevAddrRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetRandomDevAddrRequest.Merge(dst, src)
-}
-func (m *GetRandomDevAddrRequest) XXX_Size() int {
-	return xxx_messageInfo_GetRandomDevAddrRequest.Size(m)
-}
-func (m *GetRandomDevAddrRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetRandomDevAddrRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetRandomDevAddrRequest proto.InternalMessageInfo
-
 type GetRandomDevAddrResponse struct {
 	// Random device address (DevAddr).
 	// Note that this includes the NetID prefix of the network-server.
@@ -1858,7 +1418,7 @@ func (m *GetRandomDevAddrResponse) Reset()         { *m = GetRandomDevAddrRespon
 func (m *GetRandomDevAddrResponse) String() string { return proto.CompactTextString(m) }
 func (*GetRandomDevAddrResponse) ProtoMessage()    {}
 func (*GetRandomDevAddrResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{41}
+	return fileDescriptor_ns_e975c32956bea996, []int{29}
 }
 func (m *GetRandomDevAddrResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetRandomDevAddrResponse.Unmarshal(m, b)
@@ -1902,7 +1462,7 @@ func (m *CreateMACCommandQueueItemRequest) Reset()         { *m = CreateMACComma
 func (m *CreateMACCommandQueueItemRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateMACCommandQueueItemRequest) ProtoMessage()    {}
 func (*CreateMACCommandQueueItemRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{42}
+	return fileDescriptor_ns_e975c32956bea996, []int{30}
 }
 func (m *CreateMACCommandQueueItemRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateMACCommandQueueItemRequest.Unmarshal(m, b)
@@ -1943,36 +1503,6 @@ func (m *CreateMACCommandQueueItemRequest) GetCommands() [][]byte {
 	return nil
 }
 
-type CreateMACCommandQueueItemResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *CreateMACCommandQueueItemResponse) Reset()         { *m = CreateMACCommandQueueItemResponse{} }
-func (m *CreateMACCommandQueueItemResponse) String() string { return proto.CompactTextString(m) }
-func (*CreateMACCommandQueueItemResponse) ProtoMessage()    {}
-func (*CreateMACCommandQueueItemResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{43}
-}
-func (m *CreateMACCommandQueueItemResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateMACCommandQueueItemResponse.Unmarshal(m, b)
-}
-func (m *CreateMACCommandQueueItemResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateMACCommandQueueItemResponse.Marshal(b, m, deterministic)
-}
-func (dst *CreateMACCommandQueueItemResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateMACCommandQueueItemResponse.Merge(dst, src)
-}
-func (m *CreateMACCommandQueueItemResponse) XXX_Size() int {
-	return xxx_messageInfo_CreateMACCommandQueueItemResponse.Size(m)
-}
-func (m *CreateMACCommandQueueItemResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateMACCommandQueueItemResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreateMACCommandQueueItemResponse proto.InternalMessageInfo
-
 type SendProprietaryPayloadRequest struct {
 	// MACPayload of the proprietary LoRaWAN frame.
 	MacPayload []byte `protobuf:"bytes,1,opt,name=mac_payload,json=macPayload,proto3" json:"mac_payload,omitempty"`
@@ -1996,7 +1526,7 @@ func (m *SendProprietaryPayloadRequest) Reset()         { *m = SendProprietaryPa
 func (m *SendProprietaryPayloadRequest) String() string { return proto.CompactTextString(m) }
 func (*SendProprietaryPayloadRequest) ProtoMessage()    {}
 func (*SendProprietaryPayloadRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{44}
+	return fileDescriptor_ns_e975c32956bea996, []int{31}
 }
 func (m *SendProprietaryPayloadRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_SendProprietaryPayloadRequest.Unmarshal(m, b)
@@ -2058,36 +1588,6 @@ func (m *SendProprietaryPayloadRequest) GetDr() uint32 {
 	return 0
 }
 
-type SendProprietaryPayloadResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *SendProprietaryPayloadResponse) Reset()         { *m = SendProprietaryPayloadResponse{} }
-func (m *SendProprietaryPayloadResponse) String() string { return proto.CompactTextString(m) }
-func (*SendProprietaryPayloadResponse) ProtoMessage()    {}
-func (*SendProprietaryPayloadResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{45}
-}
-func (m *SendProprietaryPayloadResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_SendProprietaryPayloadResponse.Unmarshal(m, b)
-}
-func (m *SendProprietaryPayloadResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_SendProprietaryPayloadResponse.Marshal(b, m, deterministic)
-}
-func (dst *SendProprietaryPayloadResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SendProprietaryPayloadResponse.Merge(dst, src)
-}
-func (m *SendProprietaryPayloadResponse) XXX_Size() int {
-	return xxx_messageInfo_SendProprietaryPayloadResponse.Size(m)
-}
-func (m *SendProprietaryPayloadResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_SendProprietaryPayloadResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SendProprietaryPayloadResponse proto.InternalMessageInfo
-
 type Gateway struct {
 	// Gateway ID.
 	Id []byte `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -2112,7 +1612,7 @@ func (m *Gateway) Reset()         { *m = Gateway{} }
 func (m *Gateway) String() string { return proto.CompactTextString(m) }
 func (*Gateway) ProtoMessage()    {}
 func (*Gateway) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{46}
+	return fileDescriptor_ns_e975c32956bea996, []int{32}
 }
 func (m *Gateway) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_Gateway.Unmarshal(m, b)
@@ -2193,7 +1693,7 @@ func (m *CreateGatewayRequest) Reset()         { *m = CreateGatewayRequest{} }
 func (m *CreateGatewayRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateGatewayRequest) ProtoMessage()    {}
 func (*CreateGatewayRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{47}
+	return fileDescriptor_ns_e975c32956bea996, []int{33}
 }
 func (m *CreateGatewayRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateGatewayRequest.Unmarshal(m, b)
@@ -2220,36 +1720,6 @@ func (m *CreateGatewayRequest) GetGateway() *Gateway {
 	return nil
 }
 
-type CreateGatewayResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *CreateGatewayResponse) Reset()         { *m = CreateGatewayResponse{} }
-func (m *CreateGatewayResponse) String() string { return proto.CompactTextString(m) }
-func (*CreateGatewayResponse) ProtoMessage()    {}
-func (*CreateGatewayResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{48}
-}
-func (m *CreateGatewayResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateGatewayResponse.Unmarshal(m, b)
-}
-func (m *CreateGatewayResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateGatewayResponse.Marshal(b, m, deterministic)
-}
-func (dst *CreateGatewayResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateGatewayResponse.Merge(dst, src)
-}
-func (m *CreateGatewayResponse) XXX_Size() int {
-	return xxx_messageInfo_CreateGatewayResponse.Size(m)
-}
-func (m *CreateGatewayResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateGatewayResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreateGatewayResponse proto.InternalMessageInfo
-
 type GetGatewayRequest struct {
 	// Gateway ID.
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -2262,7 +1732,7 @@ func (m *GetGatewayRequest) Reset()         { *m = GetGatewayRequest{} }
 func (m *GetGatewayRequest) String() string { return proto.CompactTextString(m) }
 func (*GetGatewayRequest) ProtoMessage()    {}
 func (*GetGatewayRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{49}
+	return fileDescriptor_ns_e975c32956bea996, []int{34}
 }
 func (m *GetGatewayRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGatewayRequest.Unmarshal(m, b)
@@ -2309,7 +1779,7 @@ func (m *GetGatewayResponse) Reset()         { *m = GetGatewayResponse{} }
 func (m *GetGatewayResponse) String() string { return proto.CompactTextString(m) }
 func (*GetGatewayResponse) ProtoMessage()    {}
 func (*GetGatewayResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{50}
+	return fileDescriptor_ns_e975c32956bea996, []int{35}
 }
 func (m *GetGatewayResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGatewayResponse.Unmarshal(m, b)
@@ -2376,7 +1846,7 @@ func (m *UpdateGatewayRequest) Reset()         { *m = UpdateGatewayRequest{} }
 func (m *UpdateGatewayRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateGatewayRequest) ProtoMessage()    {}
 func (*UpdateGatewayRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{51}
+	return fileDescriptor_ns_e975c32956bea996, []int{36}
 }
 func (m *UpdateGatewayRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateGatewayRequest.Unmarshal(m, b)
@@ -2403,36 +1873,6 @@ func (m *UpdateGatewayRequest) GetGateway() *Gateway {
 	return nil
 }
 
-type UpdateGatewayResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdateGatewayResponse) Reset()         { *m = UpdateGatewayResponse{} }
-func (m *UpdateGatewayResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateGatewayResponse) ProtoMessage()    {}
-func (*UpdateGatewayResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{52}
-}
-func (m *UpdateGatewayResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateGatewayResponse.Unmarshal(m, b)
-}
-func (m *UpdateGatewayResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateGatewayResponse.Marshal(b, m, deterministic)
-}
-func (dst *UpdateGatewayResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateGatewayResponse.Merge(dst, src)
-}
-func (m *UpdateGatewayResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateGatewayResponse.Size(m)
-}
-func (m *UpdateGatewayResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateGatewayResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateGatewayResponse proto.InternalMessageInfo
-
 type DeleteGatewayRequest struct {
 	// Gateway ID.
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -2445,7 +1885,7 @@ func (m *DeleteGatewayRequest) Reset()         { *m = DeleteGatewayRequest{} }
 func (m *DeleteGatewayRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteGatewayRequest) ProtoMessage()    {}
 func (*DeleteGatewayRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{53}
+	return fileDescriptor_ns_e975c32956bea996, []int{37}
 }
 func (m *DeleteGatewayRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteGatewayRequest.Unmarshal(m, b)
@@ -2472,36 +1912,6 @@ func (m *DeleteGatewayRequest) GetId() []byte {
 	return nil
 }
 
-type DeleteGatewayResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeleteGatewayResponse) Reset()         { *m = DeleteGatewayResponse{} }
-func (m *DeleteGatewayResponse) String() string { return proto.CompactTextString(m) }
-func (*DeleteGatewayResponse) ProtoMessage()    {}
-func (*DeleteGatewayResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{54}
-}
-func (m *DeleteGatewayResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteGatewayResponse.Unmarshal(m, b)
-}
-func (m *DeleteGatewayResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteGatewayResponse.Marshal(b, m, deterministic)
-}
-func (dst *DeleteGatewayResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteGatewayResponse.Merge(dst, src)
-}
-func (m *DeleteGatewayResponse) XXX_Size() int {
-	return xxx_messageInfo_DeleteGatewayResponse.Size(m)
-}
-func (m *DeleteGatewayResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteGatewayResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeleteGatewayResponse proto.InternalMessageInfo
-
 type GatewayStats struct {
 	// Timestamp of the (aggregated) measurement.
 	Timestamp *timestamp.Timestamp `protobuf:"bytes,1,opt,name=timestamp,proto3" json:"timestamp,omitempty"`
@@ -2522,7 +1932,7 @@ func (m *GatewayStats) Reset()         { *m = GatewayStats{} }
 func (m *GatewayStats) String() string { return proto.CompactTextString(m) }
 func (*GatewayStats) ProtoMessage()    {}
 func (*GatewayStats) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{55}
+	return fileDescriptor_ns_e975c32956bea996, []int{38}
 }
 func (m *GatewayStats) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GatewayStats.Unmarshal(m, b)
@@ -2595,7 +2005,7 @@ func (m *GetGatewayStatsRequest) Reset()         { *m = GetGatewayStatsRequest{}
 func (m *GetGatewayStatsRequest) String() string { return proto.CompactTextString(m) }
 func (*GetGatewayStatsRequest) ProtoMessage()    {}
 func (*GetGatewayStatsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{56}
+	return fileDescriptor_ns_e975c32956bea996, []int{39}
 }
 func (m *GetGatewayStatsRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGatewayStatsRequest.Unmarshal(m, b)
@@ -2654,7 +2064,7 @@ func (m *GetGatewayStatsResponse) Reset()         { *m = GetGatewayStatsResponse
 func (m *GetGatewayStatsResponse) String() string { return proto.CompactTextString(m) }
 func (*GetGatewayStatsResponse) ProtoMessage()    {}
 func (*GetGatewayStatsResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{57}
+	return fileDescriptor_ns_e975c32956bea996, []int{40}
 }
 func (m *GetGatewayStatsResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGatewayStatsResponse.Unmarshal(m, b)
@@ -2702,7 +2112,7 @@ func (m *DeviceQueueItem) Reset()         { *m = DeviceQueueItem{} }
 func (m *DeviceQueueItem) String() string { return proto.CompactTextString(m) }
 func (*DeviceQueueItem) ProtoMessage()    {}
 func (*DeviceQueueItem) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{58}
+	return fileDescriptor_ns_e975c32956bea996, []int{41}
 }
 func (m *DeviceQueueItem) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeviceQueueItem.Unmarshal(m, b)
@@ -2768,7 +2178,7 @@ func (m *CreateDeviceQueueItemRequest) Reset()         { *m = CreateDeviceQueueI
 func (m *CreateDeviceQueueItemRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateDeviceQueueItemRequest) ProtoMessage()    {}
 func (*CreateDeviceQueueItemRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{59}
+	return fileDescriptor_ns_e975c32956bea996, []int{42}
 }
 func (m *CreateDeviceQueueItemRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateDeviceQueueItemRequest.Unmarshal(m, b)
@@ -2795,36 +2205,6 @@ func (m *CreateDeviceQueueItemRequest) GetItem() *DeviceQueueItem {
 	return nil
 }
 
-type CreateDeviceQueueItemResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *CreateDeviceQueueItemResponse) Reset()         { *m = CreateDeviceQueueItemResponse{} }
-func (m *CreateDeviceQueueItemResponse) String() string { return proto.CompactTextString(m) }
-func (*CreateDeviceQueueItemResponse) ProtoMessage()    {}
-func (*CreateDeviceQueueItemResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{60}
-}
-func (m *CreateDeviceQueueItemResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_CreateDeviceQueueItemResponse.Unmarshal(m, b)
-}
-func (m *CreateDeviceQueueItemResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_CreateDeviceQueueItemResponse.Marshal(b, m, deterministic)
-}
-func (dst *CreateDeviceQueueItemResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CreateDeviceQueueItemResponse.Merge(dst, src)
-}
-func (m *CreateDeviceQueueItemResponse) XXX_Size() int {
-	return xxx_messageInfo_CreateDeviceQueueItemResponse.Size(m)
-}
-func (m *CreateDeviceQueueItemResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_CreateDeviceQueueItemResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_CreateDeviceQueueItemResponse proto.InternalMessageInfo
-
 type FlushDeviceQueueForDevEUIRequest struct {
 	// DevEUI of the device.
 	DevEui               []byte   `protobuf:"bytes,1,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
@@ -2837,7 +2217,7 @@ func (m *FlushDeviceQueueForDevEUIRequest) Reset()         { *m = FlushDeviceQue
 func (m *FlushDeviceQueueForDevEUIRequest) String() string { return proto.CompactTextString(m) }
 func (*FlushDeviceQueueForDevEUIRequest) ProtoMessage()    {}
 func (*FlushDeviceQueueForDevEUIRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{61}
+	return fileDescriptor_ns_e975c32956bea996, []int{43}
 }
 func (m *FlushDeviceQueueForDevEUIRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_FlushDeviceQueueForDevEUIRequest.Unmarshal(m, b)
@@ -2864,36 +2244,6 @@ func (m *FlushDeviceQueueForDevEUIRequest) GetDevEui() []byte {
 	return nil
 }
 
-type FlushDeviceQueueForDevEUIResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *FlushDeviceQueueForDevEUIResponse) Reset()         { *m = FlushDeviceQueueForDevEUIResponse{} }
-func (m *FlushDeviceQueueForDevEUIResponse) String() string { return proto.CompactTextString(m) }
-func (*FlushDeviceQueueForDevEUIResponse) ProtoMessage()    {}
-func (*FlushDeviceQueueForDevEUIResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{62}
-}
-func (m *FlushDeviceQueueForDevEUIResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_FlushDeviceQueueForDevEUIResponse.Unmarshal(m, b)
-}
-func (m *FlushDeviceQueueForDevEUIResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_FlushDeviceQueueForDevEUIResponse.Marshal(b, m, deterministic)
-}
-func (dst *FlushDeviceQueueForDevEUIResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_FlushDeviceQueueForDevEUIResponse.Merge(dst, src)
-}
-func (m *FlushDeviceQueueForDevEUIResponse) XXX_Size() int {
-	return xxx_messageInfo_FlushDeviceQueueForDevEUIResponse.Size(m)
-}
-func (m *FlushDeviceQueueForDevEUIResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_FlushDeviceQueueForDevEUIResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_FlushDeviceQueueForDevEUIResponse proto.InternalMessageInfo
-
 type GetDeviceQueueItemsForDevEUIRequest struct {
 	// DevEUI of the device.
 	DevEui               []byte   `protobuf:"bytes,1,opt,name=dev_eui,json=devEui,proto3" json:"dev_eui,omitempty"`
@@ -2906,7 +2256,7 @@ func (m *GetDeviceQueueItemsForDevEUIRequest) Reset()         { *m = GetDeviceQu
 func (m *GetDeviceQueueItemsForDevEUIRequest) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceQueueItemsForDevEUIRequest) ProtoMessage()    {}
 func (*GetDeviceQueueItemsForDevEUIRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{63}
+	return fileDescriptor_ns_e975c32956bea996, []int{44}
 }
 func (m *GetDeviceQueueItemsForDevEUIRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceQueueItemsForDevEUIRequest.Unmarshal(m, b)
@@ -2944,7 +2294,7 @@ func (m *GetDeviceQueueItemsForDevEUIResponse) Reset()         { *m = GetDeviceQ
 func (m *GetDeviceQueueItemsForDevEUIResponse) String() string { return proto.CompactTextString(m) }
 func (*GetDeviceQueueItemsForDevEUIResponse) ProtoMessage()    {}
 func (*GetDeviceQueueItemsForDevEUIResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{64}
+	return fileDescriptor_ns_e975c32956bea996, []int{45}
 }
 func (m *GetDeviceQueueItemsForDevEUIResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetDeviceQueueItemsForDevEUIResponse.Unmarshal(m, b)
@@ -2983,7 +2333,7 @@ func (m *GetNextDownlinkFCntForDevEUIRequest) Reset()         { *m = GetNextDown
 func (m *GetNextDownlinkFCntForDevEUIRequest) String() string { return proto.CompactTextString(m) }
 func (*GetNextDownlinkFCntForDevEUIRequest) ProtoMessage()    {}
 func (*GetNextDownlinkFCntForDevEUIRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{65}
+	return fileDescriptor_ns_e975c32956bea996, []int{46}
 }
 func (m *GetNextDownlinkFCntForDevEUIRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNextDownlinkFCntForDevEUIRequest.Unmarshal(m, b)
@@ -3022,7 +2372,7 @@ func (m *GetNextDownlinkFCntForDevEUIResponse) Reset()         { *m = GetNextDow
 func (m *GetNextDownlinkFCntForDevEUIResponse) String() string { return proto.CompactTextString(m) }
 func (*GetNextDownlinkFCntForDevEUIResponse) ProtoMessage()    {}
 func (*GetNextDownlinkFCntForDevEUIResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{66}
+	return fileDescriptor_ns_e975c32956bea996, []int{47}
 }
 func (m *GetNextDownlinkFCntForDevEUIResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetNextDownlinkFCntForDevEUIResponse.Unmarshal(m, b)
@@ -3061,7 +2411,7 @@ func (m *StreamFrameLogsForGatewayRequest) Reset()         { *m = StreamFrameLog
 func (m *StreamFrameLogsForGatewayRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamFrameLogsForGatewayRequest) ProtoMessage()    {}
 func (*StreamFrameLogsForGatewayRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{67}
+	return fileDescriptor_ns_e975c32956bea996, []int{48}
 }
 func (m *StreamFrameLogsForGatewayRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamFrameLogsForGatewayRequest.Unmarshal(m, b)
@@ -3102,7 +2452,7 @@ func (m *StreamFrameLogsForGatewayResponse) Reset()         { *m = StreamFrameLo
 func (m *StreamFrameLogsForGatewayResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamFrameLogsForGatewayResponse) ProtoMessage()    {}
 func (*StreamFrameLogsForGatewayResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{68}
+	return fileDescriptor_ns_e975c32956bea996, []int{49}
 }
 func (m *StreamFrameLogsForGatewayResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamFrameLogsForGatewayResponse.Unmarshal(m, b)
@@ -3148,7 +2498,7 @@ func (m *StreamFrameLogsForDeviceRequest) Reset()         { *m = StreamFrameLogs
 func (m *StreamFrameLogsForDeviceRequest) String() string { return proto.CompactTextString(m) }
 func (*StreamFrameLogsForDeviceRequest) ProtoMessage()    {}
 func (*StreamFrameLogsForDeviceRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{69}
+	return fileDescriptor_ns_e975c32956bea996, []int{50}
 }
 func (m *StreamFrameLogsForDeviceRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamFrameLogsForDeviceRequest.Unmarshal(m, b)
@@ -3189,7 +2539,7 @@ func (m *StreamFrameLogsForDeviceResponse) Reset()         { *m = StreamFrameLog
 func (m *StreamFrameLogsForDeviceResponse) String() string { return proto.CompactTextString(m) }
 func (*StreamFrameLogsForDeviceResponse) ProtoMessage()    {}
 func (*StreamFrameLogsForDeviceResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{70}
+	return fileDescriptor_ns_e975c32956bea996, []int{51}
 }
 func (m *StreamFrameLogsForDeviceResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_StreamFrameLogsForDeviceResponse.Unmarshal(m, b)
@@ -3241,7 +2591,7 @@ func (m *DataRate) Reset()         { *m = DataRate{} }
 func (m *DataRate) String() string { return proto.CompactTextString(m) }
 func (*DataRate) ProtoMessage()    {}
 func (*DataRate) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{71}
+	return fileDescriptor_ns_e975c32956bea996, []int{52}
 }
 func (m *DataRate) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DataRate.Unmarshal(m, b)
@@ -3305,7 +2655,7 @@ func (m *UplinkTXInfo) Reset()         { *m = UplinkTXInfo{} }
 func (m *UplinkTXInfo) String() string { return proto.CompactTextString(m) }
 func (*UplinkTXInfo) ProtoMessage()    {}
 func (*UplinkTXInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{72}
+	return fileDescriptor_ns_e975c32956bea996, []int{53}
 }
 func (m *UplinkTXInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UplinkTXInfo.Unmarshal(m, b)
@@ -3372,7 +2722,7 @@ func (m *UplinkRXInfo) Reset()         { *m = UplinkRXInfo{} }
 func (m *UplinkRXInfo) String() string { return proto.CompactTextString(m) }
 func (*UplinkRXInfo) ProtoMessage()    {}
 func (*UplinkRXInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{73}
+	return fileDescriptor_ns_e975c32956bea996, []int{54}
 }
 func (m *UplinkRXInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UplinkRXInfo.Unmarshal(m, b)
@@ -3464,7 +2814,7 @@ func (m *UplinkFrameLog) Reset()         { *m = UplinkFrameLog{} }
 func (m *UplinkFrameLog) String() string { return proto.CompactTextString(m) }
 func (*UplinkFrameLog) ProtoMessage()    {}
 func (*UplinkFrameLog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{74}
+	return fileDescriptor_ns_e975c32956bea996, []int{55}
 }
 func (m *UplinkFrameLog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UplinkFrameLog.Unmarshal(m, b)
@@ -3537,7 +2887,7 @@ func (m *DownlinkTXInfo) Reset()         { *m = DownlinkTXInfo{} }
 func (m *DownlinkTXInfo) String() string { return proto.CompactTextString(m) }
 func (*DownlinkTXInfo) ProtoMessage()    {}
 func (*DownlinkTXInfo) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{75}
+	return fileDescriptor_ns_e975c32956bea996, []int{56}
 }
 func (m *DownlinkTXInfo) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DownlinkTXInfo.Unmarshal(m, b)
@@ -3648,7 +2998,7 @@ func (m *DownlinkFrameLog) Reset()         { *m = DownlinkFrameLog{} }
 func (m *DownlinkFrameLog) String() string { return proto.CompactTextString(m) }
 func (*DownlinkFrameLog) ProtoMessage()    {}
 func (*DownlinkFrameLog) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{76}
+	return fileDescriptor_ns_e975c32956bea996, []int{57}
 }
 func (m *DownlinkFrameLog) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DownlinkFrameLog.Unmarshal(m, b)
@@ -3682,51 +3032,21 @@ func (m *DownlinkFrameLog) GetPhyPayload() []byte {
 	return nil
 }
 
-type GetVersionRequest struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetVersionRequest) Reset()         { *m = GetVersionRequest{} }
-func (m *GetVersionRequest) String() string { return proto.CompactTextString(m) }
-func (*GetVersionRequest) ProtoMessage()    {}
-func (*GetVersionRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{77}
-}
-func (m *GetVersionRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetVersionRequest.Unmarshal(m, b)
-}
-func (m *GetVersionRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetVersionRequest.Marshal(b, m, deterministic)
-}
-func (dst *GetVersionRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetVersionRequest.Merge(dst, src)
-}
-func (m *GetVersionRequest) XXX_Size() int {
-	return xxx_messageInfo_GetVersionRequest.Size(m)
-}
-func (m *GetVersionRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetVersionRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetVersionRequest proto.InternalMessageInfo
-
 type GetVersionResponse struct {
 	// LoRa Server version.
 	Version string `protobuf:"bytes,1,opt,name=version,proto3" json:"version,omitempty"`
 	// Region configured for this network-server.
-	Region               Region   `protobuf:"varint,2,opt,name=region,proto3,enum=ns.Region" json:"region,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
+	Region               common.Region `protobuf:"varint,2,opt,name=region,proto3,enum=common.Region" json:"region,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
 func (m *GetVersionResponse) Reset()         { *m = GetVersionResponse{} }
 func (m *GetVersionResponse) String() string { return proto.CompactTextString(m) }
 func (*GetVersionResponse) ProtoMessage()    {}
 func (*GetVersionResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{78}
+	return fileDescriptor_ns_e975c32956bea996, []int{58}
 }
 func (m *GetVersionResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetVersionResponse.Unmarshal(m, b)
@@ -3753,11 +3073,11 @@ func (m *GetVersionResponse) GetVersion() string {
 	return ""
 }
 
-func (m *GetVersionResponse) GetRegion() Region {
+func (m *GetVersionResponse) GetRegion() common.Region {
 	if m != nil {
 		return m.Region
 	}
-	return Region_EU868
+	return common.Region_EU868
 }
 
 type GatewayProfile struct {
@@ -3778,7 +3098,7 @@ func (m *GatewayProfile) Reset()         { *m = GatewayProfile{} }
 func (m *GatewayProfile) String() string { return proto.CompactTextString(m) }
 func (*GatewayProfile) ProtoMessage()    {}
 func (*GatewayProfile) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{79}
+	return fileDescriptor_ns_e975c32956bea996, []int{59}
 }
 func (m *GatewayProfile) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GatewayProfile.Unmarshal(m, b)
@@ -3821,7 +3141,7 @@ func (m *GatewayProfile) GetExtraChannels() []*GatewayProfileExtraChannel {
 
 type GatewayProfileExtraChannel struct {
 	// Modulation.
-	Modulation Modulation `protobuf:"varint,1,opt,name=modulation,proto3,enum=ns.Modulation" json:"modulation,omitempty"`
+	Modulation common.Modulation `protobuf:"varint,1,opt,name=modulation,proto3,enum=common.Modulation" json:"modulation,omitempty"`
 	// Frequency.
 	Frequency uint32 `protobuf:"varint,2,opt,name=frequency,proto3" json:"frequency,omitempty"`
 	// Bandwidth.
@@ -3839,7 +3159,7 @@ func (m *GatewayProfileExtraChannel) Reset()         { *m = GatewayProfileExtraC
 func (m *GatewayProfileExtraChannel) String() string { return proto.CompactTextString(m) }
 func (*GatewayProfileExtraChannel) ProtoMessage()    {}
 func (*GatewayProfileExtraChannel) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{80}
+	return fileDescriptor_ns_e975c32956bea996, []int{60}
 }
 func (m *GatewayProfileExtraChannel) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GatewayProfileExtraChannel.Unmarshal(m, b)
@@ -3859,11 +3179,11 @@ func (m *GatewayProfileExtraChannel) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_GatewayProfileExtraChannel proto.InternalMessageInfo
 
-func (m *GatewayProfileExtraChannel) GetModulation() Modulation {
+func (m *GatewayProfileExtraChannel) GetModulation() common.Modulation {
 	if m != nil {
 		return m.Modulation
 	}
-	return Modulation_LORA
+	return common.Modulation_LORA
 }
 
 func (m *GatewayProfileExtraChannel) GetFrequency() uint32 {
@@ -3906,7 +3226,7 @@ func (m *CreateGatewayProfileRequest) Reset()         { *m = CreateGatewayProfil
 func (m *CreateGatewayProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*CreateGatewayProfileRequest) ProtoMessage()    {}
 func (*CreateGatewayProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{81}
+	return fileDescriptor_ns_e975c32956bea996, []int{61}
 }
 func (m *CreateGatewayProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateGatewayProfileRequest.Unmarshal(m, b)
@@ -3945,7 +3265,7 @@ func (m *CreateGatewayProfileResponse) Reset()         { *m = CreateGatewayProfi
 func (m *CreateGatewayProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*CreateGatewayProfileResponse) ProtoMessage()    {}
 func (*CreateGatewayProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{82}
+	return fileDescriptor_ns_e975c32956bea996, []int{62}
 }
 func (m *CreateGatewayProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_CreateGatewayProfileResponse.Unmarshal(m, b)
@@ -3984,7 +3304,7 @@ func (m *GetGatewayProfileRequest) Reset()         { *m = GetGatewayProfileReque
 func (m *GetGatewayProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*GetGatewayProfileRequest) ProtoMessage()    {}
 func (*GetGatewayProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{83}
+	return fileDescriptor_ns_e975c32956bea996, []int{63}
 }
 func (m *GetGatewayProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGatewayProfileRequest.Unmarshal(m, b)
@@ -4027,7 +3347,7 @@ func (m *GetGatewayProfileResponse) Reset()         { *m = GetGatewayProfileResp
 func (m *GetGatewayProfileResponse) String() string { return proto.CompactTextString(m) }
 func (*GetGatewayProfileResponse) ProtoMessage()    {}
 func (*GetGatewayProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{84}
+	return fileDescriptor_ns_e975c32956bea996, []int{64}
 }
 func (m *GetGatewayProfileResponse) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_GetGatewayProfileResponse.Unmarshal(m, b)
@@ -4080,7 +3400,7 @@ func (m *UpdateGatewayProfileRequest) Reset()         { *m = UpdateGatewayProfil
 func (m *UpdateGatewayProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*UpdateGatewayProfileRequest) ProtoMessage()    {}
 func (*UpdateGatewayProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{85}
+	return fileDescriptor_ns_e975c32956bea996, []int{65}
 }
 func (m *UpdateGatewayProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_UpdateGatewayProfileRequest.Unmarshal(m, b)
@@ -4107,36 +3427,6 @@ func (m *UpdateGatewayProfileRequest) GetGatewayProfile() *GatewayProfile {
 	return nil
 }
 
-type UpdateGatewayProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UpdateGatewayProfileResponse) Reset()         { *m = UpdateGatewayProfileResponse{} }
-func (m *UpdateGatewayProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*UpdateGatewayProfileResponse) ProtoMessage()    {}
-func (*UpdateGatewayProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{86}
-}
-func (m *UpdateGatewayProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UpdateGatewayProfileResponse.Unmarshal(m, b)
-}
-func (m *UpdateGatewayProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UpdateGatewayProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *UpdateGatewayProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateGatewayProfileResponse.Merge(dst, src)
-}
-func (m *UpdateGatewayProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_UpdateGatewayProfileResponse.Size(m)
-}
-func (m *UpdateGatewayProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateGatewayProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UpdateGatewayProfileResponse proto.InternalMessageInfo
-
 type DeleteGatewayProfileRequest struct {
 	// Gateway-profile ID.
 	Id                   []byte   `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`
@@ -4149,7 +3439,7 @@ func (m *DeleteGatewayProfileRequest) Reset()         { *m = DeleteGatewayProfil
 func (m *DeleteGatewayProfileRequest) String() string { return proto.CompactTextString(m) }
 func (*DeleteGatewayProfileRequest) ProtoMessage()    {}
 func (*DeleteGatewayProfileRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{87}
+	return fileDescriptor_ns_e975c32956bea996, []int{66}
 }
 func (m *DeleteGatewayProfileRequest) XXX_Unmarshal(b []byte) error {
 	return xxx_messageInfo_DeleteGatewayProfileRequest.Unmarshal(m, b)
@@ -4176,100 +3466,51 @@ func (m *DeleteGatewayProfileRequest) GetId() []byte {
 	return nil
 }
 
-type DeleteGatewayProfileResponse struct {
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *DeleteGatewayProfileResponse) Reset()         { *m = DeleteGatewayProfileResponse{} }
-func (m *DeleteGatewayProfileResponse) String() string { return proto.CompactTextString(m) }
-func (*DeleteGatewayProfileResponse) ProtoMessage()    {}
-func (*DeleteGatewayProfileResponse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ns_6d02ecdee5783d73, []int{88}
-}
-func (m *DeleteGatewayProfileResponse) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_DeleteGatewayProfileResponse.Unmarshal(m, b)
-}
-func (m *DeleteGatewayProfileResponse) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_DeleteGatewayProfileResponse.Marshal(b, m, deterministic)
-}
-func (dst *DeleteGatewayProfileResponse) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DeleteGatewayProfileResponse.Merge(dst, src)
-}
-func (m *DeleteGatewayProfileResponse) XXX_Size() int {
-	return xxx_messageInfo_DeleteGatewayProfileResponse.Size(m)
-}
-func (m *DeleteGatewayProfileResponse) XXX_DiscardUnknown() {
-	xxx_messageInfo_DeleteGatewayProfileResponse.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DeleteGatewayProfileResponse proto.InternalMessageInfo
-
 func init() {
 	proto.RegisterType((*CreateServiceProfileRequest)(nil), "ns.CreateServiceProfileRequest")
 	proto.RegisterType((*CreateServiceProfileResponse)(nil), "ns.CreateServiceProfileResponse")
 	proto.RegisterType((*GetServiceProfileRequest)(nil), "ns.GetServiceProfileRequest")
 	proto.RegisterType((*GetServiceProfileResponse)(nil), "ns.GetServiceProfileResponse")
 	proto.RegisterType((*UpdateServiceProfileRequest)(nil), "ns.UpdateServiceProfileRequest")
-	proto.RegisterType((*UpdateServiceProfileResponse)(nil), "ns.UpdateServiceProfileResponse")
 	proto.RegisterType((*DeleteServiceProfileRequest)(nil), "ns.DeleteServiceProfileRequest")
-	proto.RegisterType((*DeleteServiceProfileResponse)(nil), "ns.DeleteServiceProfileResponse")
 	proto.RegisterType((*CreateRoutingProfileRequest)(nil), "ns.CreateRoutingProfileRequest")
 	proto.RegisterType((*CreateRoutingProfileResponse)(nil), "ns.CreateRoutingProfileResponse")
 	proto.RegisterType((*GetRoutingProfileRequest)(nil), "ns.GetRoutingProfileRequest")
 	proto.RegisterType((*GetRoutingProfileResponse)(nil), "ns.GetRoutingProfileResponse")
 	proto.RegisterType((*UpdateRoutingProfileRequest)(nil), "ns.UpdateRoutingProfileRequest")
-	proto.RegisterType((*UpdateRoutingProfileResponse)(nil), "ns.UpdateRoutingProfileResponse")
 	proto.RegisterType((*DeleteRoutingProfileRequest)(nil), "ns.DeleteRoutingProfileRequest")
-	proto.RegisterType((*DeleteRoutingProfileResponse)(nil), "ns.DeleteRoutingProfileResponse")
 	proto.RegisterType((*CreateDeviceProfileRequest)(nil), "ns.CreateDeviceProfileRequest")
 	proto.RegisterType((*CreateDeviceProfileResponse)(nil), "ns.CreateDeviceProfileResponse")
 	proto.RegisterType((*GetDeviceProfileRequest)(nil), "ns.GetDeviceProfileRequest")
 	proto.RegisterType((*GetDeviceProfileResponse)(nil), "ns.GetDeviceProfileResponse")
 	proto.RegisterType((*UpdateDeviceProfileRequest)(nil), "ns.UpdateDeviceProfileRequest")
-	proto.RegisterType((*UpdateDeviceProfileResponse)(nil), "ns.UpdateDeviceProfileResponse")
 	proto.RegisterType((*DeleteDeviceProfileRequest)(nil), "ns.DeleteDeviceProfileRequest")
-	proto.RegisterType((*DeleteDeviceProfileResponse)(nil), "ns.DeleteDeviceProfileResponse")
 	proto.RegisterType((*Device)(nil), "ns.Device")
 	proto.RegisterType((*CreateDeviceRequest)(nil), "ns.CreateDeviceRequest")
-	proto.RegisterType((*CreateDeviceResponse)(nil), "ns.CreateDeviceResponse")
 	proto.RegisterType((*GetDeviceRequest)(nil), "ns.GetDeviceRequest")
 	proto.RegisterType((*GetDeviceResponse)(nil), "ns.GetDeviceResponse")
 	proto.RegisterType((*UpdateDeviceRequest)(nil), "ns.UpdateDeviceRequest")
-	proto.RegisterType((*UpdateDeviceResponse)(nil), "ns.UpdateDeviceResponse")
 	proto.RegisterType((*DeleteDeviceRequest)(nil), "ns.DeleteDeviceRequest")
-	proto.RegisterType((*DeleteDeviceResponse)(nil), "ns.DeleteDeviceResponse")
 	proto.RegisterType((*DeviceActivation)(nil), "ns.DeviceActivation")
 	proto.RegisterType((*ActivateDeviceRequest)(nil), "ns.ActivateDeviceRequest")
-	proto.RegisterType((*ActivateDeviceResponse)(nil), "ns.ActivateDeviceResponse")
 	proto.RegisterType((*DeactivateDeviceRequest)(nil), "ns.DeactivateDeviceRequest")
-	proto.RegisterType((*DeactivateDeviceResponse)(nil), "ns.DeactivateDeviceResponse")
 	proto.RegisterType((*GetDeviceActivationRequest)(nil), "ns.GetDeviceActivationRequest")
 	proto.RegisterType((*GetDeviceActivationResponse)(nil), "ns.GetDeviceActivationResponse")
-	proto.RegisterType((*GetRandomDevAddrRequest)(nil), "ns.GetRandomDevAddrRequest")
 	proto.RegisterType((*GetRandomDevAddrResponse)(nil), "ns.GetRandomDevAddrResponse")
 	proto.RegisterType((*CreateMACCommandQueueItemRequest)(nil), "ns.CreateMACCommandQueueItemRequest")
-	proto.RegisterType((*CreateMACCommandQueueItemResponse)(nil), "ns.CreateMACCommandQueueItemResponse")
 	proto.RegisterType((*SendProprietaryPayloadRequest)(nil), "ns.SendProprietaryPayloadRequest")
-	proto.RegisterType((*SendProprietaryPayloadResponse)(nil), "ns.SendProprietaryPayloadResponse")
 	proto.RegisterType((*Gateway)(nil), "ns.Gateway")
 	proto.RegisterType((*CreateGatewayRequest)(nil), "ns.CreateGatewayRequest")
-	proto.RegisterType((*CreateGatewayResponse)(nil), "ns.CreateGatewayResponse")
 	proto.RegisterType((*GetGatewayRequest)(nil), "ns.GetGatewayRequest")
 	proto.RegisterType((*GetGatewayResponse)(nil), "ns.GetGatewayResponse")
 	proto.RegisterType((*UpdateGatewayRequest)(nil), "ns.UpdateGatewayRequest")
-	proto.RegisterType((*UpdateGatewayResponse)(nil), "ns.UpdateGatewayResponse")
 	proto.RegisterType((*DeleteGatewayRequest)(nil), "ns.DeleteGatewayRequest")
-	proto.RegisterType((*DeleteGatewayResponse)(nil), "ns.DeleteGatewayResponse")
 	proto.RegisterType((*GatewayStats)(nil), "ns.GatewayStats")
 	proto.RegisterType((*GetGatewayStatsRequest)(nil), "ns.GetGatewayStatsRequest")
 	proto.RegisterType((*GetGatewayStatsResponse)(nil), "ns.GetGatewayStatsResponse")
 	proto.RegisterType((*DeviceQueueItem)(nil), "ns.DeviceQueueItem")
 	proto.RegisterType((*CreateDeviceQueueItemRequest)(nil), "ns.CreateDeviceQueueItemRequest")
-	proto.RegisterType((*CreateDeviceQueueItemResponse)(nil), "ns.CreateDeviceQueueItemResponse")
 	proto.RegisterType((*FlushDeviceQueueForDevEUIRequest)(nil), "ns.FlushDeviceQueueForDevEUIRequest")
-	proto.RegisterType((*FlushDeviceQueueForDevEUIResponse)(nil), "ns.FlushDeviceQueueForDevEUIResponse")
 	proto.RegisterType((*GetDeviceQueueItemsForDevEUIRequest)(nil), "ns.GetDeviceQueueItemsForDevEUIRequest")
 	proto.RegisterType((*GetDeviceQueueItemsForDevEUIResponse)(nil), "ns.GetDeviceQueueItemsForDevEUIResponse")
 	proto.RegisterType((*GetNextDownlinkFCntForDevEUIRequest)(nil), "ns.GetNextDownlinkFCntForDevEUIRequest")
@@ -4284,7 +3525,6 @@ func init() {
 	proto.RegisterType((*UplinkFrameLog)(nil), "ns.UplinkFrameLog")
 	proto.RegisterType((*DownlinkTXInfo)(nil), "ns.DownlinkTXInfo")
 	proto.RegisterType((*DownlinkFrameLog)(nil), "ns.DownlinkFrameLog")
-	proto.RegisterType((*GetVersionRequest)(nil), "ns.GetVersionRequest")
 	proto.RegisterType((*GetVersionResponse)(nil), "ns.GetVersionResponse")
 	proto.RegisterType((*GatewayProfile)(nil), "ns.GatewayProfile")
 	proto.RegisterType((*GatewayProfileExtraChannel)(nil), "ns.GatewayProfileExtraChannel")
@@ -4293,12 +3533,8 @@ func init() {
 	proto.RegisterType((*GetGatewayProfileRequest)(nil), "ns.GetGatewayProfileRequest")
 	proto.RegisterType((*GetGatewayProfileResponse)(nil), "ns.GetGatewayProfileResponse")
 	proto.RegisterType((*UpdateGatewayProfileRequest)(nil), "ns.UpdateGatewayProfileRequest")
-	proto.RegisterType((*UpdateGatewayProfileResponse)(nil), "ns.UpdateGatewayProfileResponse")
 	proto.RegisterType((*DeleteGatewayProfileRequest)(nil), "ns.DeleteGatewayProfileRequest")
-	proto.RegisterType((*DeleteGatewayProfileResponse)(nil), "ns.DeleteGatewayProfileResponse")
 	proto.RegisterEnum("ns.RXWindow", RXWindow_name, RXWindow_value)
-	proto.RegisterEnum("ns.Modulation", Modulation_name, Modulation_value)
-	proto.RegisterEnum("ns.Region", Region_name, Region_value)
 	proto.RegisterEnum("ns.AggregationInterval", AggregationInterval_name, AggregationInterval_value)
 }
 
@@ -4319,70 +3555,70 @@ type NetworkServerServiceClient interface {
 	// GetServiceProfile returns the service-profile matching the given id.
 	GetServiceProfile(ctx context.Context, in *GetServiceProfileRequest, opts ...grpc.CallOption) (*GetServiceProfileResponse, error)
 	// UpdateServiceProfile updates the given service-profile.
-	UpdateServiceProfile(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*UpdateServiceProfileResponse, error)
+	UpdateServiceProfile(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteServiceProfile deletes the service-profile matching the given id.
-	DeleteServiceProfile(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*DeleteServiceProfileResponse, error)
+	DeleteServiceProfile(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CreateRoutingProfile creates the given routing-profile.
 	CreateRoutingProfile(ctx context.Context, in *CreateRoutingProfileRequest, opts ...grpc.CallOption) (*CreateRoutingProfileResponse, error)
 	// GetRoutingProfile returns the routing-profile matching the given id.
 	GetRoutingProfile(ctx context.Context, in *GetRoutingProfileRequest, opts ...grpc.CallOption) (*GetRoutingProfileResponse, error)
 	// UpdateRoutingProfile updates the given routing-profile.
-	UpdateRoutingProfile(ctx context.Context, in *UpdateRoutingProfileRequest, opts ...grpc.CallOption) (*UpdateRoutingProfileResponse, error)
+	UpdateRoutingProfile(ctx context.Context, in *UpdateRoutingProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteRoutingProfile deletes the routing-profile matching the given id.
-	DeleteRoutingProfile(ctx context.Context, in *DeleteRoutingProfileRequest, opts ...grpc.CallOption) (*DeleteRoutingProfileResponse, error)
+	DeleteRoutingProfile(ctx context.Context, in *DeleteRoutingProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CreateDeviceProfile creates the given device-profile.
 	CreateDeviceProfile(ctx context.Context, in *CreateDeviceProfileRequest, opts ...grpc.CallOption) (*CreateDeviceProfileResponse, error)
 	// GetDeviceProfile returns the device-profile matching the given id.
 	GetDeviceProfile(ctx context.Context, in *GetDeviceProfileRequest, opts ...grpc.CallOption) (*GetDeviceProfileResponse, error)
 	// UpdateDeviceProfile updates the given device-profile.
-	UpdateDeviceProfile(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*UpdateDeviceProfileResponse, error)
+	UpdateDeviceProfile(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteDeviceProfile deletes the device-profile matching the given id.
-	DeleteDeviceProfile(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*DeleteDeviceProfileResponse, error)
+	DeleteDeviceProfile(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CreateDevice creates the given device.
-	CreateDevice(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*CreateDeviceResponse, error)
+	CreateDevice(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GetDevice returns the device matching the given DevEUI.
 	GetDevice(ctx context.Context, in *GetDeviceRequest, opts ...grpc.CallOption) (*GetDeviceResponse, error)
 	// UpdateDevice updates the given device.
-	UpdateDevice(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*UpdateDeviceResponse, error)
+	UpdateDevice(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteDevice deletes the device matching the given DevEUI.
-	DeleteDevice(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*DeleteDeviceResponse, error)
+	DeleteDevice(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// ActivateDevice activates a device (ABP).
-	ActivateDevice(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*ActivateDeviceResponse, error)
+	ActivateDevice(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeactivateDevice de-activates a device.
-	DeactivateDevice(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*DeactivateDeviceResponse, error)
+	DeactivateDevice(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GetDeviceActivation returns the device activation details.
 	GetDeviceActivation(ctx context.Context, in *GetDeviceActivationRequest, opts ...grpc.CallOption) (*GetDeviceActivationResponse, error)
 	// CreateDeviceQueueItem creates the given device-queue item.
-	CreateDeviceQueueItem(ctx context.Context, in *CreateDeviceQueueItemRequest, opts ...grpc.CallOption) (*CreateDeviceQueueItemResponse, error)
+	CreateDeviceQueueItem(ctx context.Context, in *CreateDeviceQueueItemRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// FlushDeviceQueueForDevEUI flushes the device-queue for the given DevEUI.
-	FlushDeviceQueueForDevEUI(ctx context.Context, in *FlushDeviceQueueForDevEUIRequest, opts ...grpc.CallOption) (*FlushDeviceQueueForDevEUIResponse, error)
+	FlushDeviceQueueForDevEUI(ctx context.Context, in *FlushDeviceQueueForDevEUIRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GetDeviceQueueItemsForDevEUI returns all device-queue items for the given DevEUI.
 	GetDeviceQueueItemsForDevEUI(ctx context.Context, in *GetDeviceQueueItemsForDevEUIRequest, opts ...grpc.CallOption) (*GetDeviceQueueItemsForDevEUIResponse, error)
 	// GetNextDownlinkFCntForDevEUI returns the next FCnt that must be used.
 	// This also takes device-queue items for the given DevEUI into consideration.
 	GetNextDownlinkFCntForDevEUI(ctx context.Context, in *GetNextDownlinkFCntForDevEUIRequest, opts ...grpc.CallOption) (*GetNextDownlinkFCntForDevEUIResponse, error)
 	// GetRandomDevAddr returns a random DevAddr taking the NwkID prefix into account.
-	GetRandomDevAddr(ctx context.Context, in *GetRandomDevAddrRequest, opts ...grpc.CallOption) (*GetRandomDevAddrResponse, error)
+	GetRandomDevAddr(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetRandomDevAddrResponse, error)
 	// CreateMACCommandQueueItem adds the downlink mac-command to the queue.
-	CreateMACCommandQueueItem(ctx context.Context, in *CreateMACCommandQueueItemRequest, opts ...grpc.CallOption) (*CreateMACCommandQueueItemResponse, error)
+	CreateMACCommandQueueItem(ctx context.Context, in *CreateMACCommandQueueItemRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// SendProprietaryPayload send a payload using the 'Proprietary' LoRaWAN message-type.
-	SendProprietaryPayload(ctx context.Context, in *SendProprietaryPayloadRequest, opts ...grpc.CallOption) (*SendProprietaryPayloadResponse, error)
+	SendProprietaryPayload(ctx context.Context, in *SendProprietaryPayloadRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CreateGateway creates the given gateway.
-	CreateGateway(ctx context.Context, in *CreateGatewayRequest, opts ...grpc.CallOption) (*CreateGatewayResponse, error)
+	CreateGateway(ctx context.Context, in *CreateGatewayRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GetGateway returns data for a particular gateway.
 	GetGateway(ctx context.Context, in *GetGatewayRequest, opts ...grpc.CallOption) (*GetGatewayResponse, error)
 	// UpdateGateway updates an existing gateway.
-	UpdateGateway(ctx context.Context, in *UpdateGatewayRequest, opts ...grpc.CallOption) (*UpdateGatewayResponse, error)
+	UpdateGateway(ctx context.Context, in *UpdateGatewayRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteGateway deletes a gateway.
-	DeleteGateway(ctx context.Context, in *DeleteGatewayRequest, opts ...grpc.CallOption) (*DeleteGatewayResponse, error)
+	DeleteGateway(ctx context.Context, in *DeleteGatewayRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// CreateGatewayProfile creates the given gateway-profile.
 	CreateGatewayProfile(ctx context.Context, in *CreateGatewayProfileRequest, opts ...grpc.CallOption) (*CreateGatewayProfileResponse, error)
 	// GetGatewayProfile returns the gateway-profile given an id.
 	GetGatewayProfile(ctx context.Context, in *GetGatewayProfileRequest, opts ...grpc.CallOption) (*GetGatewayProfileResponse, error)
 	// UpdateGatewayProfile updates the given gateway-profile.
-	UpdateGatewayProfile(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*UpdateGatewayProfileResponse, error)
+	UpdateGatewayProfile(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// DeleteGatewayProfile deletes the gateway-profile matching a given id.
-	DeleteGatewayProfile(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*DeleteGatewayProfileResponse, error)
+	DeleteGatewayProfile(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error)
 	// GetGatewayStats returns stats of an existing gateway.
 	GetGatewayStats(ctx context.Context, in *GetGatewayStatsRequest, opts ...grpc.CallOption) (*GetGatewayStatsResponse, error)
 	// StreamFrameLogsForGateway returns a stream of frames seen by the given gateway.
@@ -4390,7 +3626,7 @@ type NetworkServerServiceClient interface {
 	// StreamFrameLogsForDevice returns a stream of frames seen by the given device.
 	StreamFrameLogsForDevice(ctx context.Context, in *StreamFrameLogsForDeviceRequest, opts ...grpc.CallOption) (NetworkServerService_StreamFrameLogsForDeviceClient, error)
 	// GetVersion returns the LoRa Server version.
-	GetVersion(ctx context.Context, in *GetVersionRequest, opts ...grpc.CallOption) (*GetVersionResponse, error)
+	GetVersion(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetVersionResponse, error)
 }
 
 type networkServerServiceClient struct {
@@ -4419,8 +3655,8 @@ func (c *networkServerServiceClient) GetServiceProfile(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *networkServerServiceClient) UpdateServiceProfile(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*UpdateServiceProfileResponse, error) {
-	out := new(UpdateServiceProfileResponse)
+func (c *networkServerServiceClient) UpdateServiceProfile(ctx context.Context, in *UpdateServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/UpdateServiceProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4428,8 +3664,8 @@ func (c *networkServerServiceClient) UpdateServiceProfile(ctx context.Context, i
 	return out, nil
 }
 
-func (c *networkServerServiceClient) DeleteServiceProfile(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*DeleteServiceProfileResponse, error) {
-	out := new(DeleteServiceProfileResponse)
+func (c *networkServerServiceClient) DeleteServiceProfile(ctx context.Context, in *DeleteServiceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/DeleteServiceProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4455,8 +3691,8 @@ func (c *networkServerServiceClient) GetRoutingProfile(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *networkServerServiceClient) UpdateRoutingProfile(ctx context.Context, in *UpdateRoutingProfileRequest, opts ...grpc.CallOption) (*UpdateRoutingProfileResponse, error) {
-	out := new(UpdateRoutingProfileResponse)
+func (c *networkServerServiceClient) UpdateRoutingProfile(ctx context.Context, in *UpdateRoutingProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/UpdateRoutingProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4464,8 +3700,8 @@ func (c *networkServerServiceClient) UpdateRoutingProfile(ctx context.Context, i
 	return out, nil
 }
 
-func (c *networkServerServiceClient) DeleteRoutingProfile(ctx context.Context, in *DeleteRoutingProfileRequest, opts ...grpc.CallOption) (*DeleteRoutingProfileResponse, error) {
-	out := new(DeleteRoutingProfileResponse)
+func (c *networkServerServiceClient) DeleteRoutingProfile(ctx context.Context, in *DeleteRoutingProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/DeleteRoutingProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4491,8 +3727,8 @@ func (c *networkServerServiceClient) GetDeviceProfile(ctx context.Context, in *G
 	return out, nil
 }
 
-func (c *networkServerServiceClient) UpdateDeviceProfile(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*UpdateDeviceProfileResponse, error) {
-	out := new(UpdateDeviceProfileResponse)
+func (c *networkServerServiceClient) UpdateDeviceProfile(ctx context.Context, in *UpdateDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/UpdateDeviceProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4500,8 +3736,8 @@ func (c *networkServerServiceClient) UpdateDeviceProfile(ctx context.Context, in
 	return out, nil
 }
 
-func (c *networkServerServiceClient) DeleteDeviceProfile(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*DeleteDeviceProfileResponse, error) {
-	out := new(DeleteDeviceProfileResponse)
+func (c *networkServerServiceClient) DeleteDeviceProfile(ctx context.Context, in *DeleteDeviceProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/DeleteDeviceProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4509,8 +3745,8 @@ func (c *networkServerServiceClient) DeleteDeviceProfile(ctx context.Context, in
 	return out, nil
 }
 
-func (c *networkServerServiceClient) CreateDevice(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*CreateDeviceResponse, error) {
-	out := new(CreateDeviceResponse)
+func (c *networkServerServiceClient) CreateDevice(ctx context.Context, in *CreateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/CreateDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4527,8 +3763,8 @@ func (c *networkServerServiceClient) GetDevice(ctx context.Context, in *GetDevic
 	return out, nil
 }
 
-func (c *networkServerServiceClient) UpdateDevice(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*UpdateDeviceResponse, error) {
-	out := new(UpdateDeviceResponse)
+func (c *networkServerServiceClient) UpdateDevice(ctx context.Context, in *UpdateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/UpdateDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4536,8 +3772,8 @@ func (c *networkServerServiceClient) UpdateDevice(ctx context.Context, in *Updat
 	return out, nil
 }
 
-func (c *networkServerServiceClient) DeleteDevice(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*DeleteDeviceResponse, error) {
-	out := new(DeleteDeviceResponse)
+func (c *networkServerServiceClient) DeleteDevice(ctx context.Context, in *DeleteDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/DeleteDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4545,8 +3781,8 @@ func (c *networkServerServiceClient) DeleteDevice(ctx context.Context, in *Delet
 	return out, nil
 }
 
-func (c *networkServerServiceClient) ActivateDevice(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*ActivateDeviceResponse, error) {
-	out := new(ActivateDeviceResponse)
+func (c *networkServerServiceClient) ActivateDevice(ctx context.Context, in *ActivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/ActivateDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4554,8 +3790,8 @@ func (c *networkServerServiceClient) ActivateDevice(ctx context.Context, in *Act
 	return out, nil
 }
 
-func (c *networkServerServiceClient) DeactivateDevice(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*DeactivateDeviceResponse, error) {
-	out := new(DeactivateDeviceResponse)
+func (c *networkServerServiceClient) DeactivateDevice(ctx context.Context, in *DeactivateDeviceRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/DeactivateDevice", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4572,8 +3808,8 @@ func (c *networkServerServiceClient) GetDeviceActivation(ctx context.Context, in
 	return out, nil
 }
 
-func (c *networkServerServiceClient) CreateDeviceQueueItem(ctx context.Context, in *CreateDeviceQueueItemRequest, opts ...grpc.CallOption) (*CreateDeviceQueueItemResponse, error) {
-	out := new(CreateDeviceQueueItemResponse)
+func (c *networkServerServiceClient) CreateDeviceQueueItem(ctx context.Context, in *CreateDeviceQueueItemRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/CreateDeviceQueueItem", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4581,8 +3817,8 @@ func (c *networkServerServiceClient) CreateDeviceQueueItem(ctx context.Context, 
 	return out, nil
 }
 
-func (c *networkServerServiceClient) FlushDeviceQueueForDevEUI(ctx context.Context, in *FlushDeviceQueueForDevEUIRequest, opts ...grpc.CallOption) (*FlushDeviceQueueForDevEUIResponse, error) {
-	out := new(FlushDeviceQueueForDevEUIResponse)
+func (c *networkServerServiceClient) FlushDeviceQueueForDevEUI(ctx context.Context, in *FlushDeviceQueueForDevEUIRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/FlushDeviceQueueForDevEUI", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4608,7 +3844,7 @@ func (c *networkServerServiceClient) GetNextDownlinkFCntForDevEUI(ctx context.Co
 	return out, nil
 }
 
-func (c *networkServerServiceClient) GetRandomDevAddr(ctx context.Context, in *GetRandomDevAddrRequest, opts ...grpc.CallOption) (*GetRandomDevAddrResponse, error) {
+func (c *networkServerServiceClient) GetRandomDevAddr(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetRandomDevAddrResponse, error) {
 	out := new(GetRandomDevAddrResponse)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/GetRandomDevAddr", in, out, opts...)
 	if err != nil {
@@ -4617,8 +3853,8 @@ func (c *networkServerServiceClient) GetRandomDevAddr(ctx context.Context, in *G
 	return out, nil
 }
 
-func (c *networkServerServiceClient) CreateMACCommandQueueItem(ctx context.Context, in *CreateMACCommandQueueItemRequest, opts ...grpc.CallOption) (*CreateMACCommandQueueItemResponse, error) {
-	out := new(CreateMACCommandQueueItemResponse)
+func (c *networkServerServiceClient) CreateMACCommandQueueItem(ctx context.Context, in *CreateMACCommandQueueItemRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/CreateMACCommandQueueItem", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4626,8 +3862,8 @@ func (c *networkServerServiceClient) CreateMACCommandQueueItem(ctx context.Conte
 	return out, nil
 }
 
-func (c *networkServerServiceClient) SendProprietaryPayload(ctx context.Context, in *SendProprietaryPayloadRequest, opts ...grpc.CallOption) (*SendProprietaryPayloadResponse, error) {
-	out := new(SendProprietaryPayloadResponse)
+func (c *networkServerServiceClient) SendProprietaryPayload(ctx context.Context, in *SendProprietaryPayloadRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/SendProprietaryPayload", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4635,8 +3871,8 @@ func (c *networkServerServiceClient) SendProprietaryPayload(ctx context.Context,
 	return out, nil
 }
 
-func (c *networkServerServiceClient) CreateGateway(ctx context.Context, in *CreateGatewayRequest, opts ...grpc.CallOption) (*CreateGatewayResponse, error) {
-	out := new(CreateGatewayResponse)
+func (c *networkServerServiceClient) CreateGateway(ctx context.Context, in *CreateGatewayRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/CreateGateway", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4653,8 +3889,8 @@ func (c *networkServerServiceClient) GetGateway(ctx context.Context, in *GetGate
 	return out, nil
 }
 
-func (c *networkServerServiceClient) UpdateGateway(ctx context.Context, in *UpdateGatewayRequest, opts ...grpc.CallOption) (*UpdateGatewayResponse, error) {
-	out := new(UpdateGatewayResponse)
+func (c *networkServerServiceClient) UpdateGateway(ctx context.Context, in *UpdateGatewayRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/UpdateGateway", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4662,8 +3898,8 @@ func (c *networkServerServiceClient) UpdateGateway(ctx context.Context, in *Upda
 	return out, nil
 }
 
-func (c *networkServerServiceClient) DeleteGateway(ctx context.Context, in *DeleteGatewayRequest, opts ...grpc.CallOption) (*DeleteGatewayResponse, error) {
-	out := new(DeleteGatewayResponse)
+func (c *networkServerServiceClient) DeleteGateway(ctx context.Context, in *DeleteGatewayRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/DeleteGateway", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4689,8 +3925,8 @@ func (c *networkServerServiceClient) GetGatewayProfile(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *networkServerServiceClient) UpdateGatewayProfile(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*UpdateGatewayProfileResponse, error) {
-	out := new(UpdateGatewayProfileResponse)
+func (c *networkServerServiceClient) UpdateGatewayProfile(ctx context.Context, in *UpdateGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/UpdateGatewayProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4698,8 +3934,8 @@ func (c *networkServerServiceClient) UpdateGatewayProfile(ctx context.Context, i
 	return out, nil
 }
 
-func (c *networkServerServiceClient) DeleteGatewayProfile(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*DeleteGatewayProfileResponse, error) {
-	out := new(DeleteGatewayProfileResponse)
+func (c *networkServerServiceClient) DeleteGatewayProfile(ctx context.Context, in *DeleteGatewayProfileRequest, opts ...grpc.CallOption) (*empty.Empty, error) {
+	out := new(empty.Empty)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/DeleteGatewayProfile", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -4780,7 +4016,7 @@ func (x *networkServerServiceStreamFrameLogsForDeviceClient) Recv() (*StreamFram
 	return m, nil
 }
 
-func (c *networkServerServiceClient) GetVersion(ctx context.Context, in *GetVersionRequest, opts ...grpc.CallOption) (*GetVersionResponse, error) {
+func (c *networkServerServiceClient) GetVersion(ctx context.Context, in *empty.Empty, opts ...grpc.CallOption) (*GetVersionResponse, error) {
 	out := new(GetVersionResponse)
 	err := c.cc.Invoke(ctx, "/ns.NetworkServerService/GetVersion", in, out, opts...)
 	if err != nil {
@@ -4796,70 +4032,70 @@ type NetworkServerServiceServer interface {
 	// GetServiceProfile returns the service-profile matching the given id.
 	GetServiceProfile(context.Context, *GetServiceProfileRequest) (*GetServiceProfileResponse, error)
 	// UpdateServiceProfile updates the given service-profile.
-	UpdateServiceProfile(context.Context, *UpdateServiceProfileRequest) (*UpdateServiceProfileResponse, error)
+	UpdateServiceProfile(context.Context, *UpdateServiceProfileRequest) (*empty.Empty, error)
 	// DeleteServiceProfile deletes the service-profile matching the given id.
-	DeleteServiceProfile(context.Context, *DeleteServiceProfileRequest) (*DeleteServiceProfileResponse, error)
+	DeleteServiceProfile(context.Context, *DeleteServiceProfileRequest) (*empty.Empty, error)
 	// CreateRoutingProfile creates the given routing-profile.
 	CreateRoutingProfile(context.Context, *CreateRoutingProfileRequest) (*CreateRoutingProfileResponse, error)
 	// GetRoutingProfile returns the routing-profile matching the given id.
 	GetRoutingProfile(context.Context, *GetRoutingProfileRequest) (*GetRoutingProfileResponse, error)
 	// UpdateRoutingProfile updates the given routing-profile.
-	UpdateRoutingProfile(context.Context, *UpdateRoutingProfileRequest) (*UpdateRoutingProfileResponse, error)
+	UpdateRoutingProfile(context.Context, *UpdateRoutingProfileRequest) (*empty.Empty, error)
 	// DeleteRoutingProfile deletes the routing-profile matching the given id.
-	DeleteRoutingProfile(context.Context, *DeleteRoutingProfileRequest) (*DeleteRoutingProfileResponse, error)
+	DeleteRoutingProfile(context.Context, *DeleteRoutingProfileRequest) (*empty.Empty, error)
 	// CreateDeviceProfile creates the given device-profile.
 	CreateDeviceProfile(context.Context, *CreateDeviceProfileRequest) (*CreateDeviceProfileResponse, error)
 	// GetDeviceProfile returns the device-profile matching the given id.
 	GetDeviceProfile(context.Context, *GetDeviceProfileRequest) (*GetDeviceProfileResponse, error)
 	// UpdateDeviceProfile updates the given device-profile.
-	UpdateDeviceProfile(context.Context, *UpdateDeviceProfileRequest) (*UpdateDeviceProfileResponse, error)
+	UpdateDeviceProfile(context.Context, *UpdateDeviceProfileRequest) (*empty.Empty, error)
 	// DeleteDeviceProfile deletes the device-profile matching the given id.
-	DeleteDeviceProfile(context.Context, *DeleteDeviceProfileRequest) (*DeleteDeviceProfileResponse, error)
+	DeleteDeviceProfile(context.Context, *DeleteDeviceProfileRequest) (*empty.Empty, error)
 	// CreateDevice creates the given device.
-	CreateDevice(context.Context, *CreateDeviceRequest) (*CreateDeviceResponse, error)
+	CreateDevice(context.Context, *CreateDeviceRequest) (*empty.Empty, error)
 	// GetDevice returns the device matching the given DevEUI.
 	GetDevice(context.Context, *GetDeviceRequest) (*GetDeviceResponse, error)
 	// UpdateDevice updates the given device.
-	UpdateDevice(context.Context, *UpdateDeviceRequest) (*UpdateDeviceResponse, error)
+	UpdateDevice(context.Context, *UpdateDeviceRequest) (*empty.Empty, error)
 	// DeleteDevice deletes the device matching the given DevEUI.
-	DeleteDevice(context.Context, *DeleteDeviceRequest) (*DeleteDeviceResponse, error)
+	DeleteDevice(context.Context, *DeleteDeviceRequest) (*empty.Empty, error)
 	// ActivateDevice activates a device (ABP).
-	ActivateDevice(context.Context, *ActivateDeviceRequest) (*ActivateDeviceResponse, error)
+	ActivateDevice(context.Context, *ActivateDeviceRequest) (*empty.Empty, error)
 	// DeactivateDevice de-activates a device.
-	DeactivateDevice(context.Context, *DeactivateDeviceRequest) (*DeactivateDeviceResponse, error)
+	DeactivateDevice(context.Context, *DeactivateDeviceRequest) (*empty.Empty, error)
 	// GetDeviceActivation returns the device activation details.
 	GetDeviceActivation(context.Context, *GetDeviceActivationRequest) (*GetDeviceActivationResponse, error)
 	// CreateDeviceQueueItem creates the given device-queue item.
-	CreateDeviceQueueItem(context.Context, *CreateDeviceQueueItemRequest) (*CreateDeviceQueueItemResponse, error)
+	CreateDeviceQueueItem(context.Context, *CreateDeviceQueueItemRequest) (*empty.Empty, error)
 	// FlushDeviceQueueForDevEUI flushes the device-queue for the given DevEUI.
-	FlushDeviceQueueForDevEUI(context.Context, *FlushDeviceQueueForDevEUIRequest) (*FlushDeviceQueueForDevEUIResponse, error)
+	FlushDeviceQueueForDevEUI(context.Context, *FlushDeviceQueueForDevEUIRequest) (*empty.Empty, error)
 	// GetDeviceQueueItemsForDevEUI returns all device-queue items for the given DevEUI.
 	GetDeviceQueueItemsForDevEUI(context.Context, *GetDeviceQueueItemsForDevEUIRequest) (*GetDeviceQueueItemsForDevEUIResponse, error)
 	// GetNextDownlinkFCntForDevEUI returns the next FCnt that must be used.
 	// This also takes device-queue items for the given DevEUI into consideration.
 	GetNextDownlinkFCntForDevEUI(context.Context, *GetNextDownlinkFCntForDevEUIRequest) (*GetNextDownlinkFCntForDevEUIResponse, error)
 	// GetRandomDevAddr returns a random DevAddr taking the NwkID prefix into account.
-	GetRandomDevAddr(context.Context, *GetRandomDevAddrRequest) (*GetRandomDevAddrResponse, error)
+	GetRandomDevAddr(context.Context, *empty.Empty) (*GetRandomDevAddrResponse, error)
 	// CreateMACCommandQueueItem adds the downlink mac-command to the queue.
-	CreateMACCommandQueueItem(context.Context, *CreateMACCommandQueueItemRequest) (*CreateMACCommandQueueItemResponse, error)
+	CreateMACCommandQueueItem(context.Context, *CreateMACCommandQueueItemRequest) (*empty.Empty, error)
 	// SendProprietaryPayload send a payload using the 'Proprietary' LoRaWAN message-type.
-	SendProprietaryPayload(context.Context, *SendProprietaryPayloadRequest) (*SendProprietaryPayloadResponse, error)
+	SendProprietaryPayload(context.Context, *SendProprietaryPayloadRequest) (*empty.Empty, error)
 	// CreateGateway creates the given gateway.
-	CreateGateway(context.Context, *CreateGatewayRequest) (*CreateGatewayResponse, error)
+	CreateGateway(context.Context, *CreateGatewayRequest) (*empty.Empty, error)
 	// GetGateway returns data for a particular gateway.
 	GetGateway(context.Context, *GetGatewayRequest) (*GetGatewayResponse, error)
 	// UpdateGateway updates an existing gateway.
-	UpdateGateway(context.Context, *UpdateGatewayRequest) (*UpdateGatewayResponse, error)
+	UpdateGateway(context.Context, *UpdateGatewayRequest) (*empty.Empty, error)
 	// DeleteGateway deletes a gateway.
-	DeleteGateway(context.Context, *DeleteGatewayRequest) (*DeleteGatewayResponse, error)
+	DeleteGateway(context.Context, *DeleteGatewayRequest) (*empty.Empty, error)
 	// CreateGatewayProfile creates the given gateway-profile.
 	CreateGatewayProfile(context.Context, *CreateGatewayProfileRequest) (*CreateGatewayProfileResponse, error)
 	// GetGatewayProfile returns the gateway-profile given an id.
 	GetGatewayProfile(context.Context, *GetGatewayProfileRequest) (*GetGatewayProfileResponse, error)
 	// UpdateGatewayProfile updates the given gateway-profile.
-	UpdateGatewayProfile(context.Context, *UpdateGatewayProfileRequest) (*UpdateGatewayProfileResponse, error)
+	UpdateGatewayProfile(context.Context, *UpdateGatewayProfileRequest) (*empty.Empty, error)
 	// DeleteGatewayProfile deletes the gateway-profile matching a given id.
-	DeleteGatewayProfile(context.Context, *DeleteGatewayProfileRequest) (*DeleteGatewayProfileResponse, error)
+	DeleteGatewayProfile(context.Context, *DeleteGatewayProfileRequest) (*empty.Empty, error)
 	// GetGatewayStats returns stats of an existing gateway.
 	GetGatewayStats(context.Context, *GetGatewayStatsRequest) (*GetGatewayStatsResponse, error)
 	// StreamFrameLogsForGateway returns a stream of frames seen by the given gateway.
@@ -4867,7 +4103,7 @@ type NetworkServerServiceServer interface {
 	// StreamFrameLogsForDevice returns a stream of frames seen by the given device.
 	StreamFrameLogsForDevice(*StreamFrameLogsForDeviceRequest, NetworkServerService_StreamFrameLogsForDeviceServer) error
 	// GetVersion returns the LoRa Server version.
-	GetVersion(context.Context, *GetVersionRequest) (*GetVersionResponse, error)
+	GetVersion(context.Context, *empty.Empty) (*GetVersionResponse, error)
 }
 
 func RegisterNetworkServerServiceServer(s *grpc.Server, srv NetworkServerServiceServer) {
@@ -5289,7 +4525,7 @@ func _NetworkServerService_GetNextDownlinkFCntForDevEUI_Handler(srv interface{},
 }
 
 func _NetworkServerService_GetRandomDevAddr_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetRandomDevAddrRequest)
+	in := new(empty.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -5301,7 +4537,7 @@ func _NetworkServerService_GetRandomDevAddr_Handler(srv interface{}, ctx context
 		FullMethod: "/ns.NetworkServerService/GetRandomDevAddr",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServerServiceServer).GetRandomDevAddr(ctx, req.(*GetRandomDevAddrRequest))
+		return srv.(NetworkServerServiceServer).GetRandomDevAddr(ctx, req.(*empty.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -5547,7 +4783,7 @@ func (x *networkServerServiceStreamFrameLogsForDeviceServer) Send(m *StreamFrame
 }
 
 func _NetworkServerService_GetVersion_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetVersionRequest)
+	in := new(empty.Empty)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -5559,7 +4795,7 @@ func _NetworkServerService_GetVersion_Handler(srv interface{}, ctx context.Conte
 		FullMethod: "/ns.NetworkServerService/GetVersion",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(NetworkServerServiceServer).GetVersion(ctx, req.(*GetVersionRequest))
+		return srv.(NetworkServerServiceServer).GetVersion(ctx, req.(*empty.Empty))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -5728,202 +4964,186 @@ var _NetworkServerService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "ns.proto",
 }
 
-func init() { proto.RegisterFile("ns.proto", fileDescriptor_ns_6d02ecdee5783d73) }
+func init() { proto.RegisterFile("ns.proto", fileDescriptor_ns_e975c32956bea996) }
 
-var fileDescriptor_ns_6d02ecdee5783d73 = []byte{
-	// 3099 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x5a, 0x4b, 0x73, 0x1b, 0xc7,
-	0x11, 0xe6, 0x82, 0xc4, 0x83, 0x0d, 0x02, 0x5c, 0x0d, 0x29, 0x12, 0x84, 0xf8, 0x5c, 0xc9, 0x31,
-	0x25, 0x3b, 0xb4, 0x4d, 0x59, 0x96, 0x68, 0xc7, 0x4e, 0xa1, 0x48, 0x50, 0x66, 0x64, 0x51, 0xf2,
-	0x42, 0xb4, 0x65, 0xbb, 0x2a, 0xeb, 0x15, 0x76, 0x40, 0x6e, 0x08, 0xec, 0x22, 0xbb, 0x03, 0x52,
-	0xcc, 0x35, 0x87, 0x54, 0x25, 0x95, 0x63, 0x2e, 0x49, 0x55, 0x8e, 0xb9, 0xa5, 0x72, 0xcf, 0x4f,
-	0xc8, 0x21, 0xa9, 0x4a, 0x6e, 0xf9, 0x19, 0xf9, 0x05, 0xa9, 0x79, 0xec, 0x93, 0xb3, 0x0b, 0xc6,
-	0x8f, 0xe8, 0x84, 0x9d, 0xe9, 0xc7, 0xf4, 0x74, 0x7f, 0x33, 0xd3, 0x33, 0x0d, 0xa8, 0x38, 0xfe,
-	0xd6, 0xd0, 0x73, 0x89, 0x8b, 0x0a, 0x8e, 0xdf, 0x5c, 0x3b, 0x76, 0xdd, 0xe3, 0x3e, 0x7e, 0x8b,
-	0xf5, 0xbc, 0x18, 0xf5, 0xde, 0x22, 0xf6, 0x00, 0xfb, 0xc4, 0x1c, 0x0c, 0x39, 0x53, 0x73, 0x35,
-	0xcd, 0x60, 0x8d, 0x3c, 0x93, 0xd8, 0xae, 0x23, 0xe8, 0xf5, 0xa1, 0xe7, 0xf6, 0xec, 0x3e, 0x16,
-	0x4a, 0xb5, 0x2f, 0xe1, 0xc6, 0xae, 0x87, 0x4d, 0x82, 0x3b, 0xd8, 0x3b, 0xb3, 0xbb, 0xf8, 0x29,
-	0x27, 0xeb, 0xf8, 0xe7, 0x23, 0xec, 0x13, 0xf4, 0x01, 0xcc, 0xfa, 0x9c, 0x60, 0x08, 0xc1, 0x86,
-	0xb2, 0xae, 0x6c, 0x56, 0xb7, 0xd1, 0x96, 0xe3, 0x6f, 0xa5, 0x64, 0xea, 0x7e, 0xa2, 0xad, 0x6d,
-	0xc1, 0xb2, 0x5c, 0xb7, 0x3f, 0x74, 0x1d, 0x1f, 0xa3, 0x3a, 0x14, 0x6c, 0x8b, 0xe9, 0x9b, 0xd1,
-	0x0b, 0xb6, 0xa5, 0xdd, 0x81, 0xc6, 0x43, 0x4c, 0xe4, 0x86, 0xa4, 0x79, 0xff, 0xae, 0xc0, 0x92,
-	0x84, 0x59, 0x68, 0xfe, 0x36, 0x66, 0xa3, 0x1d, 0x80, 0x2e, 0x33, 0xdb, 0x32, 0x4c, 0xd2, 0x28,
-	0x30, 0xb9, 0xe6, 0x16, 0xf7, 0xeb, 0x56, 0xe0, 0xd7, 0xad, 0x67, 0x81, 0xe3, 0xf5, 0x69, 0xc1,
-	0xdd, 0x22, 0x54, 0x74, 0x34, 0xb4, 0x02, 0xd1, 0xc9, 0xf1, 0xa2, 0x82, 0xbb, 0x45, 0x68, 0x20,
-	0x8e, 0x58, 0xe3, 0x7b, 0x08, 0xc4, 0x2a, 0x2c, 0xcb, 0x75, 0x73, 0x77, 0x69, 0x3f, 0x84, 0x1b,
-	0x7b, 0xb8, 0x8f, 0xb3, 0xc6, 0x4e, 0xfb, 0x7e, 0x15, 0x96, 0xe5, 0xec, 0x42, 0x5d, 0x88, 0x29,
-	0xdd, 0x1d, 0x11, 0xdb, 0x39, 0xbe, 0x3c, 0x15, 0x8f, 0x13, 0x64, 0x53, 0x49, 0xc9, 0xd4, 0xbd,
-	0x44, 0x3b, 0xc2, 0x54, 0x5a, 0x77, 0x2e, 0xa6, 0xe4, 0x86, 0x64, 0x60, 0x2a, 0x43, 0xf3, 0xb7,
-	0x31, 0xfb, 0x55, 0x63, 0xea, 0x7b, 0x08, 0x44, 0x88, 0x29, 0xb9, 0xbb, 0x22, 0x4c, 0x5d, 0xcd,
-	0xf7, 0x21, 0xa6, 0x32, 0xd4, 0x7d, 0x06, 0x4d, 0x1e, 0xf7, 0x3d, 0x2c, 0x41, 0xe8, 0x03, 0xa8,
-	0x5b, 0x58, 0xb2, 0x38, 0xae, 0xd1, 0x89, 0x24, 0x25, 0x6a, 0x56, 0xbc, 0x49, 0xcd, 0x94, 0xea,
-	0xcd, 0x80, 0xd3, 0x6d, 0x58, 0x7c, 0x88, 0x89, 0xd4, 0x86, 0x34, 0xeb, 0xdf, 0x14, 0x06, 0x3d,
-	0xb9, 0xde, 0x6f, 0x6c, 0xf0, 0x2b, 0x42, 0xd2, 0x67, 0xd0, 0xe4, 0xd1, 0xfe, 0x8e, 0xdd, 0xbf,
-	0x12, 0x20, 0x54, 0xea, 0x26, 0xed, 0x4d, 0x68, 0x72, 0x54, 0x5c, 0xc9, 0xe3, 0x2b, 0x01, 0xe4,
-	0xe4, 0xca, 0xfe, 0xa9, 0x40, 0x89, 0x53, 0xd0, 0x22, 0x94, 0x2d, 0x7c, 0x66, 0xe0, 0x91, 0x2d,
-	0xc4, 0x4b, 0x16, 0x3e, 0x6b, 0x8f, 0x6c, 0x74, 0x07, 0xae, 0x25, 0x67, 0x62, 0xd8, 0x16, 0x73,
-	0xf2, 0x8c, 0x3e, 0x9b, 0xb0, 0xfc, 0xc0, 0x42, 0x6f, 0x02, 0x4a, 0x6d, 0xc9, 0x94, 0x79, 0x92,
-	0x31, 0xab, 0xc9, 0x1d, 0x98, 0x73, 0xa7, 0x16, 0x1b, 0xe5, 0x9e, 0xe2, 0xdc, 0xc9, 0xb5, 0x75,
-	0x60, 0xa1, 0xd7, 0x41, 0xf5, 0x4f, 0xed, 0xa1, 0xd1, 0x33, 0xba, 0x0e, 0x31, 0xba, 0x27, 0xb8,
-	0x7b, 0xda, 0x28, 0xae, 0x2b, 0x9b, 0x15, 0xbd, 0x46, 0xfb, 0xf7, 0x77, 0x1d, 0xb2, 0x4b, 0x3b,
-	0xb5, 0x1d, 0x98, 0x8b, 0xe3, 0x37, 0x70, 0x8d, 0x06, 0x25, 0x6e, 0xae, 0x88, 0x04, 0x44, 0x91,
-	0xd0, 0x05, 0x45, 0x5b, 0x80, 0xf9, 0xa4, 0xa8, 0xf0, 0xd3, 0x1b, 0xa0, 0x86, 0xb8, 0x0d, 0xf4,
-	0x65, 0x39, 0x4c, 0xfb, 0xb3, 0x02, 0xd7, 0x62, 0xdc, 0x02, 0xde, 0x57, 0x18, 0xfe, 0x15, 0x01,
-	0x79, 0x07, 0xe6, 0xe2, 0x80, 0xfb, 0x1f, 0xfd, 0x95, 0x14, 0x15, 0xfe, 0xda, 0x82, 0xb9, 0x38,
-	0xec, 0xc6, 0xba, 0x6c, 0x01, 0xe6, 0x93, 0xfc, 0x42, 0xcf, 0x5f, 0x0b, 0xa0, 0xf2, 0xae, 0x56,
-	0x97, 0xd8, 0x67, 0x2c, 0x6b, 0xcb, 0x46, 0xea, 0x12, 0x54, 0x28, 0xc1, 0xb4, 0x2c, 0x4f, 0x00,
-	0x94, 0x32, 0xb6, 0x2c, 0xcb, 0x43, 0xb7, 0x60, 0xd6, 0x37, 0x9c, 0xf3, 0x53, 0xc3, 0x37, 0x6c,
-	0x87, 0x18, 0xa7, 0xf8, 0x42, 0xa0, 0xb2, 0xea, 0x1f, 0x9e, 0x9f, 0x76, 0x0e, 0x1c, 0xf2, 0x08,
-	0x5f, 0x50, 0xae, 0x5e, 0x8a, 0x8b, 0xa3, 0xb1, 0xda, 0x8b, 0x71, 0x6d, 0x40, 0x8d, 0xf3, 0x60,
-	0xa7, 0xcb, 0x78, 0x8a, 0x8c, 0x07, 0x9c, 0xf3, 0xd3, 0x4e, 0xdb, 0xe9, 0x52, 0x96, 0x06, 0x54,
-	0x38, 0x4c, 0x47, 0xc3, 0x46, 0x69, 0x5d, 0xd9, 0xac, 0xe9, 0xa5, 0xde, 0xae, 0x43, 0x8e, 0x86,
-	0x68, 0x0d, 0x66, 0x1c, 0x01, 0x61, 0xcb, 0x3d, 0x77, 0x1a, 0x65, 0x46, 0x9d, 0x76, 0x28, 0x7c,
-	0xf7, 0xdc, 0x73, 0x87, 0x32, 0x98, 0x71, 0x86, 0x0a, 0x67, 0x30, 0x43, 0x06, 0xd9, 0x3a, 0x98,
-	0x96, 0xad, 0x83, 0x2f, 0xe1, 0xba, 0xf0, 0x5a, 0x2a, 0x0c, 0xad, 0x70, 0x45, 0x9b, 0xa1, 0x57,
-	0x45, 0x90, 0xe7, 0xa3, 0x20, 0x47, 0x1e, 0xd7, 0x55, 0x2b, 0xd5, 0xa3, 0x35, 0x60, 0x21, 0xad,
-	0x5b, 0x84, 0x6c, 0x1b, 0x16, 0xf7, 0xb0, 0x29, 0x1d, 0x37, 0x33, 0xfc, 0x4d, 0x68, 0x5c, 0x96,
-	0x11, 0xfa, 0xee, 0x41, 0x33, 0x5c, 0x4c, 0x31, 0x93, 0xc6, 0xa9, 0xfc, 0x1a, 0x6e, 0x48, 0xc5,
-	0xc4, 0x6a, 0xfc, 0x0e, 0x5c, 0xb0, 0xc4, 0xce, 0x3d, 0xdd, 0x74, 0x2c, 0x77, 0xb0, 0xc7, 0x61,
-	0x26, 0xac, 0xd2, 0xee, 0xf1, 0x0c, 0x2b, 0x49, 0x12, 0x23, 0xc7, 0x41, 0xaa, 0x24, 0x40, 0xaa,
-	0xd9, 0xb0, 0xce, 0x77, 0x9f, 0xc7, 0xad, 0xdd, 0x5d, 0x77, 0x30, 0x30, 0x1d, 0xeb, 0xd3, 0x11,
-	0x1e, 0xe1, 0x03, 0x82, 0x07, 0xe3, 0x26, 0x8c, 0x54, 0x98, 0xec, 0x8a, 0xdd, 0xb3, 0xa6, 0xd3,
-	0x4f, 0xd4, 0x84, 0x4a, 0x97, 0x6b, 0xf1, 0x1b, 0xc5, 0xf5, 0xc9, 0xcd, 0x19, 0x3d, 0x6c, 0x6b,
-	0x37, 0x61, 0x23, 0x67, 0x28, 0xe1, 0xfa, 0x7f, 0x2b, 0xb0, 0xd2, 0xc1, 0x8e, 0xf5, 0xd4, 0x73,
-	0x87, 0x9e, 0x8d, 0x89, 0xe9, 0x5d, 0x3c, 0x35, 0x2f, 0xfa, 0xae, 0x69, 0x05, 0xd6, 0xac, 0x41,
-	0x75, 0x60, 0x76, 0x8d, 0x21, 0xef, 0x15, 0x16, 0xc1, 0xc0, 0xec, 0x0a, 0x3e, 0x6a, 0xd5, 0xc0,
-	0xee, 0x8a, 0xd5, 0x48, 0x3f, 0xd1, 0x06, 0xcc, 0x1c, 0x9b, 0x04, 0x9f, 0x9b, 0x17, 0xc6, 0xc0,
-	0xec, 0xfa, 0x8d, 0x49, 0x66, 0x59, 0x55, 0xf4, 0x3d, 0x36, 0xbb, 0x3e, 0xba, 0x07, 0x0b, 0x43,
-	0xb7, 0x6f, 0x7a, 0xf6, 0x2f, 0x98, 0xa7, 0x0d, 0xdb, 0x39, 0xc3, 0x9e, 0x4f, 0x23, 0x34, 0xc5,
-	0x70, 0x7e, 0x3d, 0x4e, 0x3d, 0x08, 0x88, 0x68, 0x19, 0xa6, 0x7b, 0x1e, 0x35, 0xcc, 0xe9, 0xf2,
-	0x35, 0x59, 0xd3, 0xa3, 0x0e, 0x7a, 0x32, 0x5a, 0x9e, 0x58, 0x8c, 0x05, 0xcb, 0xd3, 0xd6, 0x61,
-	0x35, 0x6b, 0x6e, 0x62, 0xfa, 0xff, 0x52, 0xa0, 0xfc, 0x90, 0x9b, 0x95, 0x3e, 0x57, 0x11, 0x82,
-	0x29, 0xc7, 0x1c, 0x60, 0x36, 0xb1, 0x69, 0x9d, 0x7d, 0xa3, 0x75, 0xa8, 0x5a, 0xd8, 0xef, 0x7a,
-	0xf6, 0x90, 0xa1, 0x69, 0x92, 0x91, 0xe2, 0x5d, 0x34, 0x22, 0x7d, 0x93, 0xd8, 0x64, 0x64, 0x61,
-	0x36, 0x15, 0x45, 0x0f, 0xdb, 0xd4, 0xfa, 0xbe, 0xeb, 0x1c, 0x73, 0x62, 0x91, 0x11, 0xa3, 0x0e,
-	0x2a, 0x69, 0xf6, 0x85, 0x64, 0x89, 0x4b, 0x06, 0x6d, 0x7a, 0x8c, 0x06, 0x1e, 0x8d, 0x1d, 0xa3,
-	0x65, 0x7e, 0x8c, 0x0a, 0x4a, 0x78, 0x8c, 0x6a, 0x1f, 0x06, 0x47, 0x9c, 0x98, 0x5a, 0x10, 0xca,
-	0xd7, 0xa0, 0x2c, 0x78, 0xc5, 0x3a, 0xa8, 0xd2, 0x75, 0x10, 0x30, 0x05, 0x34, 0x6d, 0x11, 0xae,
-	0xa7, 0xc4, 0x85, 0xb7, 0x6e, 0xb2, 0x43, 0x2f, 0xa5, 0x34, 0x9d, 0x8e, 0xfc, 0xa5, 0x00, 0x28,
-	0xce, 0x25, 0xd6, 0xc4, 0xd5, 0xc6, 0x7e, 0x35, 0xc7, 0x23, 0xfa, 0x08, 0x6a, 0x3d, 0xdb, 0xf3,
-	0x89, 0xe1, 0x63, 0xec, 0x50, 0xe9, 0xa9, 0xb1, 0xd2, 0x55, 0x26, 0xd0, 0xc1, 0xd8, 0x69, 0x11,
-	0xf4, 0x23, 0x98, 0xe9, 0x9b, 0x31, 0xf1, 0xe2, 0x58, 0x71, 0xa0, 0xfc, 0x5c, 0x9a, 0x86, 0x8b,
-	0x9f, 0xb0, 0xdf, 0x38, 0x5c, 0x29, 0x71, 0x11, 0xae, 0x1f, 0x04, 0x27, 0xee, 0x98, 0x88, 0x2d,
-	0xc2, 0xf5, 0x14, 0x9f, 0x50, 0xf0, 0x9b, 0x02, 0xcc, 0x88, 0xbe, 0x0e, 0x31, 0x89, 0x8f, 0x1e,
-	0xc0, 0x74, 0xf8, 0xf2, 0x22, 0x6c, 0xca, 0xf5, 0x70, 0xc8, 0x8c, 0xb6, 0x60, 0xce, 0x7b, 0x69,
-	0x0c, 0xcd, 0xee, 0x29, 0x26, 0xbe, 0xe1, 0xe1, 0x2e, 0xb6, 0xcf, 0x30, 0xcf, 0x31, 0x8b, 0xfa,
-	0x35, 0xef, 0xe5, 0x53, 0x4e, 0xd1, 0x05, 0x01, 0xdd, 0x85, 0x05, 0x09, 0xbf, 0xe1, 0x9e, 0xb2,
-	0xc0, 0x16, 0xf5, 0xb9, 0x4b, 0x22, 0x4f, 0x4e, 0xe9, 0x20, 0x44, 0x32, 0xc8, 0x14, 0x1f, 0x84,
-	0x5c, 0x1a, 0xe4, 0x4d, 0x40, 0x31, 0x7e, 0x3c, 0xb0, 0x09, 0xc1, 0x16, 0x0b, 0x5e, 0x51, 0x57,
-	0x43, 0xf6, 0x36, 0xef, 0xd7, 0xfe, 0xa3, 0xc0, 0x42, 0x04, 0x6c, 0xe6, 0x90, 0xc0, 0xa3, 0x2b,
-	0x00, 0xc1, 0xf2, 0x0c, 0x3d, 0x3b, 0x2d, 0x7a, 0x0e, 0xe8, 0x64, 0x2a, 0xb6, 0x43, 0xb0, 0x77,
-	0x66, 0xf6, 0xd9, 0x8c, 0xeb, 0xdb, 0x8b, 0x34, 0x92, 0xad, 0xe3, 0x63, 0x0f, 0x1f, 0x8b, 0x1d,
-	0x8e, 0x93, 0xf5, 0x90, 0x11, 0xed, 0xc2, 0xac, 0x4f, 0x4c, 0x8f, 0x18, 0x91, 0xc7, 0xc7, 0x63,
-	0xba, 0xce, 0x44, 0xc2, 0x36, 0xfa, 0x31, 0xd4, 0xb0, 0x63, 0xc5, 0x54, 0x8c, 0x07, 0xf6, 0x0c,
-	0x76, 0xac, 0xb0, 0xa5, 0xed, 0xb2, 0x13, 0x30, 0x39, 0x67, 0xb1, 0xa2, 0x37, 0xa1, 0xe4, 0x61,
-	0x7f, 0xd4, 0x27, 0x0d, 0x65, 0x7d, 0x72, 0xb3, 0xba, 0xad, 0xc6, 0xd0, 0xc9, 0x39, 0x05, 0x5d,
-	0xfb, 0x9d, 0x02, 0xb3, 0xfc, 0xb4, 0x0d, 0x0f, 0xa0, 0xec, 0x43, 0x6e, 0x0d, 0xaa, 0x3d, 0x6f,
-	0x10, 0x9e, 0x37, 0xfc, 0x58, 0x81, 0x9e, 0x37, 0x08, 0xce, 0x9b, 0x39, 0x28, 0xb2, 0xbc, 0x88,
-	0xb9, 0xa3, 0xa6, 0x4f, 0xd1, 0xac, 0x0b, 0x5d, 0x87, 0x52, 0xcf, 0x18, 0xba, 0x1e, 0x11, 0xa7,
-	0x63, 0xb1, 0xf7, 0xd4, 0xf5, 0x08, 0xdd, 0x71, 0xbb, 0xae, 0xd3, 0xb3, 0xbd, 0x81, 0x08, 0x6c,
-	0x45, 0x8f, 0x3a, 0xb4, 0x87, 0xc1, 0xab, 0x4a, 0xca, 0xb8, 0x20, 0xac, 0xaf, 0xc3, 0x94, 0x4d,
-	0xf0, 0x40, 0x20, 0x7d, 0x2e, 0x4a, 0x1a, 0x22, 0x4e, 0xc6, 0xa0, 0xad, 0xc1, 0x4a, 0x86, 0x22,
-	0xb1, 0x92, 0x3e, 0x80, 0xf5, 0xfd, 0xfe, 0xc8, 0x3f, 0x89, 0xd1, 0xf7, 0x5d, 0x6f, 0x0f, 0x9f,
-	0xb5, 0x8f, 0x0e, 0xc6, 0xe6, 0x39, 0x37, 0x61, 0x23, 0x47, 0x58, 0x8c, 0xf0, 0x11, 0xdc, 0x0c,
-	0x93, 0xa1, 0x70, 0x7c, 0xff, 0xea, 0x83, 0x7c, 0x0a, 0xb7, 0xf2, 0xe5, 0x45, 0xd4, 0x6f, 0x43,
-	0x91, 0x4e, 0xd9, 0x17, 0x41, 0x97, 0x3a, 0x85, 0x73, 0x08, 0x93, 0x0e, 0xf1, 0x4b, 0x96, 0xd4,
-	0xf6, 0x6d, 0xe7, 0x94, 0x26, 0xae, 0x57, 0x37, 0xe9, 0x03, 0x66, 0x52, 0x8e, 0xbc, 0x30, 0x29,
-	0x04, 0x84, 0x12, 0x01, 0x42, 0x6b, 0xc1, 0x7a, 0x87, 0x78, 0xd8, 0x1c, 0xec, 0x7b, 0xe6, 0x00,
-	0x7f, 0xe2, 0x1e, 0xd3, 0xb9, 0xa4, 0x36, 0xc2, 0xfc, 0x65, 0xab, 0xfd, 0x41, 0x81, 0x8d, 0x1c,
-	0x1d, 0x62, 0xf4, 0xfb, 0x50, 0x1b, 0x0d, 0xa9, 0x71, 0x46, 0x8f, 0x72, 0x05, 0x8e, 0x61, 0x8f,
-	0x49, 0x47, 0x8c, 0x10, 0x48, 0xeb, 0x33, 0xa3, 0xa8, 0xed, 0xa3, 0x0f, 0x61, 0xd6, 0x12, 0xf3,
-	0x0a, 0x44, 0x0b, 0x4c, 0x94, 0x67, 0xa7, 0xc1, 0x94, 0x03, 0xe1, 0xba, 0x15, 0xef, 0xf1, 0xb5,
-	0xf7, 0x61, 0xed, 0xb2, 0x71, 0x57, 0x4c, 0xc6, 0x7f, 0xaf, 0xc8, 0xbc, 0x93, 0xba, 0xcd, 0xbe,
-	0xaa, 0x89, 0xfd, 0x56, 0x81, 0xca, 0x9e, 0x49, 0x4c, 0xdd, 0x24, 0x18, 0xad, 0x02, 0x0c, 0x5c,
-	0x6b, 0xd4, 0x8f, 0xb2, 0xf7, 0x69, 0x3d, 0xd6, 0x43, 0x17, 0xf8, 0x0b, 0xd3, 0xb1, 0xce, 0x6d,
-	0x8b, 0x9c, 0xb0, 0xbd, 0xa2, 0xa6, 0x47, 0x1d, 0xe8, 0x36, 0xa8, 0xfe, 0xd0, 0xc3, 0xa6, 0x65,
-	0x3b, 0xc7, 0x46, 0xcf, 0xec, 0x12, 0xd7, 0x13, 0xbb, 0xc6, 0x6c, 0xd8, 0xbf, 0xcf, 0xba, 0x51,
-	0x03, 0xca, 0x2f, 0x6c, 0xe2, 0x99, 0x04, 0x8b, 0x1d, 0x24, 0x68, 0x6a, 0x04, 0x66, 0xf8, 0x74,
-	0x9f, 0x3d, 0x3f, 0x70, 0x7a, 0x6e, 0x32, 0x07, 0x55, 0xd2, 0x39, 0xe8, 0x6d, 0x98, 0xb6, 0x4c,
-	0x62, 0x1a, 0x4c, 0x13, 0xcf, 0x5f, 0x66, 0xd8, 0xb4, 0xc5, 0x8c, 0xf4, 0x8a, 0x15, 0xcc, 0xed,
-	0x06, 0xdd, 0x9c, 0x2c, 0xcc, 0x59, 0x79, 0x2a, 0x59, 0xa1, 0x1d, 0x94, 0xa8, 0xfd, 0xa9, 0x10,
-	0x0c, 0xab, 0xf3, 0x61, 0xc7, 0x9c, 0x31, 0x5b, 0x30, 0x45, 0x77, 0xf9, 0x2b, 0xa4, 0x4c, 0x8c,
-	0x0f, 0xfd, 0x04, 0xe6, 0xe9, 0xaf, 0xe1, 0xdb, 0x4e, 0x17, 0x1b, 0xc7, 0x43, 0xdf, 0xc0, 0x43,
-	0xb7, 0x7b, 0x22, 0xce, 0x98, 0xa5, 0x4b, 0xf2, 0x7b, 0xa2, 0xa0, 0xa2, 0x5f, 0xa3, 0x62, 0x1d,
-	0x2a, 0xf5, 0x70, 0xe8, 0xb7, 0xa9, 0x0c, 0xf5, 0x48, 0xf2, 0x84, 0xa9, 0xc5, 0x8f, 0x7e, 0x04,
-	0x53, 0x9e, 0xef, 0xdb, 0xe2, 0x5c, 0x65, 0xdf, 0xf4, 0x86, 0xd4, 0x77, 0x3d, 0xd3, 0xf0, 0x1d,
-	0x9e, 0xaf, 0x17, 0xf4, 0x32, 0x6d, 0x77, 0x1c, 0x0f, 0xcd, 0x43, 0xf1, 0x85, 0x6b, 0x7a, 0x96,
-	0xb8, 0x36, 0xf3, 0x06, 0x0d, 0x8f, 0xe9, 0x10, 0xec, 0x38, 0xa6, 0xb8, 0x2d, 0x07, 0x4d, 0xed,
-	0x57, 0x0a, 0xd4, 0x93, 0x70, 0x44, 0xb7, 0xa1, 0x4c, 0x5e, 0x1a, 0xb6, 0xd3, 0x73, 0xc5, 0xd6,
-	0xad, 0x46, 0x98, 0xe5, 0x41, 0xd4, 0x4b, 0xe4, 0x25, 0xf3, 0xea, 0x6d, 0x28, 0x7b, 0x82, 0xb5,
-	0x10, 0x9d, 0x62, 0x71, 0xc7, 0xeb, 0x25, 0x8f, 0xb3, 0xae, 0x41, 0x75, 0x78, 0x72, 0x11, 0x1e,
-	0x4c, 0xfc, 0x6d, 0x01, 0x86, 0x27, 0xc1, 0xa5, 0x42, 0xfb, 0xe3, 0x24, 0xd4, 0x03, 0x74, 0x3f,
-	0xbb, 0x52, 0xd0, 0xd6, 0xa1, 0x6a, 0x0f, 0x06, 0xd8, 0xb2, 0x4d, 0x82, 0xfb, 0x17, 0x2c, 0x76,
-	0x15, 0x3d, 0xde, 0xf5, 0x7f, 0x0c, 0x53, 0xfe, 0xd5, 0x6a, 0x1e, 0x8a, 0x43, 0xf7, 0x1c, 0xf3,
-	0x68, 0x15, 0x75, 0xde, 0x48, 0x82, 0xbd, 0x7c, 0x75, 0xb0, 0x57, 0x92, 0x60, 0xcf, 0xb9, 0x0d,
-	0x4e, 0xe7, 0xdd, 0x06, 0x43, 0xa8, 0x40, 0x06, 0x54, 0xaa, 0x49, 0xa8, 0x7c, 0x0d, 0x6a, 0x7a,
-	0xf7, 0x41, 0x6f, 0xa4, 0xb1, 0x82, 0xe2, 0x9b, 0x54, 0x0a, 0x2d, 0x29, 0x08, 0x14, 0x2e, 0x41,
-	0x60, 0x8e, 0xdd, 0x90, 0x3e, 0xe3, 0xf6, 0x05, 0x4f, 0x05, 0x3a, 0xbb, 0x10, 0x85, 0x9d, 0x62,
-	0x7b, 0x6d, 0x40, 0x39, 0x98, 0x24, 0xdf, 0xd6, 0x82, 0x26, 0xd2, 0x68, 0x62, 0x75, 0x4c, 0x09,
-	0x3c, 0x59, 0x64, 0xaf, 0x72, 0x3a, 0xeb, 0xd1, 0x05, 0x45, 0xfb, 0xa5, 0x02, 0xf5, 0x87, 0x89,
-	0x7b, 0xdf, 0xa5, 0xfb, 0x6b, 0x13, 0x2a, 0xdd, 0x13, 0xd3, 0x71, 0x70, 0x9f, 0xef, 0xbf, 0x35,
-	0x3d, 0x6c, 0xa3, 0x36, 0xd4, 0xf1, 0x4b, 0xe2, 0x99, 0x46, 0xc8, 0x31, 0xc9, 0xd0, 0xbf, 0x1a,
-	0xcb, 0xe1, 0x84, 0xde, 0x36, 0xe5, 0xdb, 0xe5, 0x6c, 0x7a, 0x0d, 0xc7, 0x5a, 0xbe, 0xf6, 0x0f,
-	0x05, 0x9a, 0xd9, 0xdc, 0x68, 0xeb, 0xd2, 0xe6, 0x5d, 0xdf, 0xae, 0xd3, 0x11, 0x1e, 0x87, 0xbd,
-	0xe9, 0xcd, 0x3c, 0x82, 0x60, 0x21, 0x0d, 0xc1, 0xc4, 0x56, 0x3f, 0x99, 0xde, 0xea, 0x33, 0xf7,
-	0x6f, 0xf4, 0x06, 0x5c, 0x4b, 0x1f, 0x02, 0xfc, 0xb1, 0xa4, 0xa6, 0xab, 0xa9, 0x53, 0xc0, 0x8f,
-	0x8a, 0x78, 0xc9, 0x69, 0xc5, 0x6a, 0x47, 0xa9, 0x7b, 0x78, 0x1c, 0x35, 0x29, 0x99, 0x7a, 0xf2,
-	0x62, 0x1e, 0x15, 0xf1, 0xd2, 0xba, 0x73, 0x8b, 0x78, 0x72, 0x43, 0x32, 0x8a, 0x78, 0x19, 0x9a,
-	0xbf, 0x8d, 0xd9, 0xaf, 0xba, 0x88, 0xf7, 0x3d, 0x04, 0x22, 0x2c, 0xe2, 0xc9, 0xdd, 0x15, 0x15,
-	0xf1, 0xae, 0xe6, 0xfb, 0xb0, 0x88, 0x27, 0x57, 0x77, 0x67, 0x19, 0x2a, 0xfa, 0xf3, 0xcf, 0x6d,
-	0xc7, 0x72, 0xcf, 0x51, 0x19, 0x26, 0xf5, 0xe7, 0xef, 0xa8, 0x13, 0xfc, 0x63, 0x5b, 0x55, 0xee,
-	0xac, 0x01, 0x44, 0xcb, 0x01, 0x55, 0x60, 0xea, 0x93, 0x27, 0x7a, 0x8b, 0x33, 0xec, 0x77, 0x1e,
-	0xa9, 0xca, 0x9d, 0x33, 0x28, 0xf1, 0xc5, 0x8f, 0xa6, 0xa1, 0xd8, 0x3e, 0x7a, 0xf0, 0xde, 0x03,
-	0x75, 0x82, 0x7e, 0x1e, 0x75, 0x76, 0xde, 0xb9, 0xa7, 0x16, 0xe8, 0xe7, 0xee, 0xe1, 0xfd, 0xfb,
-	0x3b, 0xea, 0x24, 0x67, 0x78, 0xf7, 0xee, 0x5d, 0x75, 0x8a, 0x7e, 0xb6, 0x8e, 0x28, 0x43, 0x91,
-	0x33, 0xbc, 0x7b, 0xff, 0x6d, 0xb5, 0xc4, 0x7a, 0x3b, 0x3b, 0xdb, 0x77, 0xd5, 0x32, 0xfd, 0x7c,
-	0xa4, 0xef, 0x6c, 0xbf, 0xad, 0x56, 0xe8, 0xe7, 0xc1, 0xe1, 0x83, 0xf7, 0xee, 0xa9, 0xd3, 0xf4,
-	0x53, 0x3f, 0x7a, 0xf0, 0xde, 0xbb, 0x2a, 0xdc, 0xe9, 0xc3, 0x9c, 0xe4, 0x86, 0x8a, 0x00, 0x4a,
-	0x9d, 0xf6, 0xee, 0x93, 0xc3, 0x3d, 0x75, 0x82, 0x7e, 0x3f, 0x3e, 0x38, 0x3c, 0x7a, 0xd6, 0x56,
-	0x15, 0x6a, 0xf9, 0xc7, 0x4f, 0x8e, 0x74, 0xb5, 0x40, 0x2d, 0xdf, 0x6b, 0x7d, 0xa1, 0x4e, 0xd2,
-	0xae, 0xcf, 0xdb, 0xed, 0x47, 0xdc, 0x9a, 0xc7, 0x4f, 0x0e, 0x9f, 0x7d, 0xac, 0x16, 0x51, 0x15,
-	0xca, 0x9f, 0x1e, 0xb5, 0xf4, 0x67, 0x6d, 0x5d, 0x2d, 0x51, 0x8e, 0x2f, 0xda, 0x2d, 0x5d, 0x2d,
-	0x6f, 0xff, 0xba, 0x09, 0xf3, 0x87, 0x98, 0x9c, 0xbb, 0xde, 0x69, 0x07, 0x7b, 0x67, 0xd8, 0x13,
-	0x55, 0x76, 0xf4, 0x55, 0xf0, 0x98, 0x95, 0x2c, 0xbb, 0xa3, 0x35, 0x1a, 0xe8, 0x9c, 0x3f, 0x71,
-	0x34, 0xd7, 0xb3, 0x19, 0x44, 0x9c, 0x27, 0x90, 0xce, 0xf6, 0xeb, 0x94, 0xe6, 0x65, 0x06, 0xa1,
-	0x8c, 0xbf, 0x64, 0x34, 0x57, 0x32, 0xa8, 0xa1, 0xce, 0xaf, 0x82, 0xe7, 0x1c, 0x99, 0xc1, 0x39,
-	0x7f, 0x76, 0xe0, 0x06, 0xe7, 0xfe, 0x63, 0x81, 0x29, 0x97, 0xfd, 0x09, 0x81, 0x2b, 0xcf, 0xf9,
-	0x37, 0x03, 0x57, 0x9e, 0xfb, 0xff, 0x85, 0x89, 0xc8, 0xd5, 0xc9, 0x6a, 0x74, 0xdc, 0xd5, 0xd2,
-	0xb2, 0x76, 0xdc, 0xd5, 0x19, 0x85, 0xec, 0xc0, 0xd5, 0x29, 0xcd, 0x81, 0xab, 0xe5, 0x6a, 0x57,
-	0x32, 0xa8, 0x97, 0x5d, 0x2d, 0x33, 0x38, 0xe7, 0x3f, 0x00, 0x71, 0x57, 0xe7, 0x29, 0x97, 0xd5,
-	0xe6, 0xe3, 0xae, 0xce, 0x51, 0x9e, 0x5b, 0xd6, 0x9f, 0x40, 0xcf, 0x93, 0x05, 0xcc, 0x40, 0xf7,
-	0x6a, 0xe4, 0x48, 0x59, 0xed, 0xb7, 0xb9, 0x96, 0x49, 0x0f, 0x35, 0x3f, 0x89, 0xd5, 0x31, 0x03,
-	0xb5, 0x37, 0x84, 0x23, 0xa5, 0x3a, 0x97, 0xe5, 0xc4, 0xb8, 0xa9, 0x92, 0x62, 0x35, 0x37, 0x35,
-	0xbb, 0x3a, 0xde, 0x5c, 0xcb, 0xa4, 0xc7, 0x35, 0x4b, 0x2a, 0xd7, 0x5c, 0x73, 0x76, 0x01, 0xbc,
-	0xb9, 0x96, 0x49, 0x0f, 0x35, 0xef, 0xc2, 0x4c, 0xdc, 0x4b, 0x68, 0x31, 0xed, 0xb7, 0x40, 0x57,
-	0xe3, 0x32, 0x21, 0x54, 0xf2, 0x3e, 0x4c, 0x87, 0x6e, 0x41, 0xf3, 0x09, 0x2f, 0x05, 0xe2, 0xd7,
-	0x53, 0xbd, 0x71, 0x03, 0xe2, 0x73, 0xe7, 0x06, 0x48, 0x4a, 0xb0, 0xdc, 0x00, 0x69, 0x81, 0x95,
-	0x29, 0x89, 0x4f, 0x93, 0x2b, 0x91, 0x14, 0x5d, 0xb9, 0x12, 0x69, 0x75, 0x75, 0x02, 0x1d, 0x40,
-	0x3d, 0x59, 0xc6, 0x43, 0x4b, 0xec, 0xf1, 0x51, 0x56, 0xbe, 0x6b, 0x36, 0x65, 0xa4, 0x38, 0xb4,
-	0xd2, 0x35, 0x3c, 0x0e, 0xad, 0x8c, 0x6a, 0x20, 0x87, 0x56, 0x66, 0xd9, 0x8f, 0x01, 0x40, 0x52,
-	0xc1, 0xe3, 0x00, 0xc8, 0xae, 0x08, 0x72, 0x00, 0xe4, 0x94, 0xfe, 0xb4, 0x09, 0xf4, 0xd3, 0xa0,
-	0x86, 0x91, 0x7e, 0x77, 0x5c, 0x4f, 0x07, 0x3c, 0xfd, 0xea, 0xd7, 0xdc, 0xc8, 0xe1, 0x08, 0xf5,
-	0xff, 0x0c, 0x96, 0x32, 0xdf, 0xe4, 0xd0, 0x2d, 0xaa, 0x61, 0xdc, 0x7b, 0x5f, 0xf3, 0xb5, 0x31,
-	0x5c, 0xe1, 0x58, 0x3e, 0x2c, 0xe7, 0x3d, 0xcd, 0xa1, 0xd7, 0x13, 0xee, 0xc8, 0x7e, 0xfc, 0x6b,
-	0x6e, 0x8e, 0x67, 0x4c, 0x0d, 0x9a, 0xf9, 0xf8, 0x16, 0x0e, 0x3a, 0xee, 0x79, 0x2f, 0x1c, 0x74,
-	0xec, 0x3b, 0x5e, 0xb8, 0x77, 0x25, 0x8a, 0xaa, 0xe1, 0xde, 0x25, 0xab, 0xc2, 0x86, 0x7b, 0x97,
-	0xb4, 0x0e, 0xcb, 0xc3, 0x94, 0x59, 0x03, 0xe5, 0x61, 0x1a, 0x57, 0x8d, 0xe5, 0x61, 0x1a, 0x5f,
-	0x48, 0x9d, 0x40, 0x26, 0x2c, 0xc8, 0xab, 0x8d, 0x68, 0x83, 0xff, 0x59, 0x31, 0xa7, 0xca, 0xda,
-	0xd4, 0xf2, 0x58, 0xc2, 0x21, 0xf6, 0xa1, 0x96, 0xb8, 0x41, 0xa0, 0xd8, 0xf6, 0x95, 0x7c, 0xdb,
-	0x6c, 0x2e, 0x49, 0x28, 0xa1, 0x9e, 0x0f, 0x01, 0xa2, 0xcb, 0x02, 0x0a, 0x36, 0xb1, 0x94, 0x86,
-	0x85, 0x74, 0x77, 0xdc, 0x8c, 0x44, 0xfe, 0x8c, 0x62, 0x9b, 0x98, 0xcc, 0x0c, 0x79, 0x79, 0x8a,
-	0xe9, 0x49, 0x24, 0xce, 0x28, 0xb6, 0x8f, 0xc9, 0xf4, 0xc8, 0xab, 0x54, 0xb1, 0xbc, 0x25, 0x75,
-	0x23, 0x5e, 0xbb, 0xe4, 0x83, 0xec, 0xbc, 0x25, 0xe3, 0x2a, 0x10, 0xe4, 0x2d, 0x29, 0xcd, 0xcb,
-	0x49, 0xdf, 0x64, 0xe4, 0x2d, 0x99, 0x3a, 0xbf, 0x4a, 0x55, 0xfc, 0x24, 0x79, 0x4b, 0x8e, 0xc1,
-	0xb9, 0x77, 0x97, 0x58, 0xde, 0x22, 0x53, 0x9e, 0x73, 0xaf, 0x89, 0xe7, 0x2d, 0x99, 0xca, 0x3f,
-	0x81, 0xd9, 0x54, 0x3d, 0x08, 0x35, 0x93, 0xb3, 0x8d, 0x17, 0xc6, 0x9a, 0x37, 0xa4, 0xb4, 0x50,
-	0x5b, 0x1f, 0x96, 0x32, 0x1f, 0xd8, 0xf9, 0xf2, 0x1c, 0xf7, 0x86, 0xcf, 0x97, 0xe7, 0xd8, 0x57,
-	0x7a, 0x6d, 0xe2, 0x6d, 0x05, 0xd9, 0xd0, 0xc8, 0x7a, 0xf4, 0x46, 0x37, 0xe5, 0x6a, 0x92, 0xc7,
-	0xd9, 0xad, 0x7c, 0xa6, 0xd8, 0x50, 0x7c, 0x81, 0x89, 0x27, 0x9f, 0x70, 0x81, 0x25, 0xdf, 0x85,
-	0xc2, 0x05, 0x96, 0x7a, 0x19, 0xd2, 0x26, 0x5e, 0x94, 0xd8, 0xdd, 0xf8, 0xee, 0x7f, 0x03, 0x00,
-	0x00, 0xff, 0xff, 0xe1, 0x34, 0x19, 0x6b, 0x06, 0x2f, 0x00, 0x00,
+var fileDescriptor_ns_e975c32956bea996 = []byte{
+	// 2845 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xc4, 0x5a, 0x4b, 0x73, 0xdc, 0xc6,
+	0xf1, 0x17, 0x96, 0xdc, 0x07, 0x7b, 0xb9, 0xcb, 0xd5, 0x90, 0x92, 0x56, 0x4b, 0x4a, 0xa4, 0x60,
+	0xd9, 0xa6, 0x64, 0xff, 0xa9, 0x7f, 0xe8, 0x52, 0xc5, 0x8f, 0xd8, 0xa9, 0x2d, 0x72, 0x25, 0xd3,
+	0xb6, 0x5e, 0xa0, 0x28, 0xcb, 0xce, 0x01, 0x1e, 0x02, 0xb3, 0x24, 0x8a, 0x8b, 0x47, 0x06, 0xb3,
+	0xa4, 0x98, 0x6b, 0x0e, 0x39, 0xa4, 0x72, 0xcc, 0x25, 0xa9, 0xca, 0x31, 0xb7, 0x54, 0xee, 0xf9,
+	0x08, 0x39, 0xe4, 0x90, 0xdc, 0xf2, 0x11, 0x72, 0xcc, 0x27, 0x48, 0xcd, 0x03, 0x58, 0x00, 0x04,
+	0xb0, 0x1b, 0x3f, 0xa2, 0x13, 0x77, 0xa6, 0x1f, 0xd3, 0xd3, 0xfd, 0x43, 0x4f, 0xcf, 0x34, 0xa1,
+	0xe1, 0x85, 0x5b, 0x01, 0xf5, 0x99, 0x8f, 0x2a, 0x5e, 0xd8, 0x5b, 0x3f, 0xf2, 0xfd, 0xa3, 0x11,
+	0xb9, 0x27, 0x66, 0x0e, 0xc7, 0xc3, 0x7b, 0xcc, 0x71, 0x49, 0xc8, 0xb0, 0x1b, 0x48, 0xa6, 0xde,
+	0xcd, 0x2c, 0x83, 0x3d, 0xa6, 0x98, 0x39, 0xbe, 0xa7, 0xe8, 0xab, 0x59, 0x3a, 0x71, 0x03, 0x76,
+	0xae, 0x88, 0xf7, 0x8f, 0x1c, 0x76, 0x3c, 0x3e, 0xdc, 0xb2, 0x7c, 0xf7, 0xde, 0x21, 0xf5, 0x2d,
+	0x8c, 0xe9, 0xbd, 0x91, 0x4f, 0x71, 0x48, 0xe8, 0x29, 0xa1, 0xf7, 0x70, 0xe0, 0xdc, 0xb3, 0x7c,
+	0xd7, 0xf5, 0x3d, 0xf5, 0x47, 0x89, 0xb5, 0x03, 0xea, 0x0f, 0x9d, 0x11, 0x51, 0x86, 0xea, 0x5f,
+	0xc3, 0xea, 0x0e, 0x25, 0x98, 0x91, 0x7d, 0x42, 0x4f, 0x1d, 0x8b, 0x3c, 0x95, 0x64, 0x83, 0xfc,
+	0x7c, 0x4c, 0x42, 0x86, 0x3e, 0x82, 0xa5, 0x50, 0x12, 0x4c, 0x25, 0xd8, 0xd5, 0x36, 0xb4, 0xcd,
+	0xe6, 0x36, 0xda, 0xf2, 0xc2, 0xad, 0x8c, 0x4c, 0x3b, 0x4c, 0x8d, 0xf5, 0x2d, 0x58, 0xcb, 0xd7,
+	0x1d, 0x06, 0xbe, 0x17, 0x12, 0xd4, 0x86, 0x8a, 0x63, 0x0b, 0x7d, 0x8b, 0x46, 0xc5, 0xb1, 0xf5,
+	0xbb, 0xd0, 0x7d, 0x48, 0x58, 0xbe, 0x21, 0x59, 0xde, 0xbf, 0x69, 0x70, 0x3d, 0x87, 0x59, 0x69,
+	0xfe, 0x2e, 0x66, 0xa3, 0x0f, 0x00, 0x2c, 0x61, 0xb6, 0x6d, 0x62, 0xd6, 0xad, 0x08, 0xb9, 0xde,
+	0x96, 0x8c, 0xc5, 0x56, 0x14, 0x8b, 0xad, 0xe7, 0x51, 0x30, 0x8d, 0x05, 0xc5, 0xdd, 0x67, 0x5c,
+	0x74, 0x1c, 0xd8, 0x91, 0xe8, 0xdc, 0x74, 0x51, 0xc5, 0xdd, 0x67, 0x3c, 0x10, 0x07, 0x62, 0xf0,
+	0x03, 0x04, 0xe2, 0xff, 0x60, 0x75, 0x97, 0x8c, 0x48, 0x91, 0xee, 0xac, 0x6f, 0x63, 0x4c, 0x18,
+	0xfe, 0x98, 0x39, 0xde, 0xd1, 0x45, 0x53, 0xa8, 0x24, 0xe4, 0x99, 0x92, 0x91, 0x69, 0xd3, 0xd4,
+	0x78, 0x82, 0x89, 0xac, 0xee, 0x52, 0x4c, 0xe4, 0x1b, 0x52, 0x80, 0x89, 0x02, 0xcd, 0xdf, 0xc5,
+	0xec, 0xd7, 0x8d, 0x89, 0x1f, 0x20, 0x10, 0x31, 0x26, 0x66, 0xf3, 0xed, 0x0b, 0xe8, 0xc9, 0xb8,
+	0xed, 0x92, 0x1c, 0x04, 0xbd, 0x0f, 0x6d, 0x9b, 0xe4, 0x80, 0xf3, 0x32, 0x37, 0x24, 0x2d, 0xd1,
+	0xb2, 0x49, 0x06, 0x9a, 0xb9, 0x7a, 0x0b, 0xe0, 0x70, 0x07, 0xae, 0x3d, 0x24, 0x2c, 0xd7, 0x86,
+	0x2c, 0xeb, 0x5f, 0x35, 0x01, 0x9d, 0x7c, 0xbd, 0xdf, 0xda, 0xe0, 0xd7, 0x84, 0x84, 0x17, 0xd0,
+	0x93, 0x48, 0xf8, 0x9e, 0xdd, 0xff, 0x2e, 0xf4, 0x24, 0x0a, 0x66, 0x72, 0xe9, 0xdf, 0x35, 0xa8,
+	0x49, 0x46, 0x74, 0x0d, 0xea, 0x36, 0x39, 0x35, 0xc9, 0xd8, 0x51, 0xf4, 0x9a, 0x4d, 0x4e, 0x07,
+	0x63, 0x07, 0xdd, 0x85, 0xcb, 0x69, 0x5b, 0x4c, 0xc7, 0x16, 0x6e, 0x5a, 0x34, 0x96, 0x52, 0x6b,
+	0xef, 0xd9, 0xe8, 0x5d, 0x40, 0x99, 0xa4, 0xc6, 0x99, 0xe7, 0x04, 0x73, 0x27, 0x9d, 0xc3, 0x24,
+	0x77, 0x06, 0xee, 0x9c, 0x7b, 0x5e, 0x72, 0xa7, 0xd1, 0xbd, 0x67, 0xa3, 0xb7, 0xa1, 0x13, 0x9e,
+	0x38, 0x81, 0x39, 0x34, 0x2d, 0x8f, 0x99, 0xd6, 0x31, 0xb1, 0x4e, 0xba, 0xd5, 0x0d, 0x6d, 0xb3,
+	0x61, 0xb4, 0xf8, 0xfc, 0x83, 0x1d, 0x8f, 0xed, 0xf0, 0x49, 0xfd, 0x03, 0x58, 0x4e, 0x22, 0x30,
+	0xda, 0xbb, 0x0e, 0x35, 0x69, 0xae, 0xf2, 0x25, 0x4c, 0x7c, 0x69, 0x28, 0x8a, 0xfe, 0x0e, 0x74,
+	0x62, 0x84, 0x45, 0x72, 0x45, 0x8e, 0xd1, 0xff, 0xa4, 0xc1, 0xe5, 0x04, 0xb7, 0x02, 0xe2, 0x0c,
+	0xcb, 0xbc, 0x26, 0xc8, 0x7d, 0x00, 0xcb, 0x49, 0xc8, 0xfd, 0x37, 0x7e, 0xd9, 0x82, 0xe5, 0x24,
+	0xaa, 0xa6, 0xba, 0xe6, 0x2f, 0x15, 0xe8, 0x48, 0xd6, 0xbe, 0xc5, 0x9c, 0x53, 0x51, 0x03, 0x15,
+	0x23, 0xec, 0x3a, 0x34, 0x38, 0x01, 0xdb, 0x36, 0x55, 0xc0, 0xe2, 0x8c, 0x7d, 0xdb, 0xa6, 0xe8,
+	0x36, 0x2c, 0x85, 0xa6, 0x77, 0x76, 0x62, 0x86, 0xa6, 0xe3, 0x31, 0xf3, 0x84, 0x9c, 0x2b, 0x34,
+	0x35, 0xc3, 0xc7, 0x67, 0x27, 0xfb, 0x7b, 0x1e, 0xfb, 0x9c, 0x9c, 0x73, 0xae, 0x61, 0x86, 0x4b,
+	0xa2, 0xa8, 0x39, 0x4c, 0x70, 0xdd, 0x82, 0x96, 0xe4, 0x21, 0x9e, 0x25, 0x78, 0xaa, 0x82, 0x07,
+	0xbc, 0xb3, 0x93, 0xfd, 0x81, 0x67, 0x71, 0x96, 0x2e, 0x34, 0x24, 0xbc, 0xc6, 0x41, 0xb7, 0xb6,
+	0xa1, 0x6d, 0xb6, 0x8c, 0xda, 0x70, 0xc7, 0x63, 0x07, 0x01, 0x5a, 0x87, 0x45, 0x4f, 0x41, 0xcf,
+	0xf6, 0xcf, 0xbc, 0x6e, 0x5d, 0x50, 0x17, 0x3c, 0x0e, 0xbb, 0x5d, 0xff, 0xcc, 0xe3, 0x0c, 0x38,
+	0xc9, 0xd0, 0x90, 0x0c, 0x38, 0x66, 0xc8, 0xc3, 0xef, 0x42, 0x1e, 0x7e, 0xbf, 0x86, 0x2b, 0xca,
+	0x6b, 0x19, 0x77, 0xf7, 0xe3, 0x2f, 0x11, 0xc7, 0x5e, 0x55, 0x41, 0x5b, 0x99, 0x04, 0x6d, 0xe2,
+	0x71, 0xa3, 0x63, 0x67, 0x66, 0xf4, 0x6d, 0xb8, 0xb6, 0x4b, 0x70, 0xae, 0xf6, 0xc2, 0x60, 0xde,
+	0x87, 0x5e, 0x0c, 0xf3, 0x84, 0xf2, 0x69, 0x62, 0xdf, 0xc0, 0x6a, 0xae, 0x98, 0xfa, 0x4e, 0xbe,
+	0x87, 0xcd, 0xdc, 0x97, 0xa5, 0x04, 0xf6, 0x6c, 0xdf, 0xdd, 0x95, 0x80, 0x89, 0xd5, 0x27, 0x31,
+	0xa5, 0xa5, 0x30, 0xa5, 0x3b, 0xb0, 0x21, 0xf3, 0xc3, 0xa3, 0xfe, 0xce, 0x8e, 0xef, 0xba, 0xd8,
+	0xb3, 0x9f, 0x8d, 0xc9, 0x98, 0xec, 0x31, 0xe2, 0x4e, 0xdb, 0x15, 0xea, 0xc0, 0x9c, 0xa5, 0x92,
+	0x54, 0xcb, 0xe0, 0x3f, 0x51, 0x0f, 0x1a, 0x96, 0xd4, 0x12, 0x76, 0xab, 0x1b, 0x73, 0x9b, 0x8b,
+	0x46, 0x3c, 0xd6, 0xff, 0xa9, 0xc1, 0x8d, 0x7d, 0xe2, 0xd9, 0x4f, 0xa9, 0x1f, 0x50, 0x87, 0x30,
+	0x4c, 0xcf, 0x9f, 0xe2, 0xf3, 0x91, 0x8f, 0xed, 0x68, 0xa1, 0x75, 0x68, 0xba, 0xd8, 0x32, 0x03,
+	0x39, 0xab, 0x16, 0x03, 0x17, 0x5b, 0x8a, 0x8f, 0x2f, 0xe8, 0x3a, 0x96, 0xfa, 0x2e, 0xf8, 0x4f,
+	0x74, 0x0b, 0x16, 0x8f, 0x30, 0x23, 0x67, 0xf8, 0xdc, 0x74, 0xb1, 0x15, 0x76, 0xe7, 0xc4, 0xa2,
+	0x4d, 0x35, 0xf7, 0x08, 0x5b, 0x21, 0xba, 0x0f, 0x57, 0x03, 0x7f, 0x84, 0xa9, 0xf3, 0x0b, 0xe1,
+	0x29, 0xd3, 0xf1, 0x4e, 0x09, 0x0d, 0xb9, 0x87, 0xe7, 0x05, 0xe2, 0xae, 0x24, 0xa9, 0x7b, 0x11,
+	0x11, 0xad, 0xc1, 0xc2, 0x90, 0x72, 0xc3, 0x3c, 0x4b, 0x7e, 0x1d, 0x2d, 0x63, 0x32, 0xc1, 0x0f,
+	0x0f, 0x9b, 0xaa, 0xcf, 0xa2, 0x62, 0x53, 0xfd, 0x1f, 0x1a, 0xd4, 0x1f, 0xca, 0x45, 0xb3, 0x07,
+	0x0b, 0x42, 0x30, 0xef, 0x61, 0x97, 0x08, 0xb3, 0x17, 0x0c, 0xf1, 0x1b, 0x6d, 0x40, 0xd3, 0x26,
+	0xa1, 0x45, 0x9d, 0x40, 0xc4, 0x7a, 0x4e, 0x90, 0x92, 0x53, 0xdc, 0x95, 0x23, 0xcc, 0x1c, 0x36,
+	0xb6, 0x89, 0x30, 0x54, 0x33, 0xe2, 0x31, 0xb7, 0x6d, 0xe4, 0x7b, 0x47, 0x92, 0x58, 0x15, 0xc4,
+	0xc9, 0x04, 0x97, 0xc4, 0x23, 0x25, 0x59, 0x93, 0x92, 0xd1, 0x98, 0x1f, 0x33, 0x91, 0xbf, 0x12,
+	0xc7, 0x4c, 0x5d, 0x1e, 0x33, 0x8a, 0x12, 0x1f, 0x33, 0xfa, 0xc7, 0xb0, 0x22, 0xd1, 0xa1, 0xb6,
+	0x16, 0x05, 0xea, 0x4d, 0xa8, 0x2b, 0x5e, 0x85, 0xd2, 0x26, 0x47, 0x69, 0xc4, 0x14, 0xd1, 0xf4,
+	0x37, 0xc4, 0x99, 0x90, 0x91, 0xcd, 0x1e, 0xbb, 0x7f, 0xae, 0x00, 0x4a, 0x72, 0x29, 0xcc, 0xce,
+	0xb6, 0xc4, 0xeb, 0x39, 0x3d, 0xd0, 0x27, 0xd0, 0x1a, 0x3a, 0x34, 0x64, 0x66, 0x48, 0x88, 0xc7,
+	0xa5, 0xe7, 0xa7, 0x4a, 0x37, 0x85, 0xc0, 0x3e, 0x21, 0x5e, 0x9f, 0xa1, 0x9f, 0xc0, 0xe2, 0x08,
+	0x27, 0xc4, 0xab, 0x53, 0xc5, 0x81, 0xf3, 0x4b, 0x69, 0x1e, 0x15, 0x79, 0x76, 0x7d, 0xbb, 0xa8,
+	0xbc, 0x05, 0x2b, 0xf2, 0xfc, 0x9a, 0x12, 0x98, 0x5f, 0x57, 0x60, 0x51, 0xb1, 0xec, 0x33, 0xcc,
+	0x42, 0xf4, 0x3e, 0x2c, 0xc4, 0x97, 0x7c, 0xb5, 0x42, 0xa9, 0xbf, 0x62, 0x66, 0xb4, 0x05, 0xcb,
+	0xf4, 0x95, 0x19, 0x60, 0xeb, 0x84, 0xb0, 0xd0, 0xa4, 0xc4, 0x22, 0xce, 0x29, 0x91, 0x85, 0x53,
+	0xd5, 0xb8, 0x4c, 0x5f, 0x3d, 0x95, 0x14, 0x43, 0x11, 0xd0, 0x7b, 0x70, 0x35, 0x87, 0xdf, 0xf4,
+	0x4f, 0x44, 0x98, 0xaa, 0xc6, 0xf2, 0x05, 0x91, 0x27, 0x27, 0x7c, 0x11, 0x96, 0xb3, 0xc8, 0xbc,
+	0x5c, 0x84, 0x5d, 0x58, 0xe4, 0x5d, 0x40, 0x09, 0x7e, 0xe2, 0x3a, 0x8c, 0x11, 0x5b, 0x84, 0xa2,
+	0x6a, 0x74, 0x62, 0xf6, 0x81, 0x9c, 0xd7, 0xff, 0xad, 0xc1, 0xd5, 0x09, 0x4c, 0x85, 0x43, 0x22,
+	0xc7, 0xdd, 0x00, 0x88, 0xbe, 0xa9, 0xd8, 0x81, 0x0b, 0x6a, 0x66, 0x8f, 0x6f, 0xa6, 0xe1, 0x78,
+	0x8c, 0xd0, 0x53, 0x3c, 0x12, 0x3b, 0x6e, 0x6f, 0x5f, 0xe3, 0x71, 0xe9, 0x1f, 0x1d, 0x51, 0x72,
+	0xa4, 0x92, 0x8e, 0x24, 0x1b, 0x31, 0x23, 0xda, 0x81, 0xa5, 0x90, 0x61, 0xca, 0xcc, 0x89, 0xc7,
+	0xa7, 0x23, 0xb4, 0x2d, 0x44, 0xe2, 0x31, 0xfa, 0x29, 0xb4, 0x88, 0x67, 0x27, 0x54, 0x4c, 0x87,
+	0xe9, 0x22, 0xf1, 0xec, 0x78, 0xa4, 0xef, 0x88, 0x0b, 0x49, 0x7a, 0xcf, 0xea, 0xfb, 0xdc, 0x84,
+	0x1a, 0x25, 0xe1, 0x78, 0xc4, 0xba, 0xda, 0xc6, 0xdc, 0x66, 0x73, 0xbb, 0x93, 0xc0, 0x9a, 0xe4,
+	0x54, 0x74, 0xfd, 0xb7, 0x1a, 0x2c, 0xc9, 0x03, 0x2c, 0x3e, 0x59, 0x8a, 0x8f, 0x94, 0x75, 0x68,
+	0x0e, 0xa9, 0x1b, 0x1f, 0x01, 0x32, 0xd3, 0xc3, 0x90, 0xba, 0xd1, 0x11, 0xb0, 0x0c, 0x55, 0x51,
+	0x34, 0x08, 0x77, 0xb4, 0x8c, 0x79, 0x5e, 0x92, 0xa0, 0x2b, 0x50, 0x1b, 0x9a, 0x81, 0x4f, 0x99,
+	0x3a, 0x8b, 0xaa, 0xc3, 0xa7, 0x3e, 0x65, 0x3c, 0x4d, 0x5a, 0xbe, 0x37, 0x74, 0xa8, 0xab, 0x02,
+	0xdb, 0x30, 0x26, 0x13, 0xfa, 0xc3, 0xe8, 0xb2, 0x9e, 0x31, 0x2e, 0x0a, 0xeb, 0xdb, 0x30, 0xef,
+	0x30, 0xe2, 0x2a, 0xa4, 0x2f, 0x4f, 0xce, 0xe1, 0x09, 0xa7, 0x60, 0xd0, 0x3f, 0x82, 0x8d, 0x07,
+	0xa3, 0x71, 0x78, 0x9c, 0xa0, 0x3e, 0xf0, 0xe9, 0x2e, 0x39, 0x1d, 0x1c, 0xec, 0x4d, 0xad, 0x0c,
+	0x3e, 0x81, 0x37, 0xe2, 0xca, 0x20, 0x56, 0x1c, 0xce, 0x2e, 0xff, 0x0c, 0x6e, 0x97, 0xcb, 0xab,
+	0x78, 0xdd, 0x81, 0x2a, 0x37, 0x36, 0x54, 0xe1, 0xca, 0xdd, 0x8e, 0xe4, 0x50, 0x26, 0x3d, 0x26,
+	0xaf, 0x44, 0xad, 0x36, 0x72, 0xbc, 0x13, 0x5e, 0x8f, 0xcd, 0x6e, 0xd2, 0x47, 0xc2, 0xa4, 0x12,
+	0x79, 0x65, 0x52, 0x1c, 0x4a, 0x6d, 0x12, 0x4a, 0xbd, 0x0f, 0x1b, 0xfb, 0x8c, 0x12, 0xec, 0x3e,
+	0xa0, 0xd8, 0x25, 0x5f, 0xf8, 0x47, 0x7c, 0x2f, 0x99, 0x4c, 0x55, 0xfe, 0xc1, 0xe9, 0xbf, 0xd7,
+	0xe0, 0x56, 0x89, 0x0e, 0xb5, 0xfa, 0x8f, 0xa1, 0x35, 0x0e, 0xb8, 0x71, 0xe6, 0x90, 0x73, 0x45,
+	0x8e, 0x11, 0xaf, 0x0b, 0x07, 0x82, 0x10, 0x49, 0x1b, 0x8b, 0xe3, 0xc9, 0x38, 0x44, 0x1f, 0xc3,
+	0x92, 0xad, 0xf6, 0x15, 0x89, 0x56, 0x84, 0xa8, 0x2c, 0xd5, 0xa2, 0x2d, 0x47, 0xc2, 0x6d, 0x3b,
+	0x39, 0x13, 0xea, 0x1f, 0xc2, 0xfa, 0x45, 0xe3, 0x66, 0xac, 0x3e, 0x7f, 0xa7, 0xe5, 0x79, 0x27,
+	0x73, 0xe9, 0x7a, 0x5d, 0x1b, 0xfb, 0x8d, 0x06, 0x8d, 0x5d, 0xcc, 0xb0, 0x81, 0x19, 0x41, 0x37,
+	0x01, 0x5c, 0xdf, 0x1e, 0x8f, 0x26, 0xa5, 0xec, 0x82, 0x91, 0x98, 0xe1, 0x9f, 0xe6, 0x21, 0xf6,
+	0xec, 0x33, 0xc7, 0x66, 0xc7, 0xe2, 0x2b, 0x6f, 0x19, 0x93, 0x09, 0x74, 0x07, 0x3a, 0x61, 0x40,
+	0x09, 0xb6, 0xf9, 0x75, 0x78, 0x88, 0x2d, 0xe6, 0x53, 0xf5, 0xbd, 0x2f, 0xc5, 0xf3, 0x0f, 0xc4,
+	0x34, 0xea, 0x42, 0xfd, 0xd0, 0x61, 0x14, 0x33, 0xa2, 0xbe, 0xfd, 0x68, 0xa8, 0x33, 0x58, 0x94,
+	0xdb, 0x7d, 0xfe, 0x72, 0xcf, 0x1b, 0xfa, 0xe9, 0x82, 0x4e, 0xcb, 0x16, 0x74, 0x77, 0x60, 0xc1,
+	0xc6, 0x0c, 0x9b, 0x42, 0x93, 0xac, 0x23, 0x16, 0xc5, 0xb6, 0xd5, 0x8e, 0x8c, 0x86, 0x1d, 0xed,
+	0x6d, 0x95, 0xa7, 0x15, 0x9b, 0x48, 0x56, 0x59, 0xb9, 0x35, 0xf8, 0x04, 0x27, 0xea, 0x7f, 0xac,
+	0x44, 0xcb, 0x1a, 0x72, 0xd9, 0x29, 0xa7, 0xc3, 0x16, 0xcc, 0xf3, 0xfc, 0x3c, 0x43, 0xe9, 0x22,
+	0xf8, 0xd0, 0x67, 0xb0, 0xc2, 0xff, 0x9a, 0xa1, 0xe3, 0x59, 0xc4, 0x3c, 0x0a, 0x42, 0x93, 0x04,
+	0xbe, 0x75, 0xac, 0x4e, 0x87, 0xeb, 0x17, 0xe4, 0x77, 0xd5, 0xab, 0xbb, 0x71, 0x99, 0x8b, 0xed,
+	0x73, 0xa9, 0x87, 0x41, 0x38, 0xe0, 0x32, 0xdc, 0x23, 0xe9, 0xb3, 0xa1, 0x95, 0x3c, 0xb4, 0x11,
+	0xcc, 0xd3, 0x30, 0x74, 0xd4, 0x89, 0x28, 0x7e, 0xf3, 0x9b, 0xc4, 0xc8, 0xa7, 0xd8, 0x0c, 0x3d,
+	0x59, 0xfc, 0x56, 0x8c, 0x3a, 0x1f, 0xef, 0x7b, 0x14, 0xad, 0x40, 0xf5, 0xd0, 0xc7, 0xd4, 0x56,
+	0xb7, 0x41, 0x39, 0xe0, 0xe1, 0xc1, 0x1e, 0x23, 0x9e, 0x87, 0xd5, 0x25, 0x30, 0x1a, 0xea, 0xbf,
+	0xd2, 0xa0, 0x9d, 0x86, 0x23, 0xba, 0x03, 0x75, 0xf6, 0xca, 0x74, 0xbc, 0xa1, 0xaf, 0x92, 0x6e,
+	0x67, 0x82, 0x59, 0x19, 0x44, 0xa3, 0xc6, 0x5e, 0x09, 0xaf, 0xde, 0x81, 0x3a, 0x55, 0xac, 0x95,
+	0xc9, 0xf9, 0x93, 0x74, 0xbc, 0x51, 0xa3, 0x92, 0x75, 0x1d, 0x9a, 0xc1, 0xf1, 0x79, 0x7c, 0xa4,
+	0xc8, 0x2b, 0x33, 0x04, 0xc7, 0xd1, 0xed, 0x43, 0xff, 0xc3, 0x1c, 0xb4, 0x23, 0x74, 0x3f, 0x9f,
+	0x29, 0x68, 0x1b, 0xd0, 0x74, 0x5c, 0x97, 0xd8, 0x0e, 0x66, 0x64, 0x74, 0x2e, 0x62, 0xd7, 0x30,
+	0x92, 0x53, 0xff, 0xc3, 0x30, 0x95, 0xdf, 0x53, 0x56, 0xa0, 0x1a, 0xf8, 0x67, 0x44, 0x46, 0xab,
+	0x6a, 0xc8, 0x41, 0x1a, 0xec, 0xf5, 0xd9, 0xc1, 0xde, 0x48, 0x83, 0xbd, 0xe4, 0x6a, 0xb5, 0x50,
+	0x76, 0xb5, 0x8a, 0xa1, 0x02, 0x05, 0x50, 0x69, 0xa6, 0xa1, 0xf2, 0x0d, 0x74, 0xb2, 0xd9, 0x07,
+	0xbd, 0x93, 0xc5, 0x0a, 0x4a, 0x26, 0xa9, 0x0c, 0x5a, 0x32, 0x10, 0xa8, 0x5c, 0x80, 0xc0, 0x0b,
+	0x71, 0x07, 0x79, 0x21, 0xed, 0x8b, 0x33, 0x69, 0x17, 0xea, 0xd1, 0x7e, 0x64, 0x06, 0x8b, 0x86,
+	0xe8, 0x2d, 0x5e, 0xfd, 0x1c, 0x71, 0x82, 0xac, 0xe8, 0xda, 0x5b, 0xaa, 0x0f, 0x65, 0x88, 0x59,
+	0x43, 0x51, 0xf5, 0x5f, 0x6a, 0xd0, 0x7e, 0x98, 0xba, 0x55, 0x5d, 0xb8, 0x1d, 0xf2, 0x2b, 0xf3,
+	0x31, 0xf6, 0x3c, 0x32, 0x92, 0xe9, 0xb6, 0x65, 0xc4, 0x63, 0x34, 0x80, 0x36, 0x79, 0xc5, 0x28,
+	0x36, 0x63, 0x8e, 0x39, 0x01, 0xf6, 0x9b, 0x89, 0x62, 0x4b, 0xe9, 0x1d, 0x70, 0xbe, 0x1d, 0xc9,
+	0x66, 0xb4, 0x48, 0x62, 0x14, 0xf2, 0xcb, 0x69, 0xaf, 0x98, 0x1b, 0x6d, 0x5f, 0xc8, 0xd5, 0xed,
+	0x6d, 0x14, 0x6d, 0xe8, 0x51, 0x4c, 0xc9, 0xe6, 0xef, 0x09, 0xea, 0x2a, 0x59, 0xd4, 0xa5, 0xb2,
+	0xfb, 0x5c, 0x36, 0xbb, 0x17, 0xa6, 0x6c, 0xf4, 0x0e, 0x5c, 0xce, 0xe6, 0x7d, 0xf9, 0x8e, 0xd0,
+	0x32, 0x3a, 0x99, 0xc4, 0x1f, 0x4e, 0x1a, 0x39, 0xe9, 0xad, 0x25, 0xfa, 0x07, 0x99, 0x9b, 0x6e,
+	0x12, 0x28, 0x19, 0x99, 0x76, 0xfa, 0xea, 0x3b, 0x69, 0xe4, 0x64, 0x75, 0x97, 0x36, 0x72, 0xf2,
+	0x0d, 0x29, 0x68, 0xe4, 0x14, 0x68, 0xfe, 0x2e, 0x66, 0xbf, 0xee, 0x46, 0xce, 0x0f, 0x10, 0x88,
+	0xb8, 0x91, 0x33, 0x93, 0x6f, 0xef, 0xae, 0x41, 0xc3, 0x78, 0xf9, 0xa5, 0xe3, 0xd9, 0xfe, 0x19,
+	0xaa, 0xc3, 0x9c, 0xf1, 0xf2, 0x47, 0x9d, 0x4b, 0xf2, 0xc7, 0x76, 0x47, 0xbb, 0x3b, 0x82, 0xe5,
+	0x9c, 0x5b, 0x17, 0x02, 0xa8, 0xed, 0x0f, 0x76, 0x9e, 0x3c, 0xde, 0xed, 0x5c, 0xe2, 0xbf, 0x1f,
+	0xed, 0x3d, 0x3e, 0x78, 0x3e, 0xe8, 0x68, 0xa8, 0x01, 0xf3, 0x9f, 0x3e, 0x39, 0x30, 0x3a, 0x15,
+	0xae, 0x61, 0xb7, 0xff, 0x55, 0x67, 0x8e, 0x4f, 0x7d, 0x39, 0x18, 0x7c, 0xde, 0x99, 0x47, 0x0b,
+	0x50, 0x7d, 0xf4, 0xe4, 0xf1, 0xf3, 0x4f, 0x3b, 0x55, 0xd4, 0x84, 0xfa, 0xb3, 0x83, 0xbe, 0xf1,
+	0x7c, 0x60, 0x74, 0x6a, 0x9c, 0xe3, 0xab, 0x41, 0xdf, 0xe8, 0xd4, 0xb7, 0xff, 0xd5, 0x85, 0x95,
+	0xc7, 0x84, 0x9d, 0xf9, 0xf4, 0x64, 0x5f, 0xb4, 0xad, 0x55, 0x7f, 0x12, 0xfd, 0x2c, 0x7a, 0x55,
+	0x49, 0x37, 0x2c, 0xd1, 0x3a, 0xf7, 0x47, 0x49, 0xbf, 0xba, 0xb7, 0x51, 0xcc, 0x20, 0xd1, 0xa3,
+	0x5f, 0x42, 0x86, 0x78, 0x73, 0xc9, 0x68, 0x5e, 0x13, 0x9e, 0x2e, 0xe8, 0x3e, 0xf7, 0x6e, 0x14,
+	0x50, 0x63, 0x9d, 0xcf, 0xa2, 0x07, 0x87, 0x3c, 0x83, 0x4b, 0xfa, 0xba, 0xbd, 0xab, 0x17, 0x00,
+	0x34, 0x70, 0x03, 0x76, 0x2e, 0x55, 0xe6, 0x35, 0x6d, 0xa5, 0xca, 0x92, 0x76, 0x6e, 0x89, 0xca,
+	0xd8, 0xad, 0xe9, 0x9e, 0x5f, 0xd2, 0xad, 0xb9, 0xdd, 0xc0, 0xa4, 0x5b, 0xf3, 0xbb, 0xab, 0xb1,
+	0x5b, 0x33, 0x9a, 0x23, 0xb7, 0xe6, 0xab, 0xbd, 0x51, 0x40, 0xbd, 0xe8, 0xd6, 0x3c, 0x83, 0x4b,
+	0x5a, 0xa3, 0xb3, 0xb8, 0x35, 0x4f, 0x65, 0x49, 0x47, 0xb4, 0x44, 0xe5, 0xcb, 0x74, 0x07, 0x29,
+	0xd2, 0x78, 0x73, 0xe2, 0xb4, 0xbc, 0xee, 0x5a, 0x6f, 0xbd, 0x90, 0x1e, 0xef, 0xff, 0x49, 0xa2,
+	0xc1, 0x14, 0xa9, 0x5d, 0x55, 0x4e, 0xcb, 0xd5, 0xb9, 0x96, 0x4f, 0x4c, 0x28, 0x5c, 0xce, 0xe9,
+	0x23, 0x4a, 0x53, 0x8b, 0x1b, 0x8c, 0x25, 0x7b, 0x7f, 0x92, 0x6e, 0xf5, 0xa4, 0x14, 0x16, 0x77,
+	0x16, 0x4b, 0x14, 0xf6, 0x61, 0x31, 0xe9, 0x13, 0x74, 0x2d, 0xeb, 0xa5, 0xe9, 0x2a, 0x3e, 0x84,
+	0x85, 0xd8, 0x05, 0x68, 0x25, 0xe5, 0x91, 0x48, 0xf8, 0x4a, 0x66, 0x36, 0x76, 0x50, 0x9f, 0xdf,
+	0x4d, 0xec, 0xcc, 0xf2, 0x39, 0x7d, 0xb0, 0xf2, 0x1d, 0x24, 0x77, 0x2e, 0x55, 0xe4, 0xf4, 0xc3,
+	0x4a, 0x54, 0x0c, 0xa0, 0x9d, 0xee, 0xe9, 0xa0, 0xeb, 0xe2, 0x41, 0x2c, 0xaf, 0x13, 0x53, 0xa2,
+	0x66, 0x0f, 0x3a, 0xd9, 0xf6, 0x8d, 0x84, 0x4f, 0x41, 0x53, 0xa7, 0x1c, 0xe3, 0x39, 0xed, 0x19,
+	0x19, 0xe7, 0xe2, 0x76, 0x8f, 0xc4, 0x78, 0x49, 0x5f, 0x47, 0xbf, 0x84, 0xf6, 0xe1, 0x4a, 0xee,
+	0x23, 0x13, 0xda, 0xc8, 0x46, 0x3e, 0xfb, 0xfe, 0x54, 0x9a, 0xe9, 0xae, 0x17, 0x3e, 0x38, 0xa1,
+	0xdb, 0x5c, 0xf1, 0xb4, 0xf7, 0xa8, 0x12, 0xe5, 0x21, 0xac, 0x95, 0x3d, 0x28, 0xa1, 0xb7, 0x53,
+	0x9b, 0x2e, 0x7e, 0xb2, 0xea, 0x6d, 0x4e, 0x67, 0x8c, 0xdd, 0x24, 0x17, 0x2d, 0x7c, 0x32, 0x8a,
+	0x17, 0x9d, 0xf6, 0x28, 0x15, 0x2f, 0x3a, 0xf5, 0xf5, 0x49, 0xbf, 0x84, 0x3e, 0x13, 0xf9, 0x27,
+	0xd5, 0x32, 0x43, 0x05, 0x7e, 0x89, 0x53, 0x4f, 0x6e, 0x83, 0x4d, 0x86, 0xa4, 0xb0, 0x8f, 0x26,
+	0x43, 0x32, 0xad, 0xcd, 0x56, 0x12, 0x92, 0x03, 0xb8, 0x9a, 0xdf, 0x38, 0x43, 0xb7, 0xe4, 0xff,
+	0x47, 0x95, 0x34, 0xd5, 0x4a, 0xd4, 0xee, 0x40, 0x2b, 0x55, 0xe4, 0xa2, 0xee, 0xc4, 0xce, 0xf4,
+	0x8b, 0x5b, 0x89, 0x92, 0x8f, 0x01, 0x26, 0xc5, 0x2c, 0x8a, 0x32, 0xcf, 0x05, 0xf1, 0xcc, 0x74,
+	0xec, 0xb7, 0x1d, 0x68, 0xa5, 0x6a, 0x47, 0x69, 0x43, 0x5e, 0x7b, 0xa3, 0x7c, 0x23, 0xa9, 0x22,
+	0x51, 0x2a, 0xc9, 0x6b, 0x72, 0xcc, 0x52, 0x3e, 0x64, 0xee, 0x6b, 0xeb, 0x17, 0x9c, 0x52, 0x5c,
+	0x3e, 0xe4, 0xd7, 0xf4, 0x71, 0xf9, 0x90, 0xd1, 0xbc, 0x96, 0xf6, 0x4a, 0x41, 0xf9, 0x50, 0xa8,
+	0xf3, 0x59, 0xa6, 0x0d, 0x94, 0x53, 0x3e, 0xe4, 0x6b, 0x9e, 0xa1, 0x7c, 0xc8, 0x53, 0x59, 0x52,
+	0x87, 0x97, 0xa8, 0xfc, 0x02, 0x96, 0x32, 0x2d, 0x04, 0xd4, 0x4b, 0xef, 0x2c, 0xd9, 0x4b, 0xe9,
+	0xad, 0xe6, 0xd2, 0xe2, 0x3d, 0x8f, 0xe0, 0x7a, 0xe1, 0xcb, 0xae, 0xfc, 0xcc, 0xa6, 0x3d, 0x1e,
+	0xf7, 0xde, 0x9c, 0xc2, 0x15, 0xad, 0xf5, 0xff, 0x1a, 0x72, 0xa0, 0x5b, 0xf4, 0xda, 0x8a, 0xde,
+	0xc8, 0x57, 0x93, 0x3e, 0x71, 0x6e, 0x97, 0x33, 0x25, 0x96, 0xfa, 0x44, 0x7c, 0x46, 0xea, 0x01,
+	0xa2, 0x30, 0x0b, 0x45, 0xdf, 0x51, 0xe6, 0xa1, 0x42, 0xbf, 0x74, 0x58, 0x13, 0x9c, 0xef, 0xfd,
+	0x27, 0x00, 0x00, 0xff, 0xff, 0x3a, 0x84, 0xa5, 0xf5, 0xa5, 0x2b, 0x00, 0x00,
 }

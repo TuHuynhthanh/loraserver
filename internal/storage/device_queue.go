@@ -286,7 +286,7 @@ func GetNextDeviceQueueItemForDevEUIMaxPayloadSizeAndFCnt(db sqlx.Ext, devEUI lo
 				}).Warning("device-queue item discarded due to timeout")
 
 				_, err = asClient.HandleDownlinkACK(context.Background(), &as.HandleDownlinkACKRequest{
-					DevEUI:       devEUI[:],
+					DevEui:       devEUI[:],
 					FCnt:         qi.FCnt,
 					Acknowledged: false,
 				})
@@ -302,7 +302,7 @@ func GetNextDeviceQueueItemForDevEUIMaxPayloadSizeAndFCnt(db sqlx.Ext, devEUI lo
 				}).Warning("device-queue item discarded due to invalid fCnt")
 
 				_, err = asClient.HandleError(context.Background(), &as.HandleErrorRequest{
-					DevEUI: devEUI[:],
+					DevEui: devEUI[:],
 					Type:   as.ErrorType_DEVICE_QUEUE_ITEM_FCNT,
 					FCnt:   qi.FCnt,
 					Error:  "invalid frame-counter",
@@ -320,7 +320,7 @@ func GetNextDeviceQueueItemForDevEUIMaxPayloadSizeAndFCnt(db sqlx.Ext, devEUI lo
 				}).Warning("device-queue item discarded as it exceeds the max payload size")
 
 				_, err = asClient.HandleError(context.Background(), &as.HandleErrorRequest{
-					DevEUI: devEUI[:],
+					DevEui: devEUI[:],
 					Type:   as.ErrorType_DEVICE_QUEUE_ITEM_SIZE,
 					FCnt:   qi.FCnt,
 					Error:  "payload exceeds max payload size",

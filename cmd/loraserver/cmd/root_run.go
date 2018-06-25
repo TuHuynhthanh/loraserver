@@ -235,7 +235,7 @@ func setJoinServer() error {
 }
 
 func setNetworkController() error {
-	var ncClient nc.NetworkControllerClient
+	var ncClient nc.NetworkControllerServiceClient
 	if config.C.NetworkController.Server != "" {
 		// setup network-controller client
 		log.WithFields(log.Fields{
@@ -256,7 +256,7 @@ func setNetworkController() error {
 		if err != nil {
 			return errors.Wrap(err, "network-controller dial error")
 		}
-		ncClient = nc.NewNetworkControllerClient(ncConn)
+		ncClient = nc.NewNetworkControllerServiceClient(ncConn)
 	} else {
 		log.Info("no network-controller configured")
 		ncClient = &controller.NopNetworkControllerClient{}

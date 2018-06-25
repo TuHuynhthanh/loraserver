@@ -209,7 +209,7 @@ func TestDeviceQueue(t *testing.T) {
 						MaxFRMPayload:             7,
 						ExpectedDeviceQueueItemID: &items[1].ID,
 						ExpectedHandleDownlinkACK: []as.HandleDownlinkACKRequest{
-							{DevEUI: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
+							{DevEui: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
 						},
 					},
 					{
@@ -218,10 +218,10 @@ func TestDeviceQueue(t *testing.T) {
 						MaxFRMPayload:             6,
 						ExpectedDeviceQueueItemID: &items[1].ID,
 						ExpectedHandleError: []as.HandleErrorRequest{
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 101},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 101},
 						},
 						ExpectedHandleDownlinkACK: []as.HandleDownlinkACKRequest{
-							{DevEUI: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
+							{DevEui: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
 						},
 					},
 					{
@@ -230,11 +230,11 @@ func TestDeviceQueue(t *testing.T) {
 						MaxFRMPayload:             5,
 						ExpectedDeviceQueueItemID: &items[1].ID,
 						ExpectedHandleError: []as.HandleErrorRequest{
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 101},
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 102},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 101},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 102},
 						},
 						ExpectedHandleDownlinkACK: []as.HandleDownlinkACKRequest{
-							{DevEUI: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
+							{DevEui: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
 						},
 					},
 					{
@@ -242,13 +242,13 @@ func TestDeviceQueue(t *testing.T) {
 						FCnt:          101,
 						MaxFRMPayload: 3,
 						ExpectedHandleError: []as.HandleErrorRequest{
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 101},
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 102},
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 103},
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 104},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 101},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 102},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 103},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_SIZE, Error: "payload exceeds max payload size", FCnt: 104},
 						},
 						ExpectedHandleDownlinkACK: []as.HandleDownlinkACKRequest{
-							{DevEUI: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
+							{DevEui: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
 						},
 						ExpectedError: ErrDoesNotExist,
 					},
@@ -258,10 +258,10 @@ func TestDeviceQueue(t *testing.T) {
 						MaxFRMPayload:             7,
 						ExpectedDeviceQueueItemID: &items[1].ID,
 						ExpectedHandleError: []as.HandleErrorRequest{
-							{DevEUI: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_FCNT, Error: "invalid frame-counter", FCnt: 101},
+							{DevEui: d.DevEUI[:], Type: as.ErrorType_DEVICE_QUEUE_ITEM_FCNT, Error: "invalid frame-counter", FCnt: 101},
 						},
 						ExpectedHandleDownlinkACK: []as.HandleDownlinkACKRequest{
-							{DevEUI: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
+							{DevEui: d.DevEUI[:], FCnt: items[0].FCnt, Acknowledged: false},
 						},
 					},
 				}

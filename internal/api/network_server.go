@@ -4,6 +4,7 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
+	"github.com/golang/protobuf/ptypes/empty"
 	"github.com/jmoiron/sqlx"
 	"github.com/pkg/errors"
 	"github.com/satori/go.uuid"
@@ -12,6 +13,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
+	"github.com/brocaar/loraserver/api/common"
 	"github.com/brocaar/loraserver/api/ns"
 	"github.com/brocaar/loraserver/internal/config"
 	"github.com/brocaar/loraserver/internal/downlink/data/classb"
@@ -165,7 +167,7 @@ func (n *NetworkServerAPI) GetServiceProfile(ctx context.Context, req *ns.GetSer
 }
 
 // UpdateServiceProfile updates the given service-profile.
-func (n *NetworkServerAPI) UpdateServiceProfile(ctx context.Context, req *ns.UpdateServiceProfileRequest) (*ns.UpdateServiceProfileResponse, error) {
+func (n *NetworkServerAPI) UpdateServiceProfile(ctx context.Context, req *ns.UpdateServiceProfileRequest) (*empty.Empty, error) {
 	if req.ServiceProfile == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "service_profile must not be nil")
 	}
@@ -218,11 +220,11 @@ func (n *NetworkServerAPI) UpdateServiceProfile(ctx context.Context, req *ns.Upd
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.UpdateServiceProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // DeleteServiceProfile deletes the service-profile matching the given id.
-func (n *NetworkServerAPI) DeleteServiceProfile(ctx context.Context, req *ns.DeleteServiceProfileRequest) (*ns.DeleteServiceProfileResponse, error) {
+func (n *NetworkServerAPI) DeleteServiceProfile(ctx context.Context, req *ns.DeleteServiceProfileRequest) (*empty.Empty, error) {
 	var spID uuid.UUID
 	copy(spID[:], req.Id)
 
@@ -234,7 +236,7 @@ func (n *NetworkServerAPI) DeleteServiceProfile(ctx context.Context, req *ns.Del
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.DeleteServiceProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // CreateRoutingProfile creates the given routing-profile.
@@ -295,7 +297,7 @@ func (n *NetworkServerAPI) GetRoutingProfile(ctx context.Context, req *ns.GetRou
 }
 
 // UpdateRoutingProfile updates the given routing-profile.
-func (n *NetworkServerAPI) UpdateRoutingProfile(ctx context.Context, req *ns.UpdateRoutingProfileRequest) (*ns.UpdateRoutingProfileResponse, error) {
+func (n *NetworkServerAPI) UpdateRoutingProfile(ctx context.Context, req *ns.UpdateRoutingProfileRequest) (*empty.Empty, error) {
 	if req.RoutingProfile == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "routing_profile must not be nil")
 	}
@@ -324,11 +326,11 @@ func (n *NetworkServerAPI) UpdateRoutingProfile(ctx context.Context, req *ns.Upd
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.UpdateRoutingProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // DeleteRoutingProfile deletes the routing-profile matching the given id.
-func (n *NetworkServerAPI) DeleteRoutingProfile(ctx context.Context, req *ns.DeleteRoutingProfileRequest) (*ns.DeleteRoutingProfileResponse, error) {
+func (n *NetworkServerAPI) DeleteRoutingProfile(ctx context.Context, req *ns.DeleteRoutingProfileRequest) (*empty.Empty, error) {
 	var rpID uuid.UUID
 	copy(rpID[:], req.Id)
 
@@ -336,7 +338,7 @@ func (n *NetworkServerAPI) DeleteRoutingProfile(ctx context.Context, req *ns.Del
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.DeleteRoutingProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // CreateDeviceProfile creates the given device-profile.
@@ -450,7 +452,7 @@ func (n *NetworkServerAPI) GetDeviceProfile(ctx context.Context, req *ns.GetDevi
 
 // UpdateDeviceProfile updates the given device-profile.
 // The RFRegion field will get set automatically according to the configured band.
-func (n *NetworkServerAPI) UpdateDeviceProfile(ctx context.Context, req *ns.UpdateDeviceProfileRequest) (*ns.UpdateDeviceProfileResponse, error) {
+func (n *NetworkServerAPI) UpdateDeviceProfile(ctx context.Context, req *ns.UpdateDeviceProfileRequest) (*empty.Empty, error) {
 	if req.DeviceProfile == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "device_profile must not be nil")
 	}
@@ -505,11 +507,11 @@ func (n *NetworkServerAPI) UpdateDeviceProfile(ctx context.Context, req *ns.Upda
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.UpdateDeviceProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // DeleteDeviceProfile deletes the device-profile matching the given id.
-func (n *NetworkServerAPI) DeleteDeviceProfile(ctx context.Context, req *ns.DeleteDeviceProfileRequest) (*ns.DeleteDeviceProfileResponse, error) {
+func (n *NetworkServerAPI) DeleteDeviceProfile(ctx context.Context, req *ns.DeleteDeviceProfileRequest) (*empty.Empty, error) {
 	var dpID uuid.UUID
 	copy(dpID[:], req.Id)
 
@@ -521,11 +523,11 @@ func (n *NetworkServerAPI) DeleteDeviceProfile(ctx context.Context, req *ns.Dele
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.DeleteDeviceProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // CreateDevice creates the given device.
-func (n *NetworkServerAPI) CreateDevice(ctx context.Context, req *ns.CreateDeviceRequest) (*ns.CreateDeviceResponse, error) {
+func (n *NetworkServerAPI) CreateDevice(ctx context.Context, req *ns.CreateDeviceRequest) (*empty.Empty, error) {
 	if req.Device == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "device must not be nil")
 	}
@@ -549,7 +551,7 @@ func (n *NetworkServerAPI) CreateDevice(ctx context.Context, req *ns.CreateDevic
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.CreateDeviceResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // GetDevice returns the device matching the given DevEUI.
@@ -586,7 +588,7 @@ func (n *NetworkServerAPI) GetDevice(ctx context.Context, req *ns.GetDeviceReque
 }
 
 // UpdateDevice updates the given device.
-func (n *NetworkServerAPI) UpdateDevice(ctx context.Context, req *ns.UpdateDeviceRequest) (*ns.UpdateDeviceResponse, error) {
+func (n *NetworkServerAPI) UpdateDevice(ctx context.Context, req *ns.UpdateDeviceRequest) (*empty.Empty, error) {
 	if req.Device == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "device must not be nil")
 	}
@@ -613,11 +615,11 @@ func (n *NetworkServerAPI) UpdateDevice(ctx context.Context, req *ns.UpdateDevic
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.UpdateDeviceResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // DeleteDevice deletes the device matching the given DevEUI.
-func (n *NetworkServerAPI) DeleteDevice(ctx context.Context, req *ns.DeleteDeviceRequest) (*ns.DeleteDeviceResponse, error) {
+func (n *NetworkServerAPI) DeleteDevice(ctx context.Context, req *ns.DeleteDeviceRequest) (*empty.Empty, error) {
 	var devEUI lorawan.EUI64
 	copy(devEUI[:], req.DevEui)
 
@@ -636,11 +638,11 @@ func (n *NetworkServerAPI) DeleteDevice(ctx context.Context, req *ns.DeleteDevic
 		return nil, err
 	}
 
-	return &ns.DeleteDeviceResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // ActivateDevice activates a device (ABP).
-func (n *NetworkServerAPI) ActivateDevice(ctx context.Context, req *ns.ActivateDeviceRequest) (*ns.ActivateDeviceResponse, error) {
+func (n *NetworkServerAPI) ActivateDevice(ctx context.Context, req *ns.ActivateDeviceRequest) (*empty.Empty, error) {
 	if req.DeviceActivation == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "device_activation must not be nil")
 	}
@@ -706,11 +708,11 @@ func (n *NetworkServerAPI) ActivateDevice(ctx context.Context, req *ns.ActivateD
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.ActivateDeviceResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // DeactivateDevice de-activates a device.
-func (n *NetworkServerAPI) DeactivateDevice(ctx context.Context, req *ns.DeactivateDeviceRequest) (*ns.DeactivateDeviceResponse, error) {
+func (n *NetworkServerAPI) DeactivateDevice(ctx context.Context, req *ns.DeactivateDeviceRequest) (*empty.Empty, error) {
 	var devEUI lorawan.EUI64
 	copy(devEUI[:], req.DevEui)
 
@@ -722,7 +724,7 @@ func (n *NetworkServerAPI) DeactivateDevice(ctx context.Context, req *ns.Deactiv
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.DeactivateDeviceResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // GetDeviceActivation returns the device activation details.
@@ -751,7 +753,7 @@ func (n *NetworkServerAPI) GetDeviceActivation(ctx context.Context, req *ns.GetD
 }
 
 // GetRandomDevAddr returns a random DevAddr.
-func (n *NetworkServerAPI) GetRandomDevAddr(ctx context.Context, req *ns.GetRandomDevAddrRequest) (*ns.GetRandomDevAddrResponse, error) {
+func (n *NetworkServerAPI) GetRandomDevAddr(ctx context.Context, req *empty.Empty) (*ns.GetRandomDevAddrResponse, error) {
 	devAddr, err := storage.GetRandomDevAddr(config.C.Redis.Pool, config.C.NetworkServer.NetID)
 	if err != nil {
 		return nil, errToRPCError(err)
@@ -764,7 +766,7 @@ func (n *NetworkServerAPI) GetRandomDevAddr(ctx context.Context, req *ns.GetRand
 
 // CreateMACCommandQueueItem adds a data down MAC command to the queue.
 // It replaces already enqueued mac-commands with the same CID.
-func (n *NetworkServerAPI) CreateMACCommandQueueItem(ctx context.Context, req *ns.CreateMACCommandQueueItemRequest) (*ns.CreateMACCommandQueueItemResponse, error) {
+func (n *NetworkServerAPI) CreateMACCommandQueueItem(ctx context.Context, req *ns.CreateMACCommandQueueItemRequest) (*empty.Empty, error) {
 	var commands []lorawan.MACCommand
 	var devEUI lorawan.EUI64
 
@@ -788,11 +790,11 @@ func (n *NetworkServerAPI) CreateMACCommandQueueItem(ctx context.Context, req *n
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.CreateMACCommandQueueItemResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // SendProprietaryPayload send a payload using the 'Proprietary' LoRaWAN message-type.
-func (n *NetworkServerAPI) SendProprietaryPayload(ctx context.Context, req *ns.SendProprietaryPayloadRequest) (*ns.SendProprietaryPayloadResponse, error) {
+func (n *NetworkServerAPI) SendProprietaryPayload(ctx context.Context, req *ns.SendProprietaryPayloadRequest) (*empty.Empty, error) {
 	var mic lorawan.MIC
 	var gwMACs []lorawan.EUI64
 
@@ -808,11 +810,11 @@ func (n *NetworkServerAPI) SendProprietaryPayload(ctx context.Context, req *ns.S
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.SendProprietaryPayloadResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // CreateGateway creates the given gateway.
-func (n *NetworkServerAPI) CreateGateway(ctx context.Context, req *ns.CreateGatewayRequest) (*ns.CreateGatewayResponse, error) {
+func (n *NetworkServerAPI) CreateGateway(ctx context.Context, req *ns.CreateGatewayRequest) (*empty.Empty, error) {
 	if req.Gateway == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "gateway must not be nil")
 	}
@@ -841,7 +843,7 @@ func (n *NetworkServerAPI) CreateGateway(ctx context.Context, req *ns.CreateGate
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.CreateGatewayResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // GetGateway returns data for a particular gateway.
@@ -858,7 +860,7 @@ func (n *NetworkServerAPI) GetGateway(ctx context.Context, req *ns.GetGatewayReq
 }
 
 // UpdateGateway updates an existing gateway.
-func (n *NetworkServerAPI) UpdateGateway(ctx context.Context, req *ns.UpdateGatewayRequest) (*ns.UpdateGatewayResponse, error) {
+func (n *NetworkServerAPI) UpdateGateway(ctx context.Context, req *ns.UpdateGatewayRequest) (*empty.Empty, error) {
 	if req.Gateway == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "gateway must not be nil")
 	}
@@ -893,11 +895,11 @@ func (n *NetworkServerAPI) UpdateGateway(ctx context.Context, req *ns.UpdateGate
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.UpdateGatewayResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // DeleteGateway deletes a gateway.
-func (n *NetworkServerAPI) DeleteGateway(ctx context.Context, req *ns.DeleteGatewayRequest) (*ns.DeleteGatewayResponse, error) {
+func (n *NetworkServerAPI) DeleteGateway(ctx context.Context, req *ns.DeleteGatewayRequest) (*empty.Empty, error) {
 	var mac lorawan.EUI64
 	copy(mac[:], req.Id)
 
@@ -906,7 +908,7 @@ func (n *NetworkServerAPI) DeleteGateway(ctx context.Context, req *ns.DeleteGate
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.DeleteGatewayResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // GetGatewayStats returns stats of an existing gateway.
@@ -1051,7 +1053,7 @@ func (n *NetworkServerAPI) CreateGatewayProfile(ctx context.Context, req *ns.Cre
 		}
 
 		switch ec.Modulation {
-		case ns.Modulation_FSK:
+		case common.Modulation_FSK:
 			c.Modulation = storage.ModulationFSK
 		default:
 			c.Modulation = storage.ModulationLoRa
@@ -1113,9 +1115,9 @@ func (n *NetworkServerAPI) GetGatewayProfile(ctx context.Context, req *ns.GetGat
 
 		switch ec.Modulation {
 		case storage.ModulationFSK:
-			c.Modulation = ns.Modulation_FSK
+			c.Modulation = common.Modulation_FSK
 		default:
-			c.Modulation = ns.Modulation_LORA
+			c.Modulation = common.Modulation_LORA
 		}
 
 		for _, sf := range ec.SpreadingFactors {
@@ -1129,7 +1131,7 @@ func (n *NetworkServerAPI) GetGatewayProfile(ctx context.Context, req *ns.GetGat
 }
 
 // UpdateGatewayProfile updates the given gateway-profile.
-func (n *NetworkServerAPI) UpdateGatewayProfile(ctx context.Context, req *ns.UpdateGatewayProfileRequest) (*ns.UpdateGatewayProfileResponse, error) {
+func (n *NetworkServerAPI) UpdateGatewayProfile(ctx context.Context, req *ns.UpdateGatewayProfileRequest) (*empty.Empty, error) {
 	if req.GatewayProfile == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "gateway_profile must not be nil")
 	}
@@ -1156,7 +1158,7 @@ func (n *NetworkServerAPI) UpdateGatewayProfile(ctx context.Context, req *ns.Upd
 		}
 
 		switch ec.Modulation {
-		case ns.Modulation_FSK:
+		case common.Modulation_FSK:
 			c.Modulation = storage.ModulationFSK
 		default:
 			c.Modulation = storage.ModulationLoRa
@@ -1176,11 +1178,11 @@ func (n *NetworkServerAPI) UpdateGatewayProfile(ctx context.Context, req *ns.Upd
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.UpdateGatewayProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // DeleteGatewayProfile deletes the gateway-profile matching a given id.
-func (n *NetworkServerAPI) DeleteGatewayProfile(ctx context.Context, req *ns.DeleteGatewayProfileRequest) (*ns.DeleteGatewayProfileResponse, error) {
+func (n *NetworkServerAPI) DeleteGatewayProfile(ctx context.Context, req *ns.DeleteGatewayProfileRequest) (*empty.Empty, error) {
 	var gpID uuid.UUID
 	copy(gpID[:], req.Id)
 
@@ -1188,11 +1190,11 @@ func (n *NetworkServerAPI) DeleteGatewayProfile(ctx context.Context, req *ns.Del
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.DeleteGatewayProfileResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // CreateDeviceQueueItem creates the given device-queue item.
-func (n *NetworkServerAPI) CreateDeviceQueueItem(ctx context.Context, req *ns.CreateDeviceQueueItemRequest) (*ns.CreateDeviceQueueItemResponse, error) {
+func (n *NetworkServerAPI) CreateDeviceQueueItem(ctx context.Context, req *ns.CreateDeviceQueueItemRequest) (*empty.Empty, error) {
 	if req.Item == nil {
 		return nil, grpc.Errorf(codes.InvalidArgument, "item must not be nil")
 	}
@@ -1256,11 +1258,11 @@ func (n *NetworkServerAPI) CreateDeviceQueueItem(ctx context.Context, req *ns.Cr
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.CreateDeviceQueueItemResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // FlushDeviceQueueForDevEUI flushes the device-queue for the given DevEUI.
-func (n *NetworkServerAPI) FlushDeviceQueueForDevEUI(ctx context.Context, req *ns.FlushDeviceQueueForDevEUIRequest) (*ns.FlushDeviceQueueForDevEUIResponse, error) {
+func (n *NetworkServerAPI) FlushDeviceQueueForDevEUI(ctx context.Context, req *ns.FlushDeviceQueueForDevEUIRequest) (*empty.Empty, error) {
 	var devEUI lorawan.EUI64
 	copy(devEUI[:], req.DevEui)
 
@@ -1269,7 +1271,7 @@ func (n *NetworkServerAPI) FlushDeviceQueueForDevEUI(ctx context.Context, req *n
 		return nil, errToRPCError(err)
 	}
 
-	return &ns.FlushDeviceQueueForDevEUIResponse{}, nil
+	return &empty.Empty{}, nil
 }
 
 // GetDeviceQueueItemsForDevEUI returns all device-queue items for the given DevEUI.
@@ -1331,18 +1333,18 @@ func (n *NetworkServerAPI) GetNextDownlinkFCntForDevEUI(ctx context.Context, req
 }
 
 // GetVersion returns the LoRa Server version.
-func (n *NetworkServerAPI) GetVersion(ctx context.Context, req *ns.GetVersionRequest) (*ns.GetVersionResponse, error) {
-	region, ok := map[band.Name]ns.Region{
-		band.AS_923:     ns.Region_AS923,
-		band.AU_915_928: ns.Region_AU915,
-		band.CN_470_510: ns.Region_CN470,
-		band.CN_779_787: ns.Region_CN779,
-		band.EU_433:     ns.Region_EU433,
-		band.EU_863_870: ns.Region_EU868,
-		band.IN_865_867: ns.Region_IN865,
-		band.KR_920_923: ns.Region_KR920,
-		band.RU_864_870: ns.Region_RU864,
-		band.US_902_928: ns.Region_US915,
+func (n *NetworkServerAPI) GetVersion(ctx context.Context, req *empty.Empty) (*ns.GetVersionResponse, error) {
+	region, ok := map[band.Name]common.Region{
+		band.AS_923:     common.Region_AS923,
+		band.AU_915_928: common.Region_AU915,
+		band.CN_470_510: common.Region_CN470,
+		band.CN_779_787: common.Region_CN779,
+		band.EU_433:     common.Region_EU433,
+		band.EU_863_870: common.Region_EU868,
+		band.IN_865_867: common.Region_IN865,
+		band.KR_920_923: common.Region_KR920,
+		band.RU_864_870: common.Region_RU864,
+		band.US_902_928: common.Region_US915,
 	}[config.C.NetworkServer.Band.Name]
 
 	if !ok {

@@ -7,11 +7,13 @@ import (
 	"time"
 
 	"github.com/golang/protobuf/ptypes"
+	"github.com/golang/protobuf/ptypes/empty"
 	uuid "github.com/satori/go.uuid"
 	. "github.com/smartystreets/goconvey/convey"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 
+	commonPB "github.com/brocaar/loraserver/api/common"
 	"github.com/brocaar/loraserver/api/gw"
 	"github.com/brocaar/loraserver/api/ns"
 	"github.com/brocaar/loraserver/internal/common"
@@ -900,7 +902,7 @@ func TestNetworkServerAPI(t *testing.T) {
 			})
 
 			Convey("When calling GetRandomDevAddr", func() {
-				resp, err := api.GetRandomDevAddr(ctx, &ns.GetRandomDevAddrRequest{})
+				resp, err := api.GetRandomDevAddr(ctx, &empty.Empty{})
 				So(err, ShouldBeNil)
 
 				Convey("A random DevAddr has been returned", func() {
@@ -1021,13 +1023,13 @@ func TestNetworkServerAPI(t *testing.T) {
 						Channels: []uint32{0, 1, 2},
 						ExtraChannels: []*ns.GatewayProfileExtraChannel{
 							{
-								Modulation:       ns.Modulation_LORA,
+								Modulation:       commonPB.Modulation_LORA,
 								Frequency:        868700000,
 								Bandwidth:        125,
 								SpreadingFactors: []uint32{10, 11, 12},
 							},
 							{
-								Modulation: ns.Modulation_FSK,
+								Modulation: commonPB.Modulation_FSK,
 								Frequency:  868900000,
 								Bandwidth:  125,
 								Bitrate:    50000,
@@ -1052,13 +1054,13 @@ func TestNetworkServerAPI(t *testing.T) {
 						Channels: []uint32{0, 1, 2},
 						ExtraChannels: []*ns.GatewayProfileExtraChannel{
 							{
-								Modulation:       ns.Modulation_LORA,
+								Modulation:       commonPB.Modulation_LORA,
 								Frequency:        868700000,
 								Bandwidth:        125,
 								SpreadingFactors: []uint32{10, 11, 12},
 							},
 							{
-								Modulation: ns.Modulation_FSK,
+								Modulation: commonPB.Modulation_FSK,
 								Frequency:  868900000,
 								Bandwidth:  125,
 								Bitrate:    50000,
@@ -1074,13 +1076,13 @@ func TestNetworkServerAPI(t *testing.T) {
 							Channels: []uint32{0, 1},
 							ExtraChannels: []*ns.GatewayProfileExtraChannel{
 								{
-									Modulation: ns.Modulation_FSK,
+									Modulation: commonPB.Modulation_FSK,
 									Frequency:  868900000,
 									Bandwidth:  125,
 									Bitrate:    50000,
 								},
 								{
-									Modulation:       ns.Modulation_LORA,
+									Modulation:       commonPB.Modulation_LORA,
 									Frequency:        868700000,
 									Bandwidth:        125,
 									SpreadingFactors: []uint32{10, 11, 12},
@@ -1100,13 +1102,13 @@ func TestNetworkServerAPI(t *testing.T) {
 						Channels: []uint32{0, 1},
 						ExtraChannels: []*ns.GatewayProfileExtraChannel{
 							{
-								Modulation: ns.Modulation_FSK,
+								Modulation: commonPB.Modulation_FSK,
 								Frequency:  868900000,
 								Bandwidth:  125,
 								Bitrate:    50000,
 							},
 							{
-								Modulation:       ns.Modulation_LORA,
+								Modulation:       commonPB.Modulation_LORA,
 								Frequency:        868700000,
 								Bandwidth:        125,
 								SpreadingFactors: []uint32{10, 11, 12},
@@ -1132,11 +1134,11 @@ func TestNetworkServerAPI(t *testing.T) {
 			Convey("Then GetVersion returns the expected value", func() {
 				config.Version = "1.2.3"
 
-				resp, err := api.GetVersion(ctx, &ns.GetVersionRequest{})
+				resp, err := api.GetVersion(ctx, &empty.Empty{})
 				So(err, ShouldBeNil)
 				So(resp, ShouldResemble, &ns.GetVersionResponse{
 					Version: "1.2.3",
-					Region:  ns.Region_EU868,
+					Region:  commonPB.Region_EU868,
 				})
 			})
 		})
