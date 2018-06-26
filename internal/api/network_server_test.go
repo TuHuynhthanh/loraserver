@@ -20,7 +20,6 @@ import (
 	"github.com/brocaar/loraserver/internal/config"
 	"github.com/brocaar/loraserver/internal/framelog"
 	"github.com/brocaar/loraserver/internal/gps"
-	"github.com/brocaar/loraserver/internal/models"
 	"github.com/brocaar/loraserver/internal/storage"
 	"github.com/brocaar/loraserver/internal/test"
 	"github.com/brocaar/lorawan"
@@ -92,51 +91,32 @@ func TestNetworkServerAPI(t *testing.T) {
 			}()
 
 			Convey("When logging a downlink gateway frame", func() {
-				dr0, err := config.C.NetworkServer.Band.Band.GetDataRate(0)
-				So(err, ShouldBeNil)
-
-				So(framelog.LogDownlinkFrameForGateway(framelog.DownlinkFrameLog{
-					TXInfo: gw.TXInfo{
-						MAC:      mac,
-						DataRate: dr0,
-					},
-					PHYPayload: lorawan.PHYPayload{
-						MHDR: lorawan.MHDR{
-							MType: lorawan.UnconfirmedDataDown,
-							Major: lorawan.LoRaWANR1,
-						},
-						MACPayload: &lorawan.MACPayload{},
+				So(framelog.LogDownlinkFrameForGateway(gw.DownlinkFrame{
+					TxInfo: &gw.DownlinkTXInfo{
+						GatewayId: mac[:],
 					},
 				}), ShouldBeNil)
 
 				Convey("Then the frame-log was received by the client", func() {
 					resp := <-respChan
-					So(resp.UplinkFrames, ShouldHaveLength, 0)
-					So(resp.DownlinkFrames, ShouldHaveLength, 1)
+					So(resp.GetDownlinkFrame(), ShouldNotBeNil)
+					So(resp.GetUplinkFrameSet(), ShouldBeNil)
 				})
 			})
 
 			Convey("When logging an uplink gateway frame", func() {
-				So(framelog.LogUplinkFrameForGateways(models.RXPacket{
-					PHYPayload: lorawan.PHYPayload{
-						MHDR: lorawan.MHDR{
-							MType: lorawan.UnconfirmedDataUp,
-							Major: lorawan.LoRaWANR1,
-						},
-						MACPayload: &lorawan.MACPayload{},
-					},
-					TXInfo: models.TXInfo{},
-					RXInfoSet: []models.RXInfo{
+				So(framelog.LogUplinkFrameForGateways(gw.UplinkFrameSet{
+					RxInfo: []*gw.UplinkRXInfo{
 						{
-							MAC: mac,
+							GatewayId: mac[:],
 						},
 					},
 				}), ShouldBeNil)
 
 				Convey("Then the frame-log was received by the client", func() {
 					resp := <-respChan
-					So(resp.UplinkFrames, ShouldHaveLength, 1)
-					So(resp.DownlinkFrames, ShouldHaveLength, 0)
+					So(resp.GetDownlinkFrame(), ShouldBeNil)
+					So(resp.GetUplinkFrameSet(), ShouldNotBeNil)
 				})
 			})
 		})
@@ -163,45 +143,22 @@ func TestNetworkServerAPI(t *testing.T) {
 			}()
 
 			Convey("When logging a downlink device frame", func() {
-				dr0, err := config.C.NetworkServer.Band.Band.GetDataRate(0)
-				So(err, ShouldBeNil)
-
-				So(framelog.LogDownlinkFrameForDevEUI(devEUI, framelog.DownlinkFrameLog{
-					TXInfo: gw.TXInfo{
-						DataRate: dr0,
-					},
-					PHYPayload: lorawan.PHYPayload{
-						MHDR: lorawan.MHDR{
-							MType: lorawan.UnconfirmedDataDown,
-							Major: lorawan.LoRaWANR1,
-						},
-						MACPayload: &lorawan.MACPayload{},
-					},
-				}), ShouldBeNil)
+				So(framelog.LogDownlinkFrameForDevEUI(devEUI, gw.DownlinkFrame{}), ShouldBeNil)
 
 				Convey("Then the frame-log was received by the client", func() {
 					resp := <-respChan
-					So(resp.UplinkFrames, ShouldHaveLength, 0)
-					So(resp.DownlinkFrames, ShouldHaveLength, 1)
+					So(resp.GetDownlinkFrame(), ShouldNotBeNil)
+					So(resp.GetUplinkFrameSet(), ShouldBeNil)
 				})
 			})
 
 			Convey("When logging an uplink device frame", func() {
-				So(framelog.LogUplinkFrameForDevEUI(devEUI, models.RXPacket{
-					PHYPayload: lorawan.PHYPayload{
-						MHDR: lorawan.MHDR{
-							MType: lorawan.UnconfirmedDataUp,
-							Major: lorawan.LoRaWANR1,
-						},
-						MACPayload: &lorawan.MACPayload{},
-					},
-					TXInfo: models.TXInfo{},
-				}), ShouldBeNil)
+				So(framelog.LogUplinkFrameForDevEUI(devEUI, gw.UplinkFrameSet{}), ShouldBeNil)
 
 				Convey("Then the frame-log was received by the client", func() {
 					resp := <-respChan
-					So(resp.UplinkFrames, ShouldHaveLength, 1)
-					So(resp.DownlinkFrames, ShouldHaveLength, 0)
+					So(resp.GetDownlinkFrame(), ShouldBeNil)
+					So(resp.GetUplinkFrameSet(), ShouldNotBeNil)
 				})
 			})
 		})

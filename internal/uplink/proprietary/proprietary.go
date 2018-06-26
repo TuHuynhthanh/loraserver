@@ -8,6 +8,7 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/brocaar/loraserver/api/as"
+	gwPB "github.com/brocaar/loraserver/api/gw"
 	"github.com/brocaar/loraserver/internal/config"
 	"github.com/brocaar/loraserver/internal/models"
 	"github.com/brocaar/loraserver/internal/storage"
@@ -75,9 +76,11 @@ func sendProprietaryPayloadToApplicationServer(ctx *proprietaryContext) error {
 		copy(mac[:], handleReq.RxInfo[i].GatewayId)
 
 		if gw, ok := gws[mac]; ok {
-			handleReq.RxInfo[i].Latitude = gw.Location.Latitude
-			handleReq.RxInfo[i].Longitude = gw.Location.Longitude
-			handleReq.RxInfo[i].Altitude = gw.Altitude
+			handleReq.RxInfo[i].Location = &gwPB.Location{
+				Latitude:  gw.Location.Latitude,
+				Longitude: gw.Location.Longitude,
+				Altitude:  gw.Altitude,
+			}
 		}
 	}
 

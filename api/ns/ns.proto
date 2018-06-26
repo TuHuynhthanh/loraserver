@@ -3,9 +3,9 @@ syntax = "proto3";
 package ns;
 
 import "google/protobuf/timestamp.proto";
-import "google/protobuf/duration.proto";
 import "google/protobuf/empty.proto";
 import "github.com/brocaar/loraserver/api/common/common.proto";
+import "github.com/brocaar/loraserver/api/gw/gw.proto";
 import "profiles.proto";
 
 
@@ -541,11 +541,13 @@ message StreamFrameLogsForGatewayRequest {
 }
 
 message StreamFrameLogsForGatewayResponse {
-    // Contains zero or one uplink frame.
-    repeated UplinkFrameLog uplink_frames = 1;
+    oneof frame {
+        // Contains an uplink frame.
+        gw.UplinkFrameSet uplink_frame_set = 1;
 
-    // Contains zero or one downlink frame.
-    repeated DownlinkFrameLog downlink_frames = 2;
+        // Contains a downlink frame.
+        gw.DownlinkFrame downlink_frame = 2;
+    }
 }
 
 message StreamFrameLogsForDeviceRequest {
@@ -554,117 +556,13 @@ message StreamFrameLogsForDeviceRequest {
 }
 
 message StreamFrameLogsForDeviceResponse {
-    // Contains zero or one uplink frame.
-    repeated UplinkFrameLog uplink_frames = 1;
+    oneof frame {
+        // Contains an uplink frame.
+        gw.UplinkFrameSet uplink_frame_set = 1;
 
-    // Contains zero or one downlink frame.
-    repeated DownlinkFrameLog downlink_frames = 2;
-}
-
-message DataRate {
-    // The used modulation (LORA or FSK).
-    string modulation = 1;
-
-    // Bandwidth (in kHz).
-    uint32 bandwidth = 2;
-
-    // Used spreading-factor.
-    uint32 spreading_factor = 3;
-
-    // Bitrate (used for FSK modulation).
-    uint32 bitrate = 4;
-}
-
-
-message UplinkTXInfo {
-    // TX frequency (in Hz).
-    uint32 frequency = 1;
-
-    // Data-rate.
-    DataRate data_rate = 2;
-
-    // Code rate.
-    string code_rate = 3;
-}
-
-message UplinkRXInfo {
-    // Gateway MAC.
-    bytes gateway_id = 1;
-
-    // Time when the frame was received (if available).
-    google.protobuf.Timestamp time = 2;
-
-    // Time when the frame was received as time since GPS epoch (if available).
-    google.protobuf.Duration time_since_gps_epoch = 3;
-
-    // Gateway internal timestamp.
-    uint32 timestamp = 4;
-
-    // RSSI.
-    int32 rssi = 5;
-
-    // LoRa SNR.
-    float lora_snr = 6;
-
-    // The board identifier that received the uplink frame.
-    uint32 board = 7;
-
-    // THe antenna identifier that received the uplink frame.
-    uint32 antenna = 8;
-}
-
-message UplinkFrameLog {
-    // TX information of the uplink.
-    UplinkTXInfo tx_info = 1;
-
-    // RX information of the uplink.
-    repeated UplinkRXInfo rx_info = 2;
-
-    // LoRaWAN PHYPayload.
-    bytes phy_payload = 3;
-}
-
-message DownlinkTXInfo {
-    // Gateway MAC.
-    bytes gateway_id = 1;
-
-    // Frame must be sent immediately.
-    bool immediately = 2;
-
-    // Transmit frame at the given time since GPS epoch.
-    google.protobuf.Duration time_since_gps_epoch = 3;
-
-    // Transmit the frame at the given gateway internal timestamp.
-    uint32 timestamp = 4;
-
-    // TX frequency (in Hz).
-    uint32 frequency = 5;
-
-    // TX power (in dBm).
-    int32 power = 6;
-
-    // Data-rate.
-    DataRate data_rate = 7;
-
-    // Code rate.
-    string code_rate = 8;
-
-    // Lora modulation polarization inversion.
-    bool polarization_inversion = 9;
-
-    // The board identifier that received the uplink frame.
-    uint32 board = 10;
-
-    // THe antenna identifier that received the uplink frame.
-    uint32 antenna = 11;
-}
-
-message DownlinkFrameLog {
-    // TX information of the downlink.
-    DownlinkTXInfo tx_info = 1;
-
-    // LoRaWAN PHYPayload.
-    bytes phy_payload = 2;
+        // Contains a downlink frame.
+        gw.DownlinkFrame downlink_frame = 2;
+    }
 }
 
 message GetVersionResponse {

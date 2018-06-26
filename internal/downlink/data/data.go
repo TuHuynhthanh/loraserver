@@ -871,26 +871,28 @@ func getDataDownTXInfoAndDR(ds storage.DeviceSession, lastTXInfo models.TXInfo, 
 	return txInfo, dr, nil
 }
 
+// this is called after decrypting the mac-command in case of LoRaWAN 1.1
 func logDownlinkFrameForDevice(ctx *dataContext) error {
-	frameLog := framelog.DownlinkFrameLog{
-		PHYPayload: ctx.PHYPayload,
-		TXInfo:     ctx.TXInfo,
+	downlinkFrame, err := framelog.CreateDownlinkFrame(ctx.Token, ctx.PHYPayload, ctx.TXInfo)
+	if err != nil {
+		return errors.Wrap(err, "create downlink frame error")
 	}
 
-	if err := framelog.LogDownlinkFrameForDevEUI(ctx.DeviceSession.DevEUI, frameLog); err != nil {
+	if err := framelog.LogDownlinkFrameForDevEUI(ctx.DeviceSession.DevEUI, downlinkFrame); err != nil {
 		log.WithError(err).Error("log downlink frame for device error")
 	}
 
 	return nil
 }
 
+// this is called before decrypting the mac-commands (as the key is unknown within the context of a gateway)
 func logDownlinkFrameForGateway(ctx *dataContext) error {
-	frameLog := framelog.DownlinkFrameLog{
-		PHYPayload: ctx.PHYPayload,
-		TXInfo:     ctx.TXInfo,
+	downlinkFrame, err := framelog.CreateDownlinkFrame(ctx.Token, ctx.PHYPayload, ctx.TXInfo)
+	if err != nil {
+		return errors.Wrap(err, "create downlink frame error")
 	}
 
-	if err := framelog.LogDownlinkFrameForGateway(frameLog); err != nil {
+	if err := framelog.LogDownlinkFrameForGateway(downlinkFrame); err != nil {
 		log.WithError(err).Error("log downlink frame for gateway error")
 	}
 

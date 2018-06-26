@@ -9,6 +9,7 @@ import (
 	log "github.com/sirupsen/logrus"
 
 	"github.com/brocaar/loraserver/api/as"
+	gwPB "github.com/brocaar/loraserver/api/gw"
 	"github.com/brocaar/loraserver/api/nc"
 	"github.com/brocaar/loraserver/internal/config"
 	datadown "github.com/brocaar/loraserver/internal/downlink/data"
@@ -117,7 +118,12 @@ func getDeviceSessionForPHYPayload(ctx *dataContext) error {
 }
 
 func logUplinkFrame(ctx *dataContext) error {
-	if err := framelog.LogUplinkFrameForDevEUI(ctx.DeviceSession.DevEUI, ctx.RXPacket); err != nil {
+	uplinkFrameSet, err := framelog.CreateUplinkFrameSet(ctx.RXPacket)
+	if err != nil {
+		return errors.Wrap(err, "create uplink frame-log error")
+	}
+
+	if err := framelog.LogUplinkFrameForDevEUI(ctx.DeviceSession.DevEUI, uplinkFrameSet); err != nil {
 		log.WithError(err).Error("log uplink frame for device error")
 	}
 
@@ -333,9 +339,11 @@ func sendFRMPayloadToApplicationServer(ctx *dataContext) error {
 			copy(mac[:], publishDataUpReq.RxInfo[i].GatewayId)
 
 			if gw, ok := gws[mac]; ok {
-				publishDataUpReq.RxInfo[i].Latitude = gw.Location.Latitude
-				publishDataUpReq.RxInfo[i].Longitude = gw.Location.Longitude
-				publishDataUpReq.RxInfo[i].Altitude = gw.Altitude
+				publishDataUpReq.RxInfo[i].Location = &gwPB.Location{
+					Latitude:  gw.Location.Latitude,
+					Longitude: gw.Location.Longitude,
+					Altitude:  gw.Altitude,
+				}
 			}
 		}
 	}
