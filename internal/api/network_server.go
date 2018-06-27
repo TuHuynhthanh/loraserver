@@ -1020,10 +1020,6 @@ func (n *NetworkServerAPI) StreamFrameLogsForDevice(req *ns.StreamFrameLogsForDe
 		if err := srv.Send(&resp); err != nil {
 			log.WithError(err).Error("error sending frame-log response")
 		}
-
-		if err := srv.Send(&resp); err != nil {
-			log.WithError(err).Error("error sending frame-log response")
-		}
 	}
 
 	return nil
