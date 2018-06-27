@@ -54,14 +54,17 @@ message HandleUplinkDataRequest {
     // ADR enabled.
     bool adr = 5;
 
+    // Data-rate.
+    uint32 dr = 6;
+
     // TX meta-data.
-    gw.UplinkTXInfo tx_info = 6;
+    gw.UplinkTXInfo tx_info = 7;
 
     // RX meta-data.
-    repeated gw.UplinkRXInfo rx_info = 7;
+    repeated gw.UplinkRXInfo rx_info = 8;
 
     // Received data (encrypted).
-    bytes data = 8;
+    bytes data = 9;
 }
 
 message HandleProprietaryUplinkRequest {

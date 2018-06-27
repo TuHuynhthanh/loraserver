@@ -316,6 +316,12 @@ func sendFRMPayloadToApplicationServer(ctx *dataContext) error {
 		TxInfo:  ctx.RXPacket.GetGWUplinkTXInfo(),
 	}
 
+	dr, err := config.C.NetworkServer.Band.Band.GetDataRateIndex(true, ctx.RXPacket.TXInfo.DataRate)
+	if err != nil {
+		errors.Wrap(err, "get data-rate error")
+	}
+	publishDataUpReq.Dr = uint32(dr)
+
 	if ctx.ServiceProfile.AddGWMetadata {
 		var macs []lorawan.EUI64
 		publishDataUpReq.RxInfo = ctx.RXPacket.GetGWUplinkRXInfoSet()
