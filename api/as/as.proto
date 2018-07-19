@@ -38,6 +38,27 @@ enum ErrorType {
 }
 
 
+message KeyEnvelope {
+    // KEK label.
+    string kek_label = 1;
+
+    // AES key (when the kek_label is set, this key is encrypted using a key
+    // known to the join-server and application-server.
+    // For more information please refer to the LoRaWAN Backend Interface
+    // 'Key Transport Security' section.
+    bytes aes_key = 2;
+}
+
+
+message DeviceActivationContext {
+    // Assigned Device Address.
+    bytes dev_addr = 1;
+
+    // Application session key (envelope).
+    KeyEnvelope app_s_key = 2;
+}
+
+
 message HandleUplinkDataRequest {
     // DevEUI EUI (8 bytes).
     bytes dev_eui = 1;
@@ -65,6 +86,12 @@ message HandleUplinkDataRequest {
 
     // Received data (encrypted).
     bytes data = 9;
+
+    // Device activation context.
+    // 
+    // This field is only set on the first uplink frame when the security
+    // context has changed (e.g. a new OTAA (re)activation).
+    DeviceActivationContext device_activation_context = 10;
 }
 
 message HandleProprietaryUplinkRequest {
